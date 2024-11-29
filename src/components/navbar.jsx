@@ -1,6 +1,6 @@
-import { useState } from "react";
 import "/src/app/anders.css"; // Husk at tilføje CSS-fil
 import Image from "next/image";
+import logo from "/public/logo.svg";
 
 const Navbar = () => {
   return (
@@ -10,8 +10,8 @@ const Navbar = () => {
           className="navbar-pil-tilbage"
           src={logo}
           alt="SilkeborgFitness logo"
-          width={100}
-          height={100}
+          width={200}
+          height={200}
         />
       </div>
       <div>
