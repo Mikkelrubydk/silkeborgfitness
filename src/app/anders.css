@@ -1,0 +1,25 @@
+.navbar {
+    background-color: #191919;
+    height: 200px;
+}
+
+.navbar-overskrift {
+    color: #BCF246;
+}
+
+
+
+
+
+
+/* Styling af profile.jsx */
+
+.profil-person {
+    color: #BCF246;
+}
+
+.profil-overskrift {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
