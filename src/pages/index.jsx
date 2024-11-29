@@ -1,7 +1,10 @@
+import '/src/app/Julie.css';
+import '/src/app/globals.css';
+
 export default function Home() {
   return (
     <>
-      <h1>hejsa</h1>
+     <div className='forside_header'><h1>hej</h1></div>
     </>
   );
 }
