@@ -1,7 +1,7 @@
 import "../app/globals.css";
 
-function MyApp({}) {
-  return <></>;
+function MyApp() {
+  return <Navbar />;
 }
 
 export default MyApp;
