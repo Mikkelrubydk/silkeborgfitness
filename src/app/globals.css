@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900; /* Definer vægtintervallet */
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
 :root {
   --header: #191919;
   --background: #252627;
@@ -11,7 +24,6 @@
 
 body {
   background: var(--background);
-  font-family: Montserrat;
   margin: 0;
   padding: 0;
 }
