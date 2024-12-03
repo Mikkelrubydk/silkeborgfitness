@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
-import Link from "next/link"; // Importer Link komponenten
+import Link from "next/link";
 import Image from "next/image";
 
 const Login = () => {
@@ -12,10 +12,19 @@ const Login = () => {
   });
   const router = useRouter();
 
+  useEffect(() => {
+    // Check om brugeren allerede er logget ind
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn) {
+      router.push("/"); // Omdiriger til forsiden, hvis brugeren allerede er logget ind
+    }
+  }, [router]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      localStorage.setItem("isLoggedIn", "true"); // Gemmer loginstatus
       router.push("/"); // Omdiriger til forsiden
     } catch (error) {
       alert(`Fejl: ${error.message}`);

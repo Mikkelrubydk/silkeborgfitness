@@ -15,15 +15,133 @@
   font-family: "Montserrat", sans-serif;
 }
 
-:root {
-  --header: #191919;
-  --background: #252627;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --header: #191919;
+    --background: #252627;
+    --main-color: #bcf246;
+    --secondary-color: #a2d72e;
+  }
+}
+
+/* Custom Theme Styles */
+
+.theme-standard {
   --main-color: #bcf246;
-  --secondary-color: #fe7500;
+  --secondary-color: #a2d72e;
+}
+
+.theme-blue {
+  --main-color: #89b2ff;
+  --secondary-color: #3f69d3;
+}
+
+.theme-yellow {
+  --main-color: #fff589;
+  --secondary-color: #f5c045;
+}
+
+.theme-pink {
+  --main-color: #febcec;
+  --secondary-color: #f099d5;
+}
+
+.theme-grey {
+  --main-color: #a2a2a2;
+  --secondary-color: #dddddd;
+}
+
+/* Sørger for at navbar pil ændrer farve afhængig af colortheme */
+
+.navbar-logo {
+  color: inherit; /* Ingen farveændring */
+}
+
+.theme-standard .navbar-pil-tilbage {
+  color: #bcf246;
+}
+
+/* Temaændringer */
+.theme-blue .navbar-pil-tilbage {
+  color: #89b2ff; /* Blå farve */
+}
+
+.theme-yellow .navbar-pil-tilbage {
+  color: #fff589; /* Gul farve */
+}
+
+.theme-pink .navbar-pil-tilbage {
+  color: #febcec; /* Pink farve */
+}
+
+.theme-grey .navbar-pil-tilbage {
+  color: #a2a2a2; /* Grå farve */
 }
 
 body {
   background: var(--background);
   margin: 0;
   padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--main-color);
+}
+
+p,
+a,
+button {
+  color: var(--secondary-color);
+}
+
+/* Styling af profile */
+
+.profilepage {
+  display: flex;
+  flex-direction: column;
+}
+
+.color-themes {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px 0;
+  gap: 10px;
+}
+
+.color-themes button {
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  transition: 0.2s ease-in-out;
+}
+
+.color-themes .blue {
+  background-color: #89b2ff;
+  border: 3px solid #3f69d3;
+}
+
+.color-themes .yellow {
+  background-color: #fff589;
+  border: 3px solid #f5c045;
+}
+
+.color-themes .pink {
+  background-color: #febcec;
+  border: 3px solid #f099d5;
+}
+
+.color-themes .grey {
+  background-color: #a2a2a2;
+  border: 3px solid #dddddd;
+}
+
+.color-themes .standard {
+  background-color: #bcf246;
+  border: 3px solid #a2d72e;
 }

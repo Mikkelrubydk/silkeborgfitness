@@ -1,7 +1,7 @@
 import "../app/globals.css";
-import "/src/app/Julie.css";
-import "/src/app/globals.css";
-import "/src/app/mikkel.css";
+import "../app/Julie.css";
+import "../app/globals.css";
+import "../app/mikkel.css";
 
 import Navbar from "../components/navbar";
 import { useRouter } from "next/router";

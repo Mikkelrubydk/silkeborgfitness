@@ -3,13 +3,13 @@
 }
 
 .navbar-overskrift {
-  color: #bcf246;
+  color: var(--main-color);
 }
 
 /* Styling af profile.jsx */
 
 .profil-person {
-  color: #bcf246;
+  color: var(--main-color);
 }
 
 .profil-overskrift {
