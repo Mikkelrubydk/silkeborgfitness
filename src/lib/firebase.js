@@ -1,6 +1,7 @@
 import { initializeApp, getApps } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore"; // Importer getFirestore
 
 // Firebase-konfiguration (direkte i koden, uden at bruge miljøvariabler)
 const firebaseConfig = {
@@ -16,8 +17,11 @@ const firebaseConfig = {
 // Initialiser Firebase, hvis den ikke er initialiseret endnu
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
 
-// Eksportér Auth og Database
-const auth = getAuth(app);
-const database = getDatabase(app);
+// Initialiser Firestore og Realtime Database
+const db = getFirestore(app); // Firestore
+const database = getDatabase(app); // Realtime Database
 
-export { auth, database };
+// Eksportér Auth og Databaser
+const auth = getAuth(app);
+
+export { auth, database, db }; // Eksporter både database (Realtime Database) og db (Firestore)

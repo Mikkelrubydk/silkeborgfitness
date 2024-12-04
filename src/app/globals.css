@@ -15,13 +15,11 @@
   font-family: "Montserrat", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --header: #191919;
-    --background: #252627;
-    --main-color: #bcf246;
-    --secondary-color: #a2d72e;
-  }
+:root {
+  --header: #191919;
+  --background: #252627;
+  --main-color: #bcf246;
+  --secondary-color: #a2d72e;
 }
 
 /* Custom Theme Styles */
@@ -97,6 +95,10 @@ p,
 a,
 button {
   color: var(--secondary-color);
+}
+
+main {
+  padding: 0 20px;
 }
 
 /* Styling af profile */
