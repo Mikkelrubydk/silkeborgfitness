@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDatabase, ref, set, get } from "firebase/database";
-import { auth, database } from "../lib/firebase"; // Sørg for at importere auth og database fra din firebaseConfig
 import Image from "next/image";
+import { auth, database } from "@/lib/firebase";
 
 const Navbar = () => {
   const router = useRouter();
@@ -15,6 +15,7 @@ const Navbar = () => {
   useEffect(() => {
     setIsClient(true);
 
+    // Hent temaet fra localStorage, hvis tilgængeligt
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
       setTheme(storedTheme);

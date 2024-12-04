@@ -35,6 +35,7 @@ const ProfilePage = () => {
   // Opdater temaet, når `theme` ændres
   useEffect(() => {
     changeTheme(theme);
+    console.log(`farvetemaet er ændret til: ${theme}`);
   }, [theme]);
 
   return (
