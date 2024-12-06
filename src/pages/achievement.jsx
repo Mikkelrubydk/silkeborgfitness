@@ -1,8 +1,8 @@
-import React, { useState } from 'react'; // Importer useState
-import '/src/app/lejla.css';
-import '/src/app/globals.css';
+import React, { useState } from "react"; // Importer useState
+import "/src/app/lejla.css";
+import "/src/app/globals.css";
 
-const Praesentation = () => {
+const achievement = () => {
   const [flipped, setFlipped] = useState(Array(10).fill(false)); // 10 kasser
 
   const handleFlip = (index) => {
@@ -12,16 +12,16 @@ const Praesentation = () => {
   };
 
   const icons = [
-    "runninman.png", 
-    "medaljeikon.png", 
-    "flagikon.png", 
-    "benworkikon.png", 
-    "stjerneikon.png", 
-    "skubikon.png", 
-    "fitnessliftikon.png", 
+    "runninman.png",
+    "medaljeikon.png",
+    "flagikon.png",
+    "benworkikon.png",
+    "stjerneikon.png",
+    "skubikon.png",
+    "fitnessliftikon.png",
     "dumbellikon.png",
     "stormedaljeikon.png",
-    "yogaikon.png"
+    "yogaikon.png",
   ];
 
   const descriptions = [
@@ -34,21 +34,21 @@ const Praesentation = () => {
     "Slå din egen pr 50 gange.",
     "Løft over 300 kg.",
     "Vær top 5 i over en uge.",
-    "Stræk ud efter 1000 træninger."
+    "Stræk ud efter 1000 træninger.",
   ];
 
   // Definer procentværdierne for hver kasse
   const percentages = [
-    100,   // Procent for kasse 1
-    100,   // Procent for kasse 2
-    100,   // Procent for kasse 3
-    62,   // Procent for kasse 4
-    53,   // Procent for kasse 5
-    40,   // Procent for kasse 6
-    38,   // Procent for kasse 7
-    33,   // Procent for kasse 8
-    25,   // Procent for kasse 9
-    10    // Procent for kasse 10
+    100, // Procent for kasse 1
+    100, // Procent for kasse 2
+    100, // Procent for kasse 3
+    62, // Procent for kasse 4
+    53, // Procent for kasse 5
+    40, // Procent for kasse 6
+    38, // Procent for kasse 7
+    33, // Procent for kasse 8
+    25, // Procent for kasse 9
+    10, // Procent for kasse 10
   ];
 
   return (
@@ -97,36 +97,54 @@ const Praesentation = () => {
         <label className="praesentation-privacy">
           <input type="checkbox" />
           Gør mine data privat
-          <span> Du og andre brugere vil ikke kunne se dig på leaderboardet</span>
+          <span>
+            {" "}
+            Du og andre brugere vil ikke kunne se dig på leaderboardet
+          </span>
         </label>
       </section>
 
       <section className="praesentation-performances">
         <h2 className="praesentation-subtitle">Mine præstationer</h2>
-        
+
         <div className="praesentation-grid">
           {[...Array(10)].map((_, index) => (
-            <div 
+            <div
               key={index}
-              className={`praesentation-icon ${flipped[index] ? 'flipped' : ''}`} 
+              className={`praesentation-icon ${
+                flipped[index] ? "flipped" : ""
+              }`}
               onClick={() => handleFlip(index)}
             >
               <div className="corner-circle">
                 {index < 3 ? (
                   // Checkmark SVG-ikon med sortere og tykkere linje
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="black" strokeWidth="3" viewBox="0 0 24 24" width="16" height="16">
-                    <path d="M9 16.2l-3.5-3.5-1.4 1.4 5 5 10-10-1.4-1.4L9 16.2z"/>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="black"
+                    strokeWidth="3"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                  >
+                    <path d="M9 16.2l-3.5-3.5-1.4 1.4 5 5 10-10-1.4-1.4L9 16.2z" />
                   </svg>
                 ) : (
                   // Spørgsmålstegn som tekst
-                  <span style={{ fontSize: '16px', color: 'black' }}>?</span>
+                  <span style={{ fontSize: "16px", color: "black" }}>?</span>
                 )}
               </div>
 
               {/* Forside: Ikon, Procent og Cirkler */}
               <div className="front-side">
-                <img src={icons[index]} alt={`icon-${index}`} className="icon-image" />
-                <p className="icon-percentage">{percentages[index]}%</p>  {/* Brug procenten fra arrayet */}
+                <img
+                  src={icons[index]}
+                  alt={`icon-${index}`}
+                  className="icon-image"
+                />
+                <p className="icon-percentage">{percentages[index]}%</p>{" "}
+                {/* Brug procenten fra arrayet */}
               </div>
 
               {/* Bagside: Forklaringstekst */}
@@ -141,4 +159,4 @@ const Praesentation = () => {
   );
 };
 
-export default Praesentation;
+export default achievement;
