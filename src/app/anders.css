@@ -59,9 +59,44 @@
   }
 
   .ret-skrift {
-    font-size: 5px;
-    display: flex;
-    justify-content: start;
+    font-size: 8px;
+    padding-left: 12px;
+    margin-top: -10px;
     opacity: 50%;
     color: #A9A9A9;
+  }
+
+  .overskrift2 {
+    font-size: 22px;
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+
+  .aktivitetsniveau {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .overskrift-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .overskrift3 {
+    padding-top: 32px;
+    padding-left: 5px;
+    font-size: 10px;
+    color: white;
+  }
+
+  .overskrift4 {
+    font-size: 22px;
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+
+  .overskrift5 {
+    font-size: 22px;
+    padding-top: 20px;
+    padding-left: 10px;
   }

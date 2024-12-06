@@ -262,3 +262,25 @@
   color: black; /* Sort farve til ikonet */
   font-weight: bold;
 }
+/* Stil for cirklerne i højre hjørne */
+.praesentation-icon .corner-circle {
+    position: absolute;
+    top: 5px; /* Afstand fra toppen */
+    right: 5px; /* Afstand fra højre */
+    width: 30px; /* Diameter på cirklen */
+    height: 30px;
+    background-color: #FF7300; /* Orange farve */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px; /* Størrelse på ikonet */
+    color: black; /* Sort farve til ikonet */
+    font-weight: bold;
+  }
+  
+
+  /* ---------------- hold træning --------------------------- */
+
+
+  

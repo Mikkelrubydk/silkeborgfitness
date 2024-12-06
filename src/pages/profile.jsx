@@ -1,10 +1,30 @@
-import { useState } from "react"; // Importer useState
-import LogOut from "../components/logoutbtn"; // Import af LogOut-komponenten
+import { useState } from "react"; 
+import { Line } from "react-chartjs-2"; 
+import LogOut from "../components/logoutbtn";
+import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend } from "chart.js";
+
+ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend);
 
 const ProfilePage = ({ currentTheme, setTheme }) => {
   const [startWeight, setStartWeight] = useState(92);
   const [currentWeight, setCurrentWeight] = useState(90);
   const [goalWeight, setGoalWeight] = useState(85);
+
+  // Data til grafen
+  const data = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun'], // Måned labels
+    datasets: [
+      {
+        label: 'Aktivitetsniveau', 
+        data: [21, 4, 15, 11, 12, 10], // Vægt data
+        borderColor: 'rgb(255, 87, 34)', // Orange linje
+        backgroundColor: 'rgba(255, 87, 34, 0.2)',
+        fill: true, 
+        tension: 0.1, // For en blødere kurve
+        borderWidth: 5, // Gør linjen tykkere
+      },
+    ],
+  };
 
   // Funktion til at håndtere vægtændring
   const handleWeightChange = (type) => {
@@ -17,6 +37,44 @@ const ProfilePage = ({ currentTheme, setTheme }) => {
       alert("Ugyldig vægt. Prøv igen.");
     }
   };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: {
+          display: false, // Fjerner gridlinjerne på x-aksen
+        },
+        ticks: {
+          color: 'white', // Gør månedslabels (ticks) hvid
+          font: {
+            size: 14, // Juster skriftstørrelsen
+          },
+        },
+      },
+      y: {
+        grid: {
+          display: false, // Fjerner gridlinjerne på y-aksen
+        },
+        ticks: {
+          display: false, // Fjerner tallene på y-aksen til venstre
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false, // Fjerner legenden
+      },
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Sætter baggrundsfarven på tooltip til sort
+        titleColor: 'white', // Gør tooltip-titlerne hvide
+        bodyColor: 'white', // Gør tooltip-tekst farven hvid
+      },
+    },
+  };
+
+  
 
   return (
     <main className="profilepage">
@@ -37,13 +95,26 @@ const ProfilePage = ({ currentTheme, setTheme }) => {
           <p className="personlige-mål-overskrift">Mål</p>
           <p className="personlige-mål-kg">{goalWeight}KG</p>
         </div>
-        <p className="ret-skrift">Ret indhold ved at trykke på boksene</p>
       </div>
+      <p className="ret-skrift">Ret indhold ved at trykke på boksene</p>
+
+      <div className="aktivitetsniveau">
+        <div className="overskrift-container">
+          <h2 className="overskrift2">Aktivitetsniveau</h2>
+          <h5 className="overskrift3">2024</h5>
+        </div>
+        <div className="graf-container">
+          <Line data={data} options={options} />
+        </div>
+      </div>
+     
+    <div>
+      <h2 className="overskrift4">Fremskridtsdokumentation</h2>
+    </div>
 
       <div>
-        <h2 className="overskrift2">Aktivitetsniveau</h2>
+        <h2 className="overskrift5">Color Theme</h2>
       </div>
-
       <div className="color-themes">
         <button
           style={{
