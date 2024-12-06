@@ -17,11 +17,15 @@ const SkridtCirkeldiagram = () => {
       <div className="circle-container">
         <CircularProgressbar
           value={percentage}
+          className="cirkelcss"
           text={`${steps.toLocaleString()} Skridt`}
           styles={buildStyles({
             textColor: "#000",
-            pathColor: "#4caf50",
+            pathColor: "#4caf50",     
             trailColor: "#d6d6d6",
+            textSize: "12px", 
+            width: "50%",
+     
           })}
         />
       </div>
