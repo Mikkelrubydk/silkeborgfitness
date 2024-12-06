@@ -7,9 +7,10 @@
     "praestationer skridt"
     "graf graf"
     "tutorials fremskridt";
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr; /* Sætter bredden på kolonnerne til 50% */
   border-radius: 12px;
   margin: 0 auto;
+  gap: 20px; /* Gap mellem elementer */
 }
 
 .forside_logbog {
@@ -19,9 +20,9 @@
   color: black;
   display: flex;
   position: relative;
-  height: 150px;
   width: 100%;
   overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+  aspect-ratio: 1 / 1;
 }
 
 .forside_logbog .top-left {
@@ -59,14 +60,12 @@
   justify-content: center;
   align-items: center;
   color: #000;
-
-  /* Tilføj bredde og centrer */
-  width: 160px; /* Reducer bredden som ønsket */
+  width: 100%;
   margin: 0 auto; /* Centerer boksen */
 }
 
-.circle-container {
-  padding: 50px;
+.CircularProgressbar {
+  padding: 10px;
 }
 
 .forside_praestationer {
@@ -76,9 +75,9 @@
   color: black;
   display: flex;
   position: relative;
-  height: 150px;
-  width: 100%; /* Juster efter behov */
+  width: 100%;
   overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+  aspect-ratio: 1 / 1;
 }
 
 .forside_praestationer .top-left {
@@ -117,7 +116,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 150px;
+  aspect-ratio: 2 / 1;
 }
 
 .forside_tutorials {
@@ -127,9 +126,9 @@
   color: black;
   display: flex;
   position: relative;
-  height: 150px;
   width: 100%; /* Juster efter behov */
   overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+  aspect-ratio: 1 / 1;
 }
 
 .forside_tutorials .top-left {
