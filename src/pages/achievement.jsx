@@ -76,7 +76,8 @@ const achievement = () => {
             <div className="praesentation-rank">2</div>
           </div>
           <div className="praesentation-leaderboard-item praesentation-leaderboard-first">
-            <p>🏆 Mikkel Ruby</p>
+            <p>🏆 </p>
+            <p>Mikkel Ruby</p>
             <div className="praesentation-score">186 kg.</div>
             <div className="praesentation-rank">1</div>
           </div>
