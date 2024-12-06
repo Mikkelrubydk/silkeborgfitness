@@ -8,7 +8,6 @@
     "graf graf"
     "tutorials fremskridt";
   gap: 1.5rem;
-  max-width: 360px; /* Tilpas bredde */
   border-radius: 12px;
   margin: 0 auto;
 }
@@ -21,7 +20,7 @@
   display: flex;
   position: relative;
   height: 150px;
-  width: 100%; /* Juster efter behov */
+  width: 100%;
   overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
 }
 
@@ -55,12 +54,15 @@
   grid-area: skridt;
   background-color: var(--main-color);
   border-radius: 20px;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #000;
+
+  /* Tilføj bredde og centrer */
+  width: 250px; /* Reducer bredden som ønsket */
+  margin: 0 auto; /* Centerer boksen */
 }
 
 .forside_praestationer {
@@ -155,3 +157,4 @@
   color: #fff;
   height: 150px;
 }
+
