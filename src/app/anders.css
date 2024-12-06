@@ -100,3 +100,62 @@
     padding-top: 20px;
     padding-left: 10px;
   }
+
+  .image-box {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .toggle-image-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  .toggle-image-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .image-inside-box {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 15px;
+  }
+  
+  .image-inside-box {
+    width: 125px;
+    height: 125px;
+    object-fit: cover;
+  }
+
+  .image-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Opretter 3 lige store kolonner */
+    gap: 10px; /* Afstand mellem billederne */
+  }
+
+/* Skjuler den oprindelige file input */
+.file-input {
+  display: none;
+}
+
+/* Tilpasset billede som knap */
+.custom-file-button img {
+  width: 150px;  /* Juster billedets størrelse */
+  height: auto;  /* Bevar billedets forhold */
+  cursor: pointer;  /* Gør det til en håndekursor */
+  border-radius: 5px;  /* Eventuelt rundede hjørner, hvis du vil */
+  transition: transform 0.3s ease;  /* Tilføj en overgang for en klik-animation */
+}
+
+.custom-file-button img:hover {
+  transform: scale(1.1);  /* Zoom effekten på hover */
+}

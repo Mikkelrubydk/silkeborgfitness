@@ -9,7 +9,26 @@ const ProfilePage = ({ currentTheme, setTheme }) => {
   const [startWeight, setStartWeight] = useState(92);
   const [currentWeight, setCurrentWeight] = useState(90);
   const [goalWeight, setGoalWeight] = useState(85);
+  const [images, setImages] = useState([]);
 
+  // Funktion til at håndtere billede upload
+  const handleImageChange = (e) => {
+    const files = e.target.files;  // Multiple filer
+    const newImages = [];
+
+    // Læs hver fil og tilføj dem til state
+    for (let i = 0; i < files.length; i++) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        newImages.push(reader.result);  // Tilføj billede til liste
+        if (newImages.length === files.length) {
+          setImages((prevImages) => [...prevImages, ...newImages]);  // Opdater state
+        }
+      };
+      reader.readAsDataURL(files[i]);  // Læs billedet som data-URL
+    }
+  };
+  
   // Data til grafen
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun'], // Måned labels
@@ -108,9 +127,36 @@ const ProfilePage = ({ currentTheme, setTheme }) => {
         </div>
       </div>
      
-    <div>
-      <h2 className="overskrift4">Fremskridtsdokumentation</h2>
-    </div>
+      <div className="fremskridtsdokumentation">
+        <h2 className="overskrift4">Fremskridtsdokumentation</h2>
+        <div className="image-box">
+          {/* Render alle billeder i boksen */}
+          {images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`Fremskridtsbillede ${index + 1}`}
+              className="image-inside-box"
+            />
+          ))}
+        </div>
+
+        <div className="upload-container">
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleImageChange}
+          id="file-input"
+          className="file-input"
+        />
+        <label htmlFor="file-input" className="custom-file-button">
+          <img src="path_to_your_image.png" alt="Vælg filer" />
+        </label>
+      </div>
+      </div>
+
+
 
       <div>
         <h2 className="overskrift5">Color Theme</h2>
