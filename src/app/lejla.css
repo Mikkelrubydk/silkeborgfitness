@@ -1,7 +1,7 @@
 /* Container */
 .praesentation-container {
     font-family: Arial, sans-serif;
-    background-color: #1a1a1a;
+    background-color: #252627;
     color: rgb(0, 0, 0);
     padding: 20px;
 }
@@ -45,7 +45,7 @@
 
 
 
-/* Leaderboard grid --------------------*/
+/* Leaderboard grid -------------------------------------------------------------*/
 .praesentation-leaderboard-grid {
     display: flex;
     justify-content: space-around;
