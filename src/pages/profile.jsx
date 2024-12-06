@@ -1,122 +1,161 @@
-import { useState } from "react"; 
+import { useState, useEffect } from "react"; 
 import { Line } from "react-chartjs-2"; 
 import LogOut from "../components/logoutbtn";
 import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend } from "chart.js";
+import Image from "next/image";
 
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend);
 
-const ProfilePage = ({ currentTheme, setTheme }) => {
+const ProfilePage = () => {
   const [startWeight, setStartWeight] = useState(92);
   const [currentWeight, setCurrentWeight] = useState(90);
   const [goalWeight, setGoalWeight] = useState(85);
   const [images, setImages] = useState([]);
+  const [uploadDates, setUploadDates] = useState([]);
+  const [showAll, setShowAll] = useState(false);
 
-  // Funktion til at håndtere billede upload
-  const handleImageChange = (e) => {
-    const files = e.target.files;  // Multiple filer
-    const newImages = [];
-
-    // Læs hver fil og tilføj dem til state
-    for (let i = 0; i < files.length; i++) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        newImages.push(reader.result);  // Tilføj billede til liste
-        if (newImages.length === files.length) {
-          setImages((prevImages) => [...prevImages, ...newImages]);  // Opdater state
-        }
-      };
-      reader.readAsDataURL(files[i]);  // Læs billedet som data-URL
-    }
+  // State for storing the current theme
+  const [currentTheme, setCurrentTheme] = useState("standard");
+  // Update localStorage when the theme changes
+  const updateTheme = (theme) => {
+    setCurrentTheme(theme);
+    localStorage.setItem("theme", theme);  // Save theme to localStorage
   };
-  
-  // Data til grafen
-  const data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun'], // Måned labels
+
+   const [data, setData] = useState({
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun'],
     datasets: [
       {
-        label: 'Aktivitetsniveau', 
-        data: [21, 4, 15, 11, 12, 10], // Vægt data
-        borderColor: 'rgb(255, 87, 34)', // Orange linje
+        label: 'Aktivitetsniveau',
+        data: [], // Initial tomt array
+        borderColor: 'rgb(255, 87, 34)',
         backgroundColor: 'rgba(255, 87, 34, 0.2)',
-        fill: true, 
-        tension: 0.1, // For en blødere kurve
-        borderWidth: 5, // Gør linjen tykkere
+        fill: true,
+        tension: 0.1,
+        borderWidth: 5,
       },
     ],
+  });
+
+  // Funktion til at generere tilfældige data
+  const generateRandomData = () => {
+    return Array.from({ length: 6 }, () => Math.floor(Math.random() * 31));
   };
 
-  // Funktion til at håndtere vægtændring
-  const handleWeightChange = (type) => {
-    const newWeight = parseInt(prompt(`Indtast ny vægt for ${type} (i KG):`));
+  // useEffect til at generere tilfældige data én gang ved indlæsning
+  useEffect(() => {
+    const randomData = generateRandomData();
+    setData((prevData) => ({
+      ...prevData,
+      datasets: [
+        {
+          ...prevData.datasets[0],
+          data: randomData,
+        },
+      ],
+    }));
+  }, []); // Tom dependency array betyder, at effekten kun kører én gang
+
+  const handleImageChange = (e) => {
+    const files = e.target.files;
+    const newImages = [];
+    const newDates = [];
+
+    Array.from(files).forEach((file) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        newImages.push(reader.result);
+        newDates.push(new Date().toLocaleDateString());
+        if (newImages.length === files.length) {
+          setImages((prevImages) => [...prevImages, ...newImages]);
+          setUploadDates((prevDates) => [...prevDates, ...newDates]);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleWeightEdit = (type, e) => {
+    const newWeight = parseInt(e.target.textContent);
     if (!isNaN(newWeight)) {
       if (type === "Start") setStartWeight(newWeight);
       if (type === "Nuværende") setCurrentWeight(newWeight);
       if (type === "Mål") setGoalWeight(newWeight);
-    } else {
-      alert("Ugyldig vægt. Prøv igen.");
     }
   };
+
 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
       x: {
-        grid: {
-          display: false, // Fjerner gridlinjerne på x-aksen
-        },
-        ticks: {
-          color: 'white', // Gør månedslabels (ticks) hvid
-          font: {
-            size: 14, // Juster skriftstørrelsen
-          },
-        },
+        grid: { display: false },
+        ticks: { color: 'white', font: { size: 14 } },
       },
       y: {
-        grid: {
-          display: false, // Fjerner gridlinjerne på y-aksen
-        },
-        ticks: {
-          display: false, // Fjerner tallene på y-aksen til venstre
-        },
+        grid: { display: false },
+        ticks: { display: false },
       },
     },
     plugins: {
-      legend: {
-        display: false, // Fjerner legenden
-      },
+      legend: { display: false },
       tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Sætter baggrundsfarven på tooltip til sort
-        titleColor: 'white', // Gør tooltip-titlerne hvide
-        bodyColor: 'white', // Gør tooltip-tekst farven hvid
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        titleColor: 'white',
+        bodyColor: 'white',
       },
     },
   };
 
-  
+  const handleShowAll = () => {
+    setShowAll(!showAll);
+  };
 
   return (
     <main className="profilepage">
       <div className="profil-overskrift">
         <h1 className="profil-person">Mikkel Høj Ruby</h1>
       </div>
+
+      {/* Personlige mål */}
       <h2 className="overskrift1">Personlige Mål</h2>
       <div className="boks-container">
-        <div className="box" onClick={() => handleWeightChange("Start")}>
+        <div className="box">
           <p className="personlige-mål-overskrift">Start</p>
-          <p className="personlige-mål-kg">{startWeight}KG</p>
+          <div
+            className="personlige-mål-kg"
+            contentEditable={true}
+            onBlur={(e) => handleWeightEdit("Start", e)}
+          >
+            {startWeight}KG
+          </div>
         </div>
-        <div className="box" onClick={() => handleWeightChange("Nuværende")}>
+        <div className="box">
           <p className="personlige-mål-overskrift">Nuværende</p>
-          <p className="personlige-mål-kg">{currentWeight}KG</p>
+          <div
+            className="personlige-mål-kg"
+            contentEditable={true}
+            onBlur={(e) => handleWeightEdit("Nuværende", e)}
+          >
+            {currentWeight}KG
+          </div>
         </div>
-        <div className="box" onClick={() => handleWeightChange("Mål")}>
+        <div className="box">
           <p className="personlige-mål-overskrift">Mål</p>
-          <p className="personlige-mål-kg">{goalWeight}KG</p>
+          <div
+            className="personlige-mål-kg"
+            contentEditable={true}
+            onBlur={(e) => handleWeightEdit("Mål", e)}
+          >
+            {goalWeight}KG
+          </div>
         </div>
       </div>
+
       <p className="ret-skrift">Ret indhold ved at trykke på boksene</p>
 
+      {/* Aktivitetsniveau graf */}
       <div className="aktivitetsniveau">
         <div className="overskrift-container">
           <h2 className="overskrift2">Aktivitetsniveau</h2>
@@ -126,39 +165,54 @@ const ProfilePage = ({ currentTheme, setTheme }) => {
           <Line data={data} options={options} />
         </div>
       </div>
-     
+
+      {/* Fremskridtsdokumentation */}
       <div className="fremskridtsdokumentation">
         <h2 className="overskrift4">Fremskridtsdokumentation</h2>
         <div className="image-box">
-          {/* Render alle billeder i boksen */}
-          {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Fremskridtsbillede ${index + 1}`}
-              className="image-inside-box"
-            />
+          {images.slice(0, showAll ? images.length : 3).map((image, index) => (
+            <div key={index} className="image-with-date">
+              <p>{uploadDates[index]}</p>
+              <img
+                src={image}
+                alt={`Fremskridtsbillede ${index + 1}`}
+                className="image-inside-box"
+              />
+            </div>
           ))}
         </div>
+        {images.length > 3 && (
+          <button className="show-all-btn" onClick={handleShowAll}>
+            {showAll ? 'Skjul' : 'Vis alle'}
+          </button>
+        )}
 
+        {/* Billedupload */}
         <div className="upload-container">
-        <input
-          type="file"
-          accept="image/*"
-          multiple
-          onChange={handleImageChange}
-          id="file-input"
-          className="file-input"
-        />
-        <label htmlFor="file-input" className="custom-file-button">
-          <img src="path_to_your_image.png" alt="Vælg filer" />
-        </label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleImageChange}
+            id="file-input"
+            className="file-input"
+          />
+          <label htmlFor="file-input" className="custom-file-button">
+            <div className="billede-boks">
+              <Image
+                className="plus.icon"
+                src="/plus.svg"
+                alt="password icon"
+                width={40}
+                height={40}
+              />
+              <p>Tilføj flere billeder</p>
+            </div>
+          </label>
+        </div>
       </div>
-      </div>
 
-
-
-      <div>
+      <div className="color-theme-boks">
         <h2 className="overskrift5">Color Theme</h2>
       </div>
       <div className="color-themes">
@@ -167,38 +221,39 @@ const ProfilePage = ({ currentTheme, setTheme }) => {
             borderRadius: currentTheme === "standard" ? "50%" : "20px",
           }}
           className="standard"
-          onClick={() => setTheme("standard")}
+          onClick={() => updateTheme("standard")}
         ></button>
         <button
           style={{
             borderRadius: currentTheme === "grey" ? "50%" : "20px",
           }}
           className="grey"
-          onClick={() => setTheme("grey")}
+          onClick={() => updateTheme("grey")}
         ></button>
         <button
           style={{
             borderRadius: currentTheme === "blue" ? "50%" : "20px",
           }}
           className="blue"
-          onClick={() => setTheme("blue")}
+          onClick={() => updateTheme("blue")}
         ></button>
         <button
           style={{
             borderRadius: currentTheme === "pink" ? "50%" : "20px",
           }}
           className="pink"
-          onClick={() => setTheme("pink")}
+          onClick={() => updateTheme("pink")}
         ></button>
         <button
           style={{
             borderRadius: currentTheme === "yellow" ? "50%" : "20px",
           }}
           className="yellow"
-          onClick={() => setTheme("yellow")}
+          onClick={() => updateTheme("yellow")}
         ></button>
       </div>
 
+      {/* Log ud knap */}
       <LogOut />
     </main>
   );

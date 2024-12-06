@@ -109,37 +109,26 @@
     margin: 0 auto;
   }
   
-  .toggle-image-btn {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 15px;
-  }
-  
-  .toggle-image-btn:hover {
-    background-color: #45a049;
-  }
-  
-  .image-inside-box {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 15px;
-  }
-  
   .image-inside-box {
     width: 125px;
     height: 125px;
     object-fit: cover;
+    border-radius: 20px;
   }
 
   .image-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Opretter 3 lige store kolonner */
-    gap: 10px; /* Afstand mellem billederne */
+    gap: 20px; /* Afstand mellem billederne */
+    padding: 0;
+  }
+
+  .fremskridtsdokumentation {
+    margin-top: 40px; /* Afstand fra toppen */
+  }
+
+  .upload-container {
+    margin-top: 40px; /* Afstand under billederne */
   }
 
 /* Skjuler den oprindelige file input */
@@ -149,13 +138,49 @@
 
 /* Tilpasset billede som knap */
 .custom-file-button img {
-  width: 150px;  /* Juster billedets størrelse */
-  height: auto;  /* Bevar billedets forhold */
   cursor: pointer;  /* Gør det til en håndekursor */
   border-radius: 5px;  /* Eventuelt rundede hjørner, hvis du vil */
   transition: transform 0.3s ease;  /* Tilføj en overgang for en klik-animation */
+  margin-left: 40px;
+
 }
 
 .custom-file-button img:hover {
   transform: scale(1.1);  /* Zoom effekten på hover */
 }
+
+.billede-boks {
+  display: flex;
+  flex-direction: row;
+  color: var(--main-color);
+  align-items: center;
+  gap: 15px;
+  font-size: 22px;
+  justify-content: start;
+  margin-left: -15px;
+}
+
+.color-theme-boks {
+  margin-top: 50px;
+}
+
+.show-all-btn {
+  margin-top: 10px;
+  padding: 5px 10px;  /* Justeret padding for at gøre knappen mindre */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px; /* Mindre fontstørrelse */
+  border-radius: 5px; /* Rundede hjørner, hvis du ønsker det */
+  margin-left: 280px;
+  margin-top: -5px;
+}
+
+.image-with-date p {
+  color: white;
+  font-size: 14px; 
+  text-align: center;
+  margin: 5px;
+}
+
+
