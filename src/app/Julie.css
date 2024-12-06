@@ -39,8 +39,7 @@
 }
 
 .forside_logbog .center img {
-  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
-  max-height: 100%;
+  width: 80px;
   margin: 6px;
 }
 
@@ -94,8 +93,7 @@
 }
 
 .forside_praestationer .center img {
-  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
-  max-height: 100%;
+  width: 80px;
   margin: 6px;
 }
 
@@ -145,8 +143,7 @@
 }
 
 .forside_tutorials .center img {
-  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
-  max-height: 100%;
+  width: 80px;
   margin: 6px;
 }
 

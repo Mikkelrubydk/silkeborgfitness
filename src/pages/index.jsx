@@ -65,7 +65,7 @@ export default function Home() {
         <div className="forside_box forside_logbog">
           <div className="top-left">Logbog</div>
           <div className="center">
-            <img src="dumbbell.png" alt="Logbog Billede" />
+            <img src="dumbbell.svg" alt="Logbog Billede" />
           </div>
           <div className="bottom-left">Sidst noteret: 29/11</div>
         </div>
@@ -79,7 +79,7 @@ export default function Home() {
           <div className="forside_box forside_praestationer">
             <div className="top-left">Præstationer</div>
             <div className="center">
-              <img src="medal.png" alt="Præstationer Billede" />
+              <img src="medal.svg" alt="Præstationer Billede" />
             </div>
             <div className="bottom-left">Ny præmie låst op!</div>
           </div>
@@ -91,7 +91,7 @@ export default function Home() {
         <div className="forside_box forside_tutorials">
           <div className="top-left">Tutorials</div>
           <div className="center">
-            <img src="video.png" alt="Tutorials Billede" />
+            <img src="video.svg" alt="Tutorials Billede" />
           </div>
         </div>
       </div>
