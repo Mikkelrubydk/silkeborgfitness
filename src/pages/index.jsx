@@ -5,7 +5,6 @@ import SkridtCirkeldiagram from "../components/SkridtCirkeldiagram"; // Import a
 import Link from "next/link";
 
 export default function Home() {
-<<<<<<< Updated upstream
   const [theme, setTheme] = useState("standard");
 
   useEffect(() => {
@@ -100,23 +99,5 @@ export default function Home() {
 
       </div>
     </main>
-=======
-  return (
-    <>
-<div className="forside_container">
-      {/* Øverste række */}
-      <div className="forside_box forside_logbog">Logbog</div>
-      <div className="forside_box forside_skridt">11,238 Skridt</div>
-
-      {/* Midterste række */}
-      <div className="forside_box forside_praestationer">Præstationer</div>
-      <div className="forside_box forside_graf">Oversigt over travlhed</div>
-
-      {/* Nederste række */}
-      <div className="forside_box forside_tutorials">Tutorials</div>
-      <div className="forside_box forside_fremskridt">Fremskridt</div>
-    </div>
-    </>
->>>>>>> Stashed changes
   );
 }
