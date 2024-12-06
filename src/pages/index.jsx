@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 import { useEffect, useState } from "react";
 import { db, auth } from "../lib/firebase"; // Husk at importere db og auth
 import { doc, getDoc } from "firebase/firestore"; // Importer Firestore funktioner
@@ -100,9 +96,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
   );
 }
