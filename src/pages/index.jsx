@@ -1,4 +1,7 @@
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import { useEffect, useState } from "react";
 import { db, auth } from "../lib/firebase"; // Husk at importere db og auth
 import { doc, getDoc } from "firebase/firestore"; // Importer Firestore funktioner
@@ -76,16 +79,15 @@ export default function Home() {
           <SkridtCirkeldiagram />
         </div>
 
-<Link href="/achievement">
-        <div className="forside_box forside_praestationer">
-          <div className="top-left">Præstationer</div>
-          <div className="center">
-            <img src="medal.png" alt="Præstationer Billede" />
+        <Link href="/achievement">
+          <div className="forside_box forside_praestationer">
+            <div className="top-left">Præstationer</div>
+            <div className="center">
+              <img src="medal.png" alt="Præstationer Billede" />
+            </div>
+            <div className="bottom-left">Ny præmie låst op!</div>
           </div>
-          <div className="bottom-left">Ny præmie låst op!</div>
-        </div>
-        <div className="alert-icon"></div>
-        
+          <div className="alert-icon"></div>
         </Link>
 
         <div className="forside_box forside_graf">Oversigt over travlhed</div>
@@ -96,10 +98,11 @@ export default function Home() {
             <img src="video.png" alt="Tutorials Billede" />
           </div>
         </div>
-
-
       </div>
     </main>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   );
 }
