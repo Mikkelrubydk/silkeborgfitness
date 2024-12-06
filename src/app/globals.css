@@ -51,6 +51,11 @@
 
 /* Sørger for at navbar pil ændrer farve afhængig af colortheme */
 
+.navbar {
+  background-color: var(--header);
+  border-radius: 0 0 20px 20px;
+}
+
 .navbar-logo {
   color: inherit; /* Ingen farveændring */
 }
