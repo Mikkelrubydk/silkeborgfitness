@@ -65,6 +65,10 @@
   margin: 0 auto; /* Centerer boksen */
 }
 
+.circle-container {
+  padding: 50px;
+}
+
 .forside_praestationer {
   grid-area: praestationer;
   background-color: var(--main-color); /* Samme farve som logbogen */
@@ -157,4 +161,3 @@
   color: #fff;
   height: 150px;
 }
-
