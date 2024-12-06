@@ -1,44 +1,10 @@
-import LogOut from "../components/logoutbtn";
+import { useState } from "react"; // Importer useState
+import LogOut from "../components/logoutbtn"; // Import af LogOut-komponenten
 
-const ProfilePage = () => {
-  const [theme, setTheme] = useState("standard");
+const ProfilePage = ({ currentTheme, setTheme }) => {
   const [startWeight, setStartWeight] = useState(92);
   const [currentWeight, setCurrentWeight] = useState(90);
   const [goalWeight, setGoalWeight] = useState(85);
-
-  // Funktion til at ændre tema
-  const changeTheme = (theme) => {
-    // Fjern alle eksisterende tema-klasser
-    document.documentElement.classList.remove(
-      "theme-blue",
-      "theme-yellow",
-      "theme-pink",
-      "theme-grey",
-      "theme-standard"
-    );
-
-    // Tilføj den valgte tema-klasse
-    document.documentElement.classList.add(`theme-${theme}`);
-
-    // Gem tema-valget i localStorage
-    localStorage.setItem("theme", theme);
-  };
-
-  // Læs temaet fra localStorage og anvend det
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      setTheme(storedTheme);
-    } else {
-      setTheme("standard");
-    }
-  }, []);
-
-  // Opdater temaet, når `theme` ændres
-  useEffect(() => {
-    changeTheme(theme);
-    console.log(`Farvetemaet er ændret til: ${theme}`);
-  }, [theme]);
 
   // Funktion til at håndtere vægtændring
   const handleWeightChange = (type) => {
@@ -115,6 +81,7 @@ const ProfilePage = () => {
           onClick={() => setTheme("yellow")}
         ></button>
       </div>
+
       <LogOut />
     </main>
   );
