@@ -2,10 +2,6 @@
   background-color: #191919;
 }
 
-.navbar-overskrift {
-  color: var(--main-color);
-}
-
 /* Styling af profile.jsx */
 
 .profil-person {

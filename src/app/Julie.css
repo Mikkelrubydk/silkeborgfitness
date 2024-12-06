@@ -1,237 +1,158 @@
-
 /* styling af register.jsx */
 
 .forside_container {
-    display: grid;
-    grid-template-areas:
-      "header header"
-      "logbog skridt"
-      "praestationer skridt"
-      "graf graf"
-      "tutorials fremskridt";
-    gap: 1.5rem;
-    border-radius: 12px;
-  }
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Tilpas kolonnebredder */
-    grid-gap: 1rem;
-  }
-  
-  .forside_logbog {
-    grid-area: logbog;
-    background-color: var(--main-color);
-    border-radius: 20px;
-    color: black;
-    display: flex;
-    position: relative;
-    height: 150px;
-    width: 100%; /* Juster efter behov */
-    overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
-  }
-  
-  .forside_logbog .top-left {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 16px; /* Juster tekststørrelse efter behov */
-    font-weight: bold;
-  }
-  
-  .forside_logbog .center {
-    margin: auto;
-    text-align: center;
-  }
-  
-  .forside_logbog .center img {
-    max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
-    max-height: 100%;
-    margin: 6px;
-  }
-  
-  .forside_logbog .bottom-left {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-size: 12px; /* Juster tekststørrelse efter behov */
-  }
-  
-  .forside_skridt {
-    grid-area: skridt;
-    background-color: var(--main-color);
-    border-radius: 20px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #000;
-  }
-  
-  .forside_praestationer {
-    grid-area: praestationer;
-    background-color: var(--main-color); /* Samme farve som logbogen */
-    border-radius: 20px;
-    color: black;
-    display: flex;
-    position: relative;
-    height: 150px;
-    width: 100%; /* Juster efter behov */
-    overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
-  }
-  
-  .forside_praestationer .top-left {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 16px; /* Juster tekststørrelse efter behov */
-    font-weight: bold;
-  }
-  
-  .forside_praestationer .center {
-    margin: auto;
-    text-align: center;
-  }
-  
-  .forside_praestationer .center img {
-    max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
-    max-height: 100%;
-    margin: 6px;
-  }
-  
-  .forside_praestationer .bottom-left {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-size: 12px; /* Juster tekststørrelse efter behov */
-  }
-  
-  .forside_graf {
-    grid-area: graf;
-    background-color: #333;
-    border-radius: 20px;
-    color: #ffa500;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 150px;
-  }
-  
-  .forside_tutorials {
-    grid-area: tutorials;
-    background-color: var(--main-color); /* Samme farve som de andre bokse */
-    border-radius: 20px;
-    color: black;
-    display: flex;
-    position: relative;
-    height: 150px;
-    width: 100%; /* Juster efter behov */
-    overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
-  }
-  
-  .forside_tutorials .top-left {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 16px; /* Juster tekststørrelse efter behov */
-    font-weight: bold;
-  }
-  
-  .forside_tutorials .center {
-    margin: auto;
-    text-align: center;
-  }
-  
-  .forside_tutorials .center img {
-    max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
-    max-height: 100%;
-    margin: 6px;
-  }
-  
-  
-  .forside_skridt {
-    grid-area: skridt;
-    background-color: var(--main-color);
-    border-radius: 20px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #000;
-    height: 330px; /* Højden som ønsket */
-    width: auto; /* Gør bredden automatisk efter indhold */
-    max-width: 300px; /* Tilføj en maksimal bredde for at begrænse diven */
-    overflow: hidden;
-    position: relative;
-    margin: 0 auto; /* Centrer diven, hvis nødvendigt */
-  }
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "logbog skridt"
+    "praestationer skridt"
+    "graf graf"
+    "tutorials fremskridt";
+  gap: 1.5rem;
+  max-width: 360px; /* Tilpas bredde */
+  border-radius: 12px;
+  margin: 0 auto;
+}
 
-  .forside_skridt .stats {
-    text-align: left;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
-  
-  .forside_skridt .stats p {
-    margin: 0;
-  }
-  
-  .forside_skridt .edit-button {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-size: 0.8rem;
-    position: absolute;
-    bottom: 10px;
-  }
-  
-  .forside_skridt .edit-button:hover {
-    background-color: #4caf50;
-  }
+.forside_logbog {
+  grid-area: logbog;
+  background-color: var(--main-color);
+  border-radius: 20px;
+  color: black;
+  display: flex;
+  position: relative;
+  height: 150px;
+  width: 100%; /* Juster efter behov */
+  overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+}
 
-  .forside_skridt .circle-container {
-    width: 60%; /* Juster cirkelens størrelse */
-    margin-bottom: 1rem; /* Plads under cirklen */
-  }
-  
-  .forside_skridt .top-left,
-  .forside_skridt .bottom-left {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .forside_skridt .center {
-    margin: auto;
-    text-align: center;
-  }
-  
-  .forside_skridt .center img {
-    max-width: 100%; /* Sikrer at billedet ikke fylder for meget */
-    max-height: 100%;
-  }
-  
-  .forside_skridt .CircularProgressbar {
-    width: 60%;
-    height: 50%;
-  }
-  
-  .forside_skridt .CircularProgressbar-text {
-    font-size: 0.8rem;
-  }
+.forside_logbog .top-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px; /* Juster tekststørrelse efter behov */
+  font-weight: bold;
+}
 
-  .forside_praestationer .alert-icon {
-    width: 12px;
-    height: 12px;
-    background-color: orange;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
+.forside_logbog .center {
+  margin: auto;
+  text-align: center;
+}
+
+.forside_logbog .center img {
+  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
+  max-height: 100%;
+  margin: 6px;
+}
+
+.forside_logbog .bottom-left {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px; /* Juster tekststørrelse efter behov */
+}
+
+.forside_skridt {
+  grid-area: skridt;
+  background-color: var(--main-color);
+  border-radius: 20px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+
+.forside_praestationer {
+  grid-area: praestationer;
+  background-color: var(--main-color); /* Samme farve som logbogen */
+  border-radius: 20px;
+  color: black;
+  display: flex;
+  position: relative;
+  height: 150px;
+  width: 100%; /* Juster efter behov */
+  overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+}
+
+.forside_praestationer .top-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px; /* Juster tekststørrelse efter behov */
+  font-weight: bold;
+}
+
+.forside_praestationer .center {
+  margin: auto;
+  text-align: center;
+}
+
+.forside_praestationer .center img {
+  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
+  max-height: 100%;
+  margin: 6px;
+}
+
+.forside_praestationer .bottom-left {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px; /* Juster tekststørrelse efter behov */
+}
+
+.forside_graf {
+  grid-area: graf;
+  background-color: #333;
+  border-radius: 20px;
+  color: #ffa500;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 150px;
+}
+
+.forside_tutorials {
+  grid-area: tutorials;
+  background-color: var(--main-color); /* Samme farve som de andre bokse */
+  border-radius: 20px;
+  color: black;
+  display: flex;
+  position: relative;
+  height: 150px;
+  width: 100%; /* Juster efter behov */
+  overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+}
+
+.forside_tutorials .top-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px; /* Juster tekststørrelse efter behov */
+  font-weight: bold;
+}
+
+.forside_tutorials .center {
+  margin: auto;
+  text-align: center;
+}
+
+.forside_tutorials .center img {
+  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
+  max-height: 100%;
+  margin: 6px;
+}
+
+.forside_fremskridt {
+  grid-area: fremskridt;
+  background-color: var(--main-color);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  height: 150px;
+}

@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDatabase, ref, set, get } from "firebase/database";
 import Image from "next/image";
 import { auth, database } from "@/lib/firebase";
+import Link from "next/link";
 
 const Navbar = () => {
   const router = useRouter();
@@ -15,7 +16,6 @@ const Navbar = () => {
   useEffect(() => {
     setIsClient(true);
 
-    // Hent temaet fra localStorage, hvis tilgængeligt
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
       setTheme(storedTheme);
@@ -29,11 +29,10 @@ const Navbar = () => {
           `user_profiles/${userId}/profileImage`
         );
 
-        // Hent Base64-kodet billede fra Firebase Realtime Database
         get(profileImageRef)
           .then((snapshot) => {
             if (snapshot.exists()) {
-              setProfileImage(snapshot.val()); // Sæt Base64-strengen som profilbillede
+              setProfileImage(snapshot.val());
             } else {
               console.log("Ingen profilbillede fundet.");
             }
@@ -57,10 +56,9 @@ const Navbar = () => {
       return;
     }
 
-    // Opret Base64 URL for billedet
     const reader = new FileReader();
     reader.onloadend = async () => {
-      const base64Image = reader.result; // Base64-kodet billede
+      const base64Image = reader.result;
 
       if (base64Image && auth.currentUser) {
         const userId = auth.currentUser.uid;
@@ -69,10 +67,9 @@ const Navbar = () => {
           `user_profiles/${userId}/profileImage`
         );
 
-        // Gem Base64-strengen af billedet i Firebase Realtime Database
         try {
           await set(profileImageRef, base64Image);
-          setProfileImage(base64Image); // Opdater profilbilledet med Base64-strengen
+          setProfileImage(base64Image);
         } catch (error) {
           console.error("Fejl ved gemning af billede:", error);
           alert("Kunne ikke uploade profilbillede. Prøv igen.");
@@ -82,13 +79,23 @@ const Navbar = () => {
       }
     };
 
-    reader.readAsDataURL(file); // Læs filen som Base64-streng
+    reader.readAsDataURL(file);
   };
 
   const imageSrc = router.pathname === "/" ? "/logo.svg" : "/arrow.svg";
 
+  let navbarHeading;
+  switch (router.pathname) {
+    case "/":
+      navbarHeading = "Træningsoversigt";
+      break;
+    case "/profile":
+      navbarHeading = "Profil";
+      break;
+  }
+
   if (!isClient) {
-    return null; // Returner null under server-side rendering
+    return null;
   }
 
   return (
@@ -96,19 +103,19 @@ const Navbar = () => {
       <div>
         {router.pathname === "/" ? (
           <Image
-            src="/logo.svg" // Vis logoet på forsiden
+            src="/logo.svg"
             alt="Silkeborg Fitness Logo"
             width={100}
             height={100}
           />
         ) : (
           <svg
-            className={`navbar-pil-tilbage theme-${theme}`} // Dynamisk klasse til temaet
+            className={`navbar-pil-tilbage theme-${theme}`}
             onClick={() => router.back()}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 58.78 110.01"
             fill="none"
-            stroke="currentColor" // Farven styres af CSS
+            stroke="currentColor"
             strokeWidth="10"
             width="40"
             height="40"
@@ -121,30 +128,46 @@ const Navbar = () => {
         )}
       </div>
       <div>
-        <h2 className="navbar-overskrift">Træningsoversigt</h2>
+        <h2 className="navbar-overskrift">{navbarHeading}</h2>
       </div>
       <div>
-        <label className="navbar-profil-label">
-          <Image
-            className="navbar-profilbillede rounded-full"
-            src={profileImage}
-            alt="Profilbillede"
-            width={50}
-            height={50}
-            style={{
-              cursor: "pointer",
-              height: "50px",
-              objectFit: "cover", // Sørger for korrekt beskæring af billedet
-            }}
-          />
-
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            style={{ display: "none" }}
-          />
-        </label>
+        {router.pathname === "/profile" ? (
+          <label className="navbar-profil-label">
+            <Image
+              className="navbar-profilbillede rounded-full"
+              src={profileImage}
+              alt="Profilbillede"
+              width={50}
+              height={50}
+              style={{
+                cursor: "pointer",
+                height: "50px",
+                objectFit: "cover",
+              }}
+            />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              style={{ display: "none", marginTop: "10px" }}
+            />
+          </label>
+        ) : (
+          <Link href="/profile">
+            <Image
+              className="navbar-profilbillede rounded-full"
+              src={profileImage}
+              alt="Profilbillede"
+              width={50}
+              height={50}
+              style={{
+                cursor: "pointer",
+                height: "50px",
+                objectFit: "cover",
+              }}
+            />
+          </Link>
+        )}
       </div>
     </div>
   );
