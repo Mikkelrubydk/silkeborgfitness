@@ -92,6 +92,9 @@ const Navbar = () => {
     case "/profile":
       navbarHeading = "Profil";
       break;
+    case "/achievement":
+      navbarHeading = "Præstationer";
+      break;
   }
 
   if (!isClient) {

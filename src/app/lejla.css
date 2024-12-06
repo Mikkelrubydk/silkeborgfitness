@@ -1,0 +1,305 @@
+/* Container */
+.praesentation-container {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+}
+
+/* Leaderboard Section */
+.praesentation-leaderboard {
+    margin-bottom: 40px;
+}
+
+/* Header med overskrift og dropdown */
+.praesentation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.praesentation-title {
+    color: #BCF246;
+    font-size: 2rem;
+}
+
+.praesentation-dropdown select {
+    background-color: #BCF246;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.praesentation-description {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    text-align: center; /* Centrerer teksten */
+    margin-top: 10px; /* Tilføjer lidt afstand til andre elementer */
+    margin-bottom: 50px;
+}
+
+
+
+
+
+/* Leaderboard grid --------------------*/
+.praesentation-leaderboard-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.praesentation-leaderboard-third,
+.praesentation-leaderboard-second,
+.praesentation-leaderboard-item {
+    text-align: center;
+    background-color: #BCF246; /* Standard baggrund for andre kasser */
+    padding: 10px;
+    border-radius: 10px;
+    flex: 1;
+    margin: 0 5px;
+    color: black;
+    border: 2px solid #ffffff; /* Hvid outline */
+}
+
+/* Specifik styling for 2.- og 3.-pladsen */
+.praesentation-leaderboard-second {
+    background-color: #95C330; /* Lys grå baggrund */
+    border: 2px solid #709224; /* Mørkere grå outline */
+}
+
+.praesentation-leaderboard-third {
+    background-color: #6B9119; /* Mørkere grå baggrund */
+    border: 2px solid #3F521B; /* Lidt mørkere outline */
+}
+
+/* 1st place larger and higher */
+.praesentation-leaderboard-first {
+    transform: scale(1.2);
+    z-index: 1;
+    font-weight: bold;
+    border: 2px solid #000000; /* Gul outline til 1.-pladsen */
+}
+
+.praesentation-score {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.praesentation-rank {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+/* Followers */
+.praesentation-followers {
+    margin-top: 20px;
+    color: #b3b3b3;
+}
+
+.praesentation-privacy {
+    display: block;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}
+
+.praesentation-privacy input {
+    margin-right: 10px;
+}
+
+
+
+
+
+
+/* Mine Præstationer Section ---------------------------------*/
+.praesentation-performances {
+    margin-top: 40px;
+}
+
+.praesentation-subtitle {
+    color: #BCF246;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* Grid for præstationer */
+.praesentation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolonner */
+    gap: 20px; /* Afstand mellem kasser */
+}
+
+.praesentation-icon {
+    background-color: #BCF246;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    font-size: 2rem;
+    border-radius: 10px;
+}
+.praesentation-icon.checked {
+    background-color: #BCF246; /* Grøn farve for de første tre kasser */
+  }
+  
+  .praesentation-icon.other-icon {
+    background-color: #617833; /* Mørkegrøn farve for de resterende kasser */
+  }
+  
+
+.icon-image {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .praesentation-icon {
+    position: relative;
+  }
+  
+
+  
+  
+
+
+
+
+
+
+
+/* --------------------------------------- */
+
+
+
+  
+  .praesentation-leaderboard-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .praesentation-performances {
+    margin-top: 40px;
+  }
+  
+  .praesentation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolonner per række */
+    gap: 20px; /* Mellemrum mellem kasserne */
+    align-items: center; /* Justerer kasserne i grid */
+  }
+  
+
+
+
+
+
+
+
+  
+  .praesentation-icon {
+    width: 100%; /* Kasserne fylder nu 100% af den tilgængelige kolonne */
+    height: 160px; /* Højde på kasserne */
+    background-color: #BCF246;
+    color: black;
+    text-align: center;
+    font-size: 1.6rem;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .praesentation-icon .front-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .praesentation-icon .back-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #BCF246;
+    color: black;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 0;
+  }
+  
+  .praesentation-icon.flipped .front-side {
+    opacity: 0;
+  }
+  
+  .praesentation-icon.flipped .back-side {
+    opacity: 1;
+  }
+  
+
+
+  
+  .icon-image {
+    width: 80px; /* Ikon størrelse */
+    height: 80px;
+  }
+  
+  .icon-percentage {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  /* Første 3 kasser lysegrøn */
+.praesentation-icon:nth-child(-n+3) {
+    background-color: #BCF246; /* Lysegrøn */
+}
+
+/* Sidste 7 kasser mørkegrøn */
+.praesentation-icon:nth-child(n+4) {
+    background-color: #617833; /* Mørkegrøn */
+}
+
+
+
+
+
+/* Stil for cirklerne i højre hjørne */
+.praesentation-icon .corner-circle {
+    position: absolute;
+    top: 5px; /* Afstand fra toppen */
+    right: 5px; /* Afstand fra højre */
+    width: 30px; /* Diameter på cirklen */
+    height: 30px;
+    background-color: #FF7300; /* Orange farve */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px; /* Størrelse på ikonet */
+    color: black; /* Sort farve til ikonet */
+    font-weight: bold;
+  }
+  
+
+  

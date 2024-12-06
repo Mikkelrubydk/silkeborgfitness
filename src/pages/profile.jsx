@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import LogOut from "../components/logoutbtn";
 
 const ProfilePage = () => {
@@ -82,35 +81,35 @@ const ProfilePage = () => {
       <div className="color-themes">
         <button
           style={{
-            borderRadius: theme === "standard" ? "50%" : "20px",
+            borderRadius: currentTheme === "standard" ? "50%" : "20px",
           }}
           className="standard"
           onClick={() => setTheme("standard")}
         ></button>
         <button
           style={{
-            borderRadius: theme === "grey" ? "50%" : "20px",
+            borderRadius: currentTheme === "grey" ? "50%" : "20px",
           }}
           className="grey"
           onClick={() => setTheme("grey")}
         ></button>
         <button
           style={{
-            borderRadius: theme === "blue" ? "50%" : "20px",
+            borderRadius: currentTheme === "blue" ? "50%" : "20px",
           }}
           className="blue"
           onClick={() => setTheme("blue")}
         ></button>
         <button
           style={{
-            borderRadius: theme === "pink" ? "50%" : "20px",
+            borderRadius: currentTheme === "pink" ? "50%" : "20px",
           }}
           className="pink"
           onClick={() => setTheme("pink")}
         ></button>
         <button
           style={{
-            borderRadius: theme === "yellow" ? "50%" : "20px",
+            borderRadius: currentTheme === "yellow" ? "50%" : "20px",
           }}
           className="yellow"
           onClick={() => setTheme("yellow")}

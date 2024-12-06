@@ -3,7 +3,6 @@
 .forside_container {
   display: grid;
   grid-template-areas:
-    "header header"
     "logbog skridt"
     "praestationer skridt"
     "graf graf"

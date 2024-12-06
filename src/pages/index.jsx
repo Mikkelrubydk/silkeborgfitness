@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { db, auth } from "../lib/firebase"; // Husk at importere db og auth
 import { doc, getDoc } from "firebase/firestore"; // Importer Firestore funktioner
+import SkridtCirkeldiagram from "../components/SkridtCirkeldiagram"; // Import af komponenten
+import Link from "next/link";
 
 export default function Home() {
   const [theme, setTheme] = useState("standard");
@@ -68,15 +70,21 @@ export default function Home() {
           <div className="bottom-left">Sidst noteret: 29/11</div>
         </div>
 
-        <div className="forside_box forside_skridt">11,238 Skridt</div>
-
-        <div className="forside_box forside_praestationer">
-          <div className="top-left">Præstationer</div>
-          <div className="center">
-            <img src="medal.png" alt="Præstationer Billede" />
-          </div>
-          <div className="bottom-left">Ny præmie låst op!</div>
+        {/* Bruger SkridtCirkeldiagram her */}
+        <div className="forside_box forside_skridt">
+          <SkridtCirkeldiagram />
         </div>
+
+        <Link href="/achievement">
+          <div className="forside_box forside_praestationer">
+            <div className="top-left">Præstationer</div>
+            <div className="center">
+              <img src="medal.png" alt="Præstationer Billede" />
+            </div>
+            <div className="bottom-left">Ny præmie låst op!</div>
+          </div>
+          <div className="alert-icon"></div>
+        </Link>
 
         <div className="forside_box forside_graf">Oversigt over travlhed</div>
 
@@ -86,8 +94,6 @@ export default function Home() {
             <img src="video.png" alt="Tutorials Billede" />
           </div>
         </div>
-
-        <div className="forside_box forside_fremskridt">Fremskridt</div>
       </div>
     </main>
   );
