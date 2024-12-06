@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* styling af register.jsx */
 
 .forside_container {
@@ -156,3 +157,62 @@
   color: #fff;
   height: 150px;
 }
+=======
+/* Container til hele layoutet */
+.forside_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* To kolonner */
+    grid-template-rows: auto auto auto; /* Tre rækker */
+    gap: 20px; /* Afstand mellem boksene */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Standard styling for alle bokse */
+  .forside_box {
+    background-color: #b9ff66; /* Grøn baggrund */
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* Specifik styling for hver boks */
+  .forside_logbog {
+    grid-column: 1; /* Første kolonne */
+    grid-row: 1; /* Første række */
+  }
+  
+  .forside_skridt {
+    grid-column: 2; /* Anden kolonne */
+    grid-row: 1 / span 2; /* Strækker sig over to rækker */
+    height: auto; /* Lad højden justeres automatisk */
+  }
+  
+  .forside_praestationer {
+    grid-column: 1; /* Første kolonne */
+    grid-row: 2; /* Anden række */
+  }
+  
+  .forside_graf {
+    grid-column: span 2; /* Strækker sig over begge kolonner */
+    grid-row: 3; /* Tredje række */
+    background-color: #333; /* Mørk baggrund */
+    color: #fff;
+  }
+  
+  .forside_tutorials {
+    grid-column: 1; /* Første kolonne */
+    grid-row: 4; /* Fjerde række */
+  }
+  
+  .forside_fremskridt {
+    grid-column: 2; /* Anden kolonne */
+    grid-row: 4; /* Fjerde række */
+  }
+>>>>>>> Stashed changes
