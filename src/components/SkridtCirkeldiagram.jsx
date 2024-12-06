@@ -21,11 +21,9 @@ const SkridtCirkeldiagram = () => {
           text={`${steps.toLocaleString()} Skridt`}
           styles={buildStyles({
             textColor: "#000",
-            pathColor: "#4caf50",     
+            pathColor: "#4caf50",
             trailColor: "#d6d6d6",
-            textSize: "12px", 
-            width: "50%",
-     
+            textSize: "12px",
           })}
         />
       </div>
