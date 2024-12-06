@@ -21,10 +21,10 @@ const ProfilePage = ({ currentTheme, setTheme }) => {
         backgroundColor: 'rgba(255, 87, 34, 0.2)',
         fill: true, 
         tension: 0.1, // For en blødere kurve
+        borderWidth: 5, // Gør linjen tykkere
       },
     ],
   };
-
 
   // Funktion til at håndtere vægtændring
   const handleWeightChange = (type) => {
@@ -37,6 +37,43 @@ const ProfilePage = ({ currentTheme, setTheme }) => {
       alert("Ugyldig vægt. Prøv igen.");
     }
   };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: {
+          display: false, // Fjerner gridlinjerne på x-aksen
+        },
+        ticks: {
+          color: 'white', // Gør månedslabels (ticks) hvid
+          font: {
+            size: 14, // Juster skriftstørrelsen
+          },
+        },
+      },
+      y: {
+        grid: {
+          display: false, // Fjerner gridlinjerne på y-aksen
+        },
+        ticks: {
+          display: false, // Fjerner tallene på y-aksen til venstre
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false, // Fjerner legenden
+      },
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Sætter baggrundsfarven på tooltip til sort
+        titleColor: 'white', // Gør tooltip-titlerne hvide
+        bodyColor: 'white', // Gør tooltip-tekst farven hvid
+      },
+    },
+  };
+
   
 
   return (
@@ -67,19 +104,17 @@ const ProfilePage = ({ currentTheme, setTheme }) => {
           <h5 className="overskrift3">2024</h5>
         </div>
         <div className="graf-container">
-          <Line data={data} options={{ 
-            responsive: true, 
-            maintainAspectRatio: false, 
-            scales: { 
-              y: { 
-                beginAtZero: true, 
-                max: Math.max(...data.datasets[0].data) + 5, 
-              },
-            },
-          }} />
+          <Line data={data} options={options} />
         </div>
       </div>
+     
+    <div>
+      <h2 className="overskrift4">Fremskridtsdokumentation</h2>
+    </div>
 
+      <div>
+        <h2 className="overskrift5">Color Theme</h2>
+      </div>
       <div className="color-themes">
         <button
           style={{
