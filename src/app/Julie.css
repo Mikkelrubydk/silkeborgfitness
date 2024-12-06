@@ -61,7 +61,7 @@
   color: #000;
 
   /* Tilføj bredde og centrer */
-  width: 250px; /* Reducer bredden som ønsket */
+  width: 160px; /* Reducer bredden som ønsket */
   margin: 0 auto; /* Centerer boksen */
 }
 
