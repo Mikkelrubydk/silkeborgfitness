@@ -6,10 +6,62 @@
 
 .profil-person {
   color: var(--main-color);
+  font-size: 38px;
+  font-weight: 600;
 }
 
 .profil-overskrift {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 20px;
 }
+
+.boks-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .box {
+    background-color: var(--main-color);
+    color: black;
+    padding: 0.5rem;
+    border-radius: 20px;
+    text-align: center; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    height: 115px;
+    width: 115px;
+  }
+
+  .personlige-mål-overskrift {
+    font-size: 12px;
+    display: flex;
+    justify-content: start;
+    color: black;
+  }
+  
+  .personlige-mål-kg {
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: 500;
+  }
+
+  .overskrift1 {
+    font-size: 22px;
+    padding-top: 15px;
+    padding-left: 10px;
+  }
+
+  .ret-skrift {
+    font-size: 5px;
+    display: flex;
+    justify-content: start;
+    opacity: 50%;
+    color: #A9A9A9;
+  }
