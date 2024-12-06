@@ -12,20 +12,13 @@ const Login = () => {
   });
   const router = useRouter();
 
-  useEffect(() => {
-    // Check om brugeren allerede er logget ind
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
-    if (isLoggedIn) {
-      router.push("/"); // Omdiriger til forsiden, hvis brugeren allerede er logget ind
-    }
-  }, [router]);
-
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      localStorage.setItem("isLoggedIn", "true"); // Gemmer loginstatus
-      router.push("/"); // Omdiriger til forsiden
+      localStorage.setItem("isLoggedIn", "true"); // Gem login-status i localStorage
+      router.push("/"); // Omdiriger til forsiden efter login
     } catch (error) {
       alert(`Fejl: ${error.message}`);
     }

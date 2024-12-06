@@ -7,11 +7,8 @@ const LogoutButton = () => {
 
   const handleLogout = async () => {
     try {
-      await signOut(auth);
+      await signOut(auth); // Logger brugeren ud
       console.log("Du er nu logget ud.");
-
-      // Opdater Context eller global state for at rydde brugerdata
-      setUser(null); // Hvis du bruger Context eller useState til at holde brugerinfo
 
       // Redirect til forsiden eller login-side
       router.push("/");
