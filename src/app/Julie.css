@@ -240,3 +240,106 @@ select {
   margin: 6px;
   width: 50px;
 }
+
+
+
+
+/* Styling for benpress container */
+.benpress {
+  width: 90%;
+  height: 190px;
+  background-color: #000;  /* Sort baggrund */
+  margin: 20px;
+  border-radius: 25px;
+}
+
+.benpress img {
+  width: 100%; /* Billedet fylder hele containerens bredde */
+}
+
+.benpress p {
+  color: var(--main-color);
+  text-align: center;
+  font-size: 20px;
+}
+
+.bp {
+  background-color: var(--main-color);  /* Grøn farve */
+  width: 100%;
+  height: 30px;
+}
+
+/* Styling for squat container */
+.squat {
+  width: 90%;
+  height: 190px;
+  background-color: #000;  /* Sort baggrund */
+  margin: 20px;
+  border-radius: 25px;
+}
+
+.squat img {
+  width: 100%; /* Billedet fylder hele containerens bredde */
+}
+
+.squat p {
+  color: var(--main-color);
+  text-align: center;
+  font-size: 20px;
+}
+
+.sq {
+  background-color: var(--main-color);  /* Grøn farve */
+  width: 100%;
+  height: 30px;
+}
+
+/* Styling for pullup container */
+.pullup {
+  width: 90%;
+  height: 190px;
+  background-color: #000;  /* Sort baggrund */
+  margin: 20px;
+  border-radius: 25px;
+}
+
+.pullup img {
+  width: 100%; /* Billedet fylder hele containerens bredde */
+}
+
+.pullup p {
+  color: var(--main-color);
+  text-align: center;
+  font-size: 20px;
+}
+
+.pu {
+  background-color: var(--main-color);  /* Grøn farve */
+  width: 100%;
+  height: 30px;
+}
+
+/* Styling for bænkpress container */
+.benchpress {
+  width: 90%;
+  height: 190px;
+  background-color: #000;  /* Sort baggrund */
+  margin: 20px;
+  border-radius: 25px;
+}
+
+.benchpress img {
+  width: 100%; /* Billedet fylder hele containerens bredde */
+}
+
+.benchpress p {
+  color: var(--main-color);
+  text-align: center;
+  font-size: 20px;
+}
+
+.bp {
+  background-color: var(--main-color);  /* Grøn farve */
+  width: 100%;
+  height: 30px;
+}
