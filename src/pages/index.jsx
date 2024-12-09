@@ -8,7 +8,9 @@ export default function Home() {
   const [theme, setTheme] = useState("standard");
 
   const [selectedDay, setSelectedDay] = useState("Mandag 30/10");
-  const [chartData, setChartData] = useState([20, 40, 30, 10, 15, 60, 75, 70, 80, 50, 40, 30]);
+  const [chartData, setChartData] = useState([
+    20, 40, 30, 10, 15, 60, 75, 70, 80, 50, 40, 30,
+  ]);
 
   // Dummy data for forskellige dage
   const data = {
@@ -64,13 +66,15 @@ export default function Home() {
   return (
     <main>
       <div className="forside_container">
-        <div className="forside_box forside_logbog">
-          <div className="top-left">Logbog</div>
-          <div className="center">
-            <img src="dumbbell.svg" alt="Logbog Billede" />
+        <Link href="/workouttracker">
+          <div className="forside_box forside_logbog">
+            <div className="top-left">Logbog</div>
+            <div className="center">
+              <img src="dumbbell.svg" alt="Logbog Billede" />
+            </div>
+            <div className="bottom-left">Sidst noteret: 29/11</div>
           </div>
-          <div className="bottom-left">Sidst noteret: 29/11</div>
-        </div>
+        </Link>
 
         <div className="forside_box forside_skridt">
           <SkridtCirkeldiagram />
@@ -100,13 +104,29 @@ export default function Home() {
           </p>
           <div className="chart">
             {chartData.map((height, index) => (
-              <div key={index} className="bar" style={{ height: `${height}%` }}></div>
+              <div
+                key={index}
+                className="bar"
+                style={{ height: `${height}%` }}
+              ></div>
             ))}
           </div>
           <div className="labels">
-            <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
-            <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
-            <span>19</span><span>20</span><span>21</span><span>22</span><span>23</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+            <span>18</span>
+            <span>19</span>
+            <span>20</span>
+            <span>21</span>
+            <span>22</span>
+            <span>23</span>
           </div>
         </div>
 
