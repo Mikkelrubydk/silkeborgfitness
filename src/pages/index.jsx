@@ -12,7 +12,6 @@ export default function Home() {
     20, 40, 30, 10, 15, 60, 75, 70, 80, 50, 40, 30, 30, 10, 5,
   ]);
 
-
   const data = {
     Mandag: [20, 40, 30, 10, 15, 60, 75, 70, 80, 50, 40, 30, 30, 10, 5],
     Tirsdag: [10, 20, 40, 30, 50, 60, 40, 20, 30, 40, 50, 60, 30, 10, 5],
@@ -131,21 +130,21 @@ export default function Home() {
         </div>
 
         <Link href="/machines">
-        <div className="forside_box forside_tutorials">
-          <div className="top-left">Tutorials</div>
-          <div className="center">
-            <img src="video.svg" alt="Tutorials Billede" />
+          <div className="forside_box forside_tutorials">
+            <div className="top-left">Tutorials</div>
+            <div className="center">
+              <img src="video.svg" alt="Tutorials Billede" />
+            </div>
           </div>
-        </div>
         </Link>
 
-        <Link href="/Teamtraining">
-        <div className="forside_box forside_ekstra">
-          <div className="top-left">Holdtræning</div>
-          <div className="center">
-            <img src="hold.png" alt="Hold Billede" />
+        <Link href="/teamtraining">
+          <div className="forside_box forside_ekstra">
+            <div className="top-left">Holdtræning</div>
+            <div className="center">
+              <img src="hold.png" alt="Hold Billede" />
+            </div>
           </div>
-        </div>
         </Link>
       </div>
     </main>

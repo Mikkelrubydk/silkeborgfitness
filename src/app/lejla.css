@@ -224,24 +224,6 @@
   transform: rotateY(0deg);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .teamtraining-container {
   padding: 20px;
   background-color: var(--background);
@@ -274,18 +256,22 @@
 .teamtraining-session {
   display: flex;
   justify-content: space-between;
-  align-items: center;border-radius: 15px;
+  align-items: center;
+  border-radius: 15px;
   padding: 15px;
   margin-bottom: 10px;
   text-align: left;
 }
 
 .teamtraining-session {
-  background: linear-gradient(to right, #BBF145, #628C06) !important;
+  background: linear-gradient(
+    to right,
+    var(--main-color),
+    var(--secondary-color)
+  ) !important;
   height: 100px; /* Gør det tydeligt */
   width: 100%; /* Strækker sig over hele bredden */
 }
-
 
 .teamtraining-session-name {
   font-size: 1rem;
