@@ -1,19 +1,23 @@
+import { useRouter } from "next/router";
 import { signOut } from "firebase/auth";
 import { auth } from "../lib/firebase";
-import { useRouter } from "next/router";
 
 const LogoutButton = () => {
   const router = useRouter();
 
+  // Logout funktion som kaldes når knappen klikkes
   const handleLogout = async () => {
     try {
-      await signOut(auth); // Logger brugeren ud
-      console.log("Du er nu logget ud.");
+      // Log ud af Firebase
+      await signOut(auth);
 
-      // Redirect til forsiden eller login-side
-      router.push("/");
+      // Fjern login-status fra localStorage
+      localStorage.removeItem("isLoggedIn");
+
+      // Omdiriger brugeren til login-siden
+      router.push("/login");
     } catch (error) {
-      console.error("Fejl ved logout:", error);
+      alert(`Fejl ved udlogning: ${error.message}`);
     }
   };
 

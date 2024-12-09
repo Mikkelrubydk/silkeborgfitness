@@ -13,33 +13,31 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [theme, setTheme] = useState("standard");
 
-  // Funktion til at ændre tema globalt
-  const changeTheme = (theme) => {
-    document.documentElement.classList.remove(
-      "theme-blue",
-      "theme-yellow",
-      "theme-pink",
-      "theme-grey",
-      "theme-standard"
-    );
-    document.documentElement.classList.add(`theme-${theme}`);
-    localStorage.setItem("theme", theme);
-  };
-
-  // Læs tema fra localStorage ved opstart
+  // Læs tema fra localStorage ved opstart og sæt det
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
-      setTheme(storedTheme);
+      setTheme(storedTheme); // Opdater state med gemt tema
     } else {
-      setTheme("standard");
+      setTheme("standard"); // Brug standardtema, hvis der ikke er noget gemt
     }
-  }, []);
+  }, []); // Denne effekt kører kun én gang ved opstart
 
-  // Opdater tema, når `theme` ændres
+  // Lyt efter ændringer i localStorage (i tilfælde af, at temaet ændres fra et andet sted i appen)
   useEffect(() => {
-    changeTheme(theme);
-  }, [theme]);
+    const handleStorageChange = () => {
+      const storedTheme = localStorage.getItem("theme");
+      if (storedTheme) {
+        setTheme(storedTheme); // Opdater state, hvis temaet ændres via localStorage
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   // Overvåg autentificeringstilstand og omdiriger ikke-loggede brugere
   useEffect(() => {
