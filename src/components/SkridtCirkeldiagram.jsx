@@ -29,7 +29,7 @@ const SkridtCirkeldiagram = () => {
       </div>
       <div className="stats">
         <p>VÆGT: 93 kg</p>
-        <p>HØJDE: 93 kg</p>
+        <p>HØJDE: 185 cm</p>
         <p>BMI: 21.5</p>
         <p>KCAL: 475</p>
       </div>
