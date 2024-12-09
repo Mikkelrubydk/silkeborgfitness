@@ -3,9 +3,8 @@ import "/src/app/lejla.css";
 import "/src/app/globals.css";
 import Link from "next/link";
 
-
-
 export default function TeamTraining() {
+  const [isPopupBeskedOpen, setIsPopupBeskedOpen] = useState(false); // State til at styre pop-up
   const trainingData = [
     {
       day: "Mandag 29/11",
@@ -32,24 +31,48 @@ export default function TeamTraining() {
     },
   ];
 
+  // Funktion til at åbne og lukke pop-up'en
+  const togglePopupBesked = () => setIsPopupBeskedOpen(!isPopupBeskedOpen);
+
   return (
     <main className="teamtraining-container">
-      <div className="teamtraining-header">
-        <h1 className="teamtraining-title">Mine bookings</h1>
-        <div className="teamtraining-clock-icon">
+      <h1 className="teamtraining-header">
+        Mine bookings
+        {/* Uret som knap */}
+        <button onClick={togglePopupBesked} className="clock-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="teamtraining-clock-svg"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="var(--main-color)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 7v5l3 3" />
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="6" x2="12" y2="12" />
+            <line x1="12" y1="12" x2="16" y2="12" />
           </svg>
+        </button>
+      </h1>
+
+      {/* PopupBesked - vises kun når isPopupBeskedOpen er true */}
+      {isPopupBeskedOpen && (
+        <div className="popup-besked">
+          <div className="popup-besked-content">
+            <button
+              onClick={togglePopupBesked}
+              className="popup-besked-close-btn"
+            >
+              X
+            </button>
+            <p>Du har ikke tidligere været på et hold, derfor er der ingen aktivitet gemt.</p>
+          </div>
         </div>
-      </div>
+      )}
+
       <p className="teamtraining-empty">Du har ingen tilmeldte hold</p>
       {trainingData.map((dayData, index) => (
         <div key={index} className="teamtraining-day">

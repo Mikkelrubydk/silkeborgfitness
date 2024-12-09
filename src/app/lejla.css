@@ -224,6 +224,27 @@
   transform: rotateY(0deg);
 }
 
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+
+/* Team training r-------------------------- */
+
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
 .teamtraining-container {
   padding: 20px;
   background-color: var(--background);
@@ -297,22 +318,39 @@
   margin-bottom: 20px; /* Giver lidt afstand til næste element */
 }
 
-.teamtraining-title {
-  font-size: 1.5rem;
-  color: var(--main-color); /* Standard farve */
+
+.popup-besked {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Baggrund med halv gennemsigtighed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Sørger for, at pop-up'en er øverst */
 }
 
-.teamtraining-clock-icon {
-  font-size: 1.5rem; /* Gør ikonet tydeligt */
-  color: var(--main-color); /* Samme farve som overskriften */
+.popup-besked-content {
+  background-color: #88b91d; /* Grøn baggrund */
+  color: rgb(0, 0, 0);
+  padding: 50px;
+  border-radius: 10px;
+  position: relative;
+  width: 300px;
+  text-align: center;
+  
 }
 
-.teamtraining-clock-icon {
-  font-size: 1.5rem; /* Størrelsen på SVG-ikonet */
-  color: var(--main-color); /* Farve, der matcher temaet */
+.popup-besked-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
 }
 
-.teamtraining-clock-svg {
-  width: 24px; /* Bredde på ikonet */
-  height: 24px; /* Højde på ikonet */
-}
