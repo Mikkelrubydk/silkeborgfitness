@@ -33,10 +33,30 @@ const ProfilePage = () => {
 
   // State for storing the current theme
   const [currentTheme, setCurrentTheme] = useState("standard");
-  // Update localStorage when the theme changes
+
+  // Check localStorage for saved theme on initial render
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setCurrentTheme(savedTheme);
+    }
+  }, []);
+
+  // Update the theme and set it to localStorage
   const updateTheme = (theme) => {
     setCurrentTheme(theme);
-    localStorage.setItem("theme", theme); // Save theme to localStorage
+    // Fjern eksisterende tema-klasser fra <html> elementet
+    document.documentElement.classList.remove(
+      "theme-blue",
+      "theme-yellow",
+      "theme-pink",
+      "theme-grey",
+      "theme-standard"
+    );
+    // Tilføj det ønskede tema
+    document.documentElement.classList.add(`theme-${theme}`);
+    // Gem temaet i localStorage
+    localStorage.setItem("theme", theme);
   };
 
   const [data, setData] = useState({
@@ -71,7 +91,7 @@ const ProfilePage = () => {
         },
       ],
     }));
-  }, []); // Tom dependency array betyder, at effekten kun kører én gang
+  }, []);
 
   const handleImageChange = (e) => {
     const files = e.target.files;
@@ -93,7 +113,7 @@ const ProfilePage = () => {
   };
 
   const handleWeightEdit = (type, e) => {
-    const newWeight = parseInt(e.target.textContent);
+    const newWeight = parseInt(e.target.value);
     if (!isNaN(newWeight)) {
       if (type === "Start") setStartWeight(newWeight);
       if (type === "Nuværende") setCurrentWeight(newWeight);
@@ -139,37 +159,34 @@ const ProfilePage = () => {
       <div className="boks-container">
         <div className="box">
           <p className="personlige-mål-overskrift">Start</p>
-          <div
+          <input
+            type="number"
+            value={startWeight}
+            onChange={(e) => handleWeightEdit("Start", e)}
             className="personlige-mål-kg"
-            contentEditable={true}
-            onBlur={(e) => handleWeightEdit("Start", e)}
-          >
-            {startWeight}KG
-          </div>
+          />
         </div>
         <div className="box">
           <p className="personlige-mål-overskrift">Nuværende</p>
-          <div
+          <input
+            type="number"
+            value={currentWeight}
+            onChange={(e) => handleWeightEdit("Nuværende", e)}
             className="personlige-mål-kg"
-            contentEditable={true}
-            onBlur={(e) => handleWeightEdit("Nuværende", e)}
-          >
-            {currentWeight}KG
-          </div>
+          />
         </div>
         <div className="box">
           <p className="personlige-mål-overskrift">Mål</p>
-          <div
+          <input
+            type="number"
+            value={goalWeight}
+            onChange={(e) => handleWeightEdit("Mål", e)}
             className="personlige-mål-kg"
-            contentEditable={true}
-            onBlur={(e) => handleWeightEdit("Mål", e)}
-          >
-            {goalWeight}KG
-          </div>
+          />
         </div>
       </div>
 
-      <p className="ret-skrift">Ret indhold ved at trykke på boksene</p>
+      <p className="ret-skrift">Ret indhold ved at ændre tallene</p>
 
       {/* Aktivitetsniveau graf */}
       <div className="aktivitetsniveau">
@@ -269,7 +286,7 @@ const ProfilePage = () => {
         ></button>
       </div>
 
-      {/* Log ud knap */}
+      {/* Logout */}
       <LogOut />
     </main>
   );

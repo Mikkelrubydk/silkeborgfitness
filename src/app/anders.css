@@ -18,118 +18,137 @@
 }
 
 .boks-container {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    justify-content: center;
-    padding: 1rem;
-  }
-  
-  .box {
-    background-color: var(--main-color);
-    color: black;
-    padding: 0.5rem;
-    border-radius: 20px;
-    text-align: center; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    height: 115px;
-    width: 115px;
-  }
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
 
-  .personlige-mål-overskrift {
-    font-size: 12px;
-    display: flex;
-    justify-content: start;
-    color: black;
-  }
-  
-  .personlige-mål-kg {
-    font-size: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    font-weight: 500;
-  }
+.boks-container input {
+  background-color: transparent;
+  width: 100%;
+}
 
-  .overskrift1 {
-    font-size: 22px;
-    padding-top: 15px;
-    padding-left: 10px;
-  }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-  .ret-skrift {
-    font-size: 8px;
-    padding-left: 12px;
-    margin-top: -10px;
-    opacity: 50%;
-    color: #A9A9A9;
-  }
+input[type="number"] {
+  appearance: textfield;
+}
 
-  .overskrift2 {
-    font-size: 22px;
-    padding-top: 20px;
-    padding-left: 10px;
-  }
+input:focus {
+  outline: none; /* Fjerner standard blå boks (outline) ved fokus */
+}
 
-  .aktivitetsniveau {
-    display: flex;
-    flex-direction: column;
-  }
+.box {
+  background-color: var(--main-color);
+  color: black;
+  padding: 0.5rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  height: 115px;
+  width: 115px;
+}
 
-  .overskrift-container {
-    display: flex;
-    flex-direction: row;
-  }
+.personlige-mål-overskrift {
+  font-size: 12px;
+  display: flex;
+  justify-content: start;
+  color: black;
+}
 
-  .overskrift3 {
-    padding-top: 32px;
-    padding-left: 5px;
-    font-size: 10px;
-    color: white;
-  }
+.personlige-mål-kg {
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: 500;
+}
 
-  .overskrift4 {
-    font-size: 22px;
-    padding-top: 20px;
-    padding-left: 10px;
-  }
+.overskrift1 {
+  font-size: 22px;
+  padding-top: 15px;
+  padding-left: 10px;
+}
 
-  .overskrift5 {
-    font-size: 22px;
-    padding-top: 20px;
-    padding-left: 10px;
-  }
+.ret-skrift {
+  font-size: 8px;
+  padding-left: 12px;
+  margin-top: -10px;
+  opacity: 50%;
+  color: #a9a9a9;
+}
 
-  .image-box {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  
-  .image-inside-box {
-    width: 125px;
-    height: 125px;
-    object-fit: cover;
-    border-radius: 20px;
-  }
+.overskrift2 {
+  font-size: 22px;
+  padding-top: 20px;
+  padding-left: 10px;
+}
 
-  .image-box {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Opretter 3 lige store kolonner */
-    gap: 20px; /* Afstand mellem billederne */
-    padding: 0;
-  }
+.aktivitetsniveau {
+  display: flex;
+  flex-direction: column;
+}
 
-  .fremskridtsdokumentation {
-    margin-top: 40px; /* Afstand fra toppen */
-  }
+.overskrift-container {
+  display: flex;
+  flex-direction: row;
+}
 
-  .upload-container {
-    margin-top: 40px; /* Afstand under billederne */
-  }
+.overskrift3 {
+  padding-top: 32px;
+  padding-left: 5px;
+  font-size: 10px;
+  color: white;
+}
+
+.overskrift4 {
+  font-size: 22px;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.overskrift5 {
+  font-size: 22px;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.image-box {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.image-inside-box {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.image-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Opretter 3 lige store kolonner */
+  gap: 20px; /* Afstand mellem billederne */
+  padding: 0;
+}
+
+.fremskridtsdokumentation {
+  margin-top: 40px; /* Afstand fra toppen */
+}
+
+.upload-container {
+  margin-top: 40px; /* Afstand under billederne */
+}
 
 /* Skjuler den oprindelige file input */
 .file-input {
@@ -138,15 +157,14 @@
 
 /* Tilpasset billede som knap */
 .custom-file-button img {
-  cursor: pointer;  /* Gør det til en håndekursor */
-  border-radius: 5px;  /* Eventuelt rundede hjørner, hvis du vil */
-  transition: transform 0.3s ease;  /* Tilføj en overgang for en klik-animation */
+  cursor: pointer; /* Gør det til en håndekursor */
+  border-radius: 5px; /* Eventuelt rundede hjørner, hvis du vil */
+  transition: transform 0.3s ease; /* Tilføj en overgang for en klik-animation */
   margin-left: 40px;
-
 }
 
 .custom-file-button img:hover {
-  transform: scale(1.1);  /* Zoom effekten på hover */
+  transform: scale(1.1); /* Zoom effekten på hover */
 }
 
 .billede-boks {
@@ -166,7 +184,7 @@
 
 .show-all-btn {
   margin-top: 10px;
-  padding: 5px 10px;  /* Justeret padding for at gøre knappen mindre */
+  padding: 5px 10px; /* Justeret padding for at gøre knappen mindre */
   color: white;
   border: none;
   cursor: pointer;
@@ -178,9 +196,7 @@
 
 .image-with-date p {
   color: white;
-  font-size: 14px; 
+  font-size: 14px;
   text-align: center;
   margin: 5px;
 }
-
-
