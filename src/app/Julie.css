@@ -7,7 +7,7 @@
     "praestationer skridt"
     "graf graf"
     "tutorials ekstra";
-    
+
   grid-template-columns: 1fr 1fr; /* Sætter bredden på kolonnerne til 50% */
   border-radius: 12px;
   margin: 0 auto;
@@ -20,7 +20,7 @@
 
 .forside_logbog {
   grid-area: logbog;
- 
+
   border-radius: 20px;
   color: black;
   display: flex;
@@ -165,7 +165,9 @@ select {
 }
 
 .labels span {
+  text-align: center;
   font-size: 0.8rem;
+  width: 17.9px;
 }
 
 .forside_tutorials {
@@ -208,7 +210,6 @@ select {
   color: #fff;
   height: 150px;
 }
-
 
 .forside_ekstra {
   grid-area: ekstra;
