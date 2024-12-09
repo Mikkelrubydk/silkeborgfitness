@@ -87,7 +87,7 @@ const Navbar = () => {
   let navbarHeading;
   switch (router.pathname) {
     case "/":
-      navbarHeading = "Træningsoversigt";
+      navbarHeading = "";
       break;
     case "/profile":
       navbarHeading = "Profil";
@@ -97,6 +97,9 @@ const Navbar = () => {
       break;
     case "/workouttracker":
       navbarHeading = "Logbog";
+      break;
+    case "/teamtraining":
+      navbarHeading = "Holdtræning";
       break;
   }
 
@@ -111,8 +114,8 @@ const Navbar = () => {
           <Image
             src="/logo.svg"
             alt="Silkeborg Fitness Logo"
-            width={100}
-            height={100}
+            width={150}
+            height={150}
           />
         ) : (
           <svg
@@ -143,11 +146,11 @@ const Navbar = () => {
               className="navbar-profilbillede rounded-full"
               src={profileImage}
               alt="Profilbillede"
-              width={50}
-              height={50}
+              width={70}
+              height={70}
               style={{
                 cursor: "pointer",
-                height: "50px",
+                height: "70px",
                 objectFit: "cover",
               }}
             />
@@ -164,11 +167,11 @@ const Navbar = () => {
               className="navbar-profilbillede rounded-full"
               src={profileImage}
               alt="Profilbillede"
-              width={50}
-              height={50}
+              width={70}
+              height={70}
               style={{
                 cursor: "pointer",
-                height: "50px",
+                height: "70px",
                 objectFit: "cover",
               }}
             />
