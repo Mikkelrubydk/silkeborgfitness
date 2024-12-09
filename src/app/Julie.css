@@ -20,7 +20,6 @@
 
 .forside_logbog {
   grid-area: logbog;
- 
   border-radius: 20px;
   color: black;
   display: flex;
@@ -58,7 +57,6 @@
 
 .forside_skridt {
   grid-area: skridt;
-
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -75,7 +73,6 @@
 
 .forside_praestationer {
   grid-area: praestationer;
-
   border-radius: 20px;
   color: black;
   display: flex;
@@ -115,18 +112,53 @@
   grid-area: graf;
   background-color: #333;
   border-radius: 20px;
-  color: #ffa500;
+  color: white;
   padding: 1rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   aspect-ratio: 2 / 1;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 60%;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.bar {
+  width: 5%;
+  background-color: #ffa500;
+  border-radius: 5px;
+}
+
+.labels {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 0.5rem;
+  color: white;
+}
+
+.labels span {
+  font-size: 0.8rem;
 }
 
 .forside_tutorials {
   grid-area: tutorials;
-
   border-radius: 20px;
   color: black;
   display: flex;
@@ -154,17 +186,6 @@
   max-height: 100%;
   margin: 6px;
 }
-
-.forside_fremskridt {
-  grid-area: fremskridt;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  height: 150px;
-}
-
 
 .forside_ekstra {
   grid-area: ekstra;
@@ -194,4 +215,5 @@
   max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
   max-height: 100%;
   margin: 6px;
+  width: 50px;
 }
