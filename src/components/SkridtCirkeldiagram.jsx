@@ -21,15 +21,16 @@ const SkridtCirkeldiagram = () => {
           text={`${steps.toLocaleString()} Skridt`}
           styles={buildStyles({
             textColor: "#000",
-            pathColor: "#4caf50",
-            trailColor: "#d6d6d6",
+            pathColor: "white",
+            trailColor: "#d6d6d6a7",
             textSize: "12px",
           })}
         />
       </div>
       <div className="stats">
-        <p>BMI: 21.5</p>
         <p>VÆGT: 93 kg</p>
+        <p>HØJDE: 185 cm</p>
+        <p>BMI: 21.5</p>
         <p>KCAL: 475</p>
       </div>
       <button className="edit-button">Ret</button>

@@ -95,6 +95,9 @@ const Navbar = () => {
     case "/achievement":
       navbarHeading = "Præstationer";
       break;
+    case "/workouttracker":
+      navbarHeading = "Logbog";
+      break;
   }
 
   if (!isClient) {
