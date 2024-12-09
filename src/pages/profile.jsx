@@ -14,13 +14,6 @@ const ProfilePage = () => {
   const [uploadDates, setUploadDates] = useState([]);
   const [showAll, setShowAll] = useState(false);
 
-  // State for storing the current theme
-  const [currentTheme, setCurrentTheme] = useState("standard");
-  // Update localStorage when the theme changes
-  const updateTheme = (theme) => {
-    setCurrentTheme(theme);
-    localStorage.setItem("theme", theme);  // Save theme to localStorage
-  };
 
    const [data, setData] = useState({
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun'],
