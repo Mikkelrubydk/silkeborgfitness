@@ -1,10 +1,27 @@
-import { useState, useEffect } from "react"; 
-import { Line } from "react-chartjs-2"; 
+import { useState, useEffect } from "react";
+import { Line } from "react-chartjs-2";
 import LogOut from "../components/logoutbtn";
-import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend } from "chart.js";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import Image from "next/image";
 
-ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const ProfilePage = () => {
   const [startWeight, setStartWeight] = useState(92);
@@ -19,17 +36,17 @@ const ProfilePage = () => {
   // Update localStorage when the theme changes
   const updateTheme = (theme) => {
     setCurrentTheme(theme);
-    localStorage.setItem("theme", theme);  // Save theme to localStorage
+    localStorage.setItem("theme", theme); // Save theme to localStorage
   };
 
-   const [data, setData] = useState({
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun'],
+  const [data, setData] = useState({
+    labels: ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun"],
     datasets: [
       {
-        label: 'Aktivitetsniveau',
+        label: "Aktivitetsniveau",
         data: [], // Initial tomt array
-        borderColor: 'rgb(255, 87, 34)',
-        backgroundColor: 'rgba(255, 87, 34, 0.2)',
+        borderColor: "rgb(255, 87, 34)",
+        backgroundColor: "rgba(255, 87, 34, 0.2)",
         fill: true,
         tension: 0.1,
         borderWidth: 5,
@@ -84,14 +101,13 @@ const ProfilePage = () => {
     }
   };
 
-
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
       x: {
         grid: { display: false },
-        ticks: { color: 'white', font: { size: 14 } },
+        ticks: { color: "white", font: { size: 14 } },
       },
       y: {
         grid: { display: false },
@@ -101,9 +117,9 @@ const ProfilePage = () => {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-        titleColor: 'white',
-        bodyColor: 'white',
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        titleColor: "white",
+        bodyColor: "white",
       },
     },
   };
@@ -183,7 +199,7 @@ const ProfilePage = () => {
         </div>
         {images.length > 3 && (
           <button className="show-all-btn" onClick={handleShowAll}>
-            {showAll ? 'Skjul' : 'Vis alle'}
+            {showAll ? "Skjul" : "Vis alle"}
           </button>
         )}
 
