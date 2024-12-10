@@ -312,7 +312,7 @@
 }
 
 .popup-besked-content {
-  background-color: #88b91d; /* Grøn baggrund */
+  --main-color: #bcf246; /* Grøn baggrund */
   color: rgb(0, 0, 0);
   padding: 50px;
   border-radius: 10px;
