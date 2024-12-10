@@ -65,10 +65,9 @@ const ProfilePage = () => {
       {
         label: "Aktivitetsniveau",
         data: [], // Initial tomt array
-        borderColor: "rgb(255, 87, 34)",
-        backgroundColor: "rgba(255, 87, 34, 0.2)",
-        fill: true,
-        tension: 0.1,
+        borderColor: "#ffa500",
+        backgroundColor: "#ffa500",
+        tension: 0.2,
         borderWidth: 5,
       },
     ],

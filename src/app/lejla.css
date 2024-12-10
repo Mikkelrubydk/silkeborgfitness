@@ -26,6 +26,7 @@
 
 .praesentation-dropdown select {
   background-color: var(--main-color);
+  color: black;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
