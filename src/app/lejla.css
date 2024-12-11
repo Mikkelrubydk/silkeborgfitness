@@ -334,3 +334,168 @@
   font-weight: bold;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container for hele BookTeam-sektionen */
+.bookteam-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+}
+
+/* Baggrundsbillede skal have relativ positionering */
+.bookteam-header-image {
+  position: relative;
+  height: 250px; /* Justér efter behov */
+  width: 100%;
+  overflow: hidden;
+}
+
+/* BOOK-knap - placering midt i billedet */
+.bookteam-button {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  background-color: var(--main-color); /* Grøn farve */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Info-bokse til Træner og Pladser */
+.bookteam-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 20px;
+  margin-top: -50px;
+  margin-bottom: 50px;
+  width: 80%;
+  z-index: 5;
+}
+
+.bookteam-info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--main-color); /* Grøn farve */
+  color: black;
+  width: 100%;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.bookteam-info-label {
+  font-weight: bold;
+}
+
+.bookteam-info-value {
+  font-weight: normal;
+}
+
+/* De tre firkanter (Dato, Type, Lokale) */
+.bookteam-details-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.bookteam-detail-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--main-color);
+  color: black;
+  width: 30%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.bookteam-detail-label {
+  font-weight: bold;
+}
+
+.bookteam-detail-value {
+  font-weight: normal;
+}
+
+/* Beskrivelses-boksen */
+.bookteam-description-box {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-bottom: 30px;
+}
+
+.bookteam-description-label {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.bookteam-description-content {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Fremtidige tider overskrift */
+.bookteam-future-times {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.bookteam-future-times h2 {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Session-kasserne */
+.bookteam-sessions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+}
+
+.session-box {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--main-color); /* Grøn farve */
+  color: black;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.session-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.session-trainer,
+.session-slots {
+  font-size: 1rem;
+}

@@ -9,7 +9,7 @@ export default function TeamTraining() {
     {
       day: "Mandag 29/11",
       sessions: [
-        { name: "Yoga", trainer: "Murat Kilic", slots: "2/11", href: "/yoga" },
+        { name: "Yoga", trainer: "Murat Kilic", slots: "2/11", href: "/bookteam.jsx" },
         { name: "Pilates", trainer: "Julie Eskildsen", slots: "10/11", href: "/pilates" },
         { name: "Bike", trainer: "Leila Terko", slots: "11/11", href: "/bike" },
       ],
