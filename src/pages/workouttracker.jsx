@@ -5,25 +5,33 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Link from "next/link";
+import { auth } from "@/lib/firebase";
 
-function WorkoutTracker() {
+export default function WorkoutTracker() {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
   );
-  const [workouts, setWorkouts] = useState({});
+  const [workouts, setWorkouts] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
+  // Fetch workouts from Firebase for the selected date
   useEffect(() => {
-    // Firebase: Hent data
     const database = getDatabase();
-    const exercisesRef = ref(database, "exercises");
-    const unsubscribe = onValue(exercisesRef, (snapshot) => {
-      const data = snapshot.val() || {};
-      setWorkouts(data);
-    });
+    const user = auth.currentUser;
 
-    return () => unsubscribe();
-  }, []);
+    if (user) {
+      const exercisesRef = ref(database, `user_profiles/${user.uid}/exercises`);
+      const unsubscribe = onValue(exercisesRef, (snapshot) => {
+        const data = snapshot.val() || {};
+        const exercisesForDate = data[selectedDate]
+          ? Object.values(data[selectedDate])
+          : [];
+        setWorkouts(exercisesForDate); // Update workouts with exercises for the selected date
+      });
+
+      return () => unsubscribe(); // Clean up on component unmount
+    }
+  }, [selectedDate]);
 
   const generateDates = (days) => {
     const dates = [];
@@ -36,27 +44,12 @@ function WorkoutTracker() {
     return dates;
   };
 
-  const dates = generateDates(14);
-
-  const addExercise = (exercise) => {
-    const database = getDatabase();
-    const exercisesRef = ref(database, `exercises/${selectedDate}`);
-    const newWorkout = [...(workouts[selectedDate] || []), exercise];
-
-    // Opdater Firebase
-    exercisesRef.set(newWorkout).then(() => {
-      setWorkouts((prev) => ({
-        ...prev,
-        [selectedDate]: newWorkout,
-      }));
-    });
-
-    setShowModal(false);
-  };
+  const dates = generateDates(14); // Generate a date range for the slider (±14 days)
 
   return (
     <div className="workout-tracker">
       <header className="tracker-header">
+        {/* Swiper to select the date */}
         <Swiper
           spaceBetween={10}
           slidesPerView={4}
@@ -84,15 +77,17 @@ function WorkoutTracker() {
         </Swiper>
       </header>
 
+      {/* Pass the workouts as props to WorkoutList component */}
       <WorkoutList
         selectedDate={selectedDate}
-        exercises={workouts[selectedDate] || []}
+        exercises={workouts} // Pass fetched workouts to WorkoutList
       />
 
+      {/* Link to add a new workout */}
       <Link
         href={{
           pathname: "/addworkout",
-          query: { selectedDate }, // Send korrekt dato
+          query: { selectedDate },
         }}
       >
         <button className="tracker-add-button">Tilføj øvelse</button>
@@ -102,12 +97,13 @@ function WorkoutTracker() {
 }
 
 function WorkoutList({ selectedDate, exercises }) {
+  // Format date for the header
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const options = { weekday: "long", day: "2-digit", month: "long" };
     const formattedDate = date
       .toLocaleDateString("da-DK", options)
-      .replace(/\b\w/g, (char) => char.toUpperCase()); // Gør første bogstav stort
+      .replace(/\b\w/g, (char) => char.toUpperCase());
     return formattedDate.replace(" ", " ").replace(" ", ". ");
   };
 
@@ -117,17 +113,23 @@ function WorkoutList({ selectedDate, exercises }) {
       {exercises.length === 0 ? (
         <p>Ingen øvelser oprettet endnu.</p>
       ) : (
-        <ul>
+        <div className="exercise-container">
           {exercises.map((exercise, idx) => (
-            <li key={idx}>
-              <strong>{exercise.category}</strong>: {exercise.name} -{" "}
-              {exercise.reps} reps @ {exercise.weight} kg
-            </li>
+            <div key={idx} className="exercise-card">
+              <div className="exercise-header">
+                <strong>{exercise.category || "Ukategoriseret"}</strong>
+                <span className="exercise-name">
+                  {exercise.name || "Ukendt øvelse"}
+                </span>
+              </div>
+              <div className="exercise-details">
+                <p>{exercise.reps} Reps</p>
+                <p>{exercise.weight}Kg</p>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
 }
-
-export default WorkoutTracker;

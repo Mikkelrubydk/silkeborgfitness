@@ -107,7 +107,7 @@ const Navbar = () => {
     case "/illustration":
       navbarHeading = "Illustration";
       break;
-    case "maschines":
+    case "/machines":
       navbarHeading = "Maskiner";
       break;
   }

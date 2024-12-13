@@ -1,11 +1,11 @@
 import { getAuth } from "firebase/auth";
-import { getDatabase, push, ref, set } from "firebase/database";
+import { get, getDatabase, ref, set } from "firebase/database";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function CreateExercise() {
   const router = useRouter();
-  const [selectedDate, setSelectedDate] = useState(""); // Initialisér med en tom streng
+  const [selectedDate, setSelectedDate] = useState("");
   const [step, setStep] = useState(1);
   const totalSteps = 2;
   const [exerciseData, setExerciseData] = useState({
@@ -13,7 +13,9 @@ export default function CreateExercise() {
     category: "",
     reps: "",
     weight: "",
+    notes: "",
   });
+  const [activeIcon, setActiveIcon] = useState(null);
   const database = getDatabase();
   const auth = getAuth();
   const progressWidth = (step / totalSteps) * 100;
@@ -27,21 +29,19 @@ export default function CreateExercise() {
     { name: "Mave", image: "./abs.webp" },
   ];
 
-  const [activeIcon, setActiveIcon] = useState(null);
-
-  const handleClick = (index) => {
-    setActiveIcon(index);
-    setExerciseData((prevData) => ({
-      ...prevData,
-      category: categories[index].name, // Opdaterer kategori direkte
-    }));
-  };
-
   useEffect(() => {
     if (router.query.selectedDate) {
       setSelectedDate(router.query.selectedDate);
     }
   }, [router.query.selectedDate]);
+
+  const handleClick = (index) => {
+    setActiveIcon(index);
+    setExerciseData((prevData) => ({
+      ...prevData,
+      category: categories[index].name,
+    }));
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -52,6 +52,10 @@ export default function CreateExercise() {
     const { name, category, reps, weight } = exerciseData;
     if (!name || !category || !reps || !weight) {
       alert("Alle felter skal udfyldes.");
+      return false;
+    }
+    if (isNaN(reps) || isNaN(weight)) {
+      alert("Reps og vægt skal være tal.");
       return false;
     }
     return true;
@@ -65,9 +69,23 @@ export default function CreateExercise() {
     }
 
     try {
-      const exerciseRef = ref(database, `exercises/${selectedDate}`);
-      const newExerciseRef = push(exerciseRef);
-      await set(newExerciseRef, { ...exercise, userId: user.uid });
+      // Skab en sikker nøgle uden punktum eller ulovlige tegn
+      const exerciseKey = new Date().toISOString().replace(/[.#$/\[\]]/g, "_");
+
+      const exerciseRef = ref(
+        database,
+        `user_profiles/${user.uid}/exercises/${selectedDate}`
+      );
+
+      // Hent eksisterende øvelser for den valgte dato
+      const snapshot = await get(exerciseRef);
+      const existingExercises = snapshot.val() || {};
+
+      // Tilføj den nye øvelse til eksisterende øvelser
+      existingExercises[exerciseKey] = exercise;
+
+      // Gem opdaterede øvelser i Firebase
+      await set(exerciseRef, existingExercises);
       console.log("Øvelse gemt i Firebase:", exercise);
     } catch (error) {
       console.error("Fejl ved gemme øvelse i Firebase:", error);
@@ -77,28 +95,38 @@ export default function CreateExercise() {
   const handleSubmit = async () => {
     if (!validateExerciseData()) return;
 
+    // Tjek om kategori er valgt
+    if (!exerciseData.category) {
+      alert("Vælg en kategori.");
+      return;
+    }
+
     try {
       const updatedExerciseData = {
         ...exerciseData,
-        date: selectedDate, // Brug altid den valgte dato
+        date: selectedDate,
         userId: auth.currentUser?.uid || "",
       };
 
       await saveExerciseToFirebase(updatedExerciseData);
       console.log("Øvelsen er gemt:", updatedExerciseData);
+
+      router.push({
+        pathname: "/workouttracker",
+        query: { selectedDate },
+      });
     } catch (error) {
       console.error("Fejl ved oprettelse af øvelse:", error);
     }
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return ""; // Håndter tilfældet, hvor datoen ikke er defineret
+    if (!dateString) return "";
     const date = new Date(dateString);
     const options = { weekday: "long", day: "2-digit", month: "long" };
-    const formattedDate = date
+    return date
       .toLocaleDateString("da-DK", options)
       .replace(/\b\w/g, (char) => char.toUpperCase());
-    return formattedDate.replace(" ", " ").replace(" ", ". ");
   };
 
   const renderStep = () => {
@@ -125,7 +153,6 @@ export default function CreateExercise() {
       case 2:
         return (
           <div className="workoutinfo">
-            {/* Input til øvelsens navn */}
             <input
               type="text"
               name="name"
@@ -133,8 +160,6 @@ export default function CreateExercise() {
               value={exerciseData.name}
               onChange={handleInputChange}
             />
-
-            {/* Input til antal reps */}
             <input
               type="number"
               name="reps"
@@ -142,8 +167,6 @@ export default function CreateExercise() {
               value={exerciseData.reps}
               onChange={handleInputChange}
             />
-
-            {/* Input til vægt */}
             <input
               type="number"
               name="weight"
@@ -151,12 +174,10 @@ export default function CreateExercise() {
               value={exerciseData.weight}
               onChange={handleInputChange}
             />
-
-            {/* Tekstfelt til bemærkninger */}
             <textarea
               name="notes"
               placeholder="Bemærkninger"
-              value={exerciseData.notes || ""}
+              value={exerciseData.notes}
               onChange={handleInputChange}
             />
           </div>
@@ -177,9 +198,7 @@ export default function CreateExercise() {
           style={{ width: `${progressWidth}%`, transition: "width 0.5s ease" }}
         ></div>
       </div>
-
       {renderStep()}
-
       <div className="buttons">
         {step > 1 && (
           <button className="previous-btn" onClick={() => setStep(step - 1)}>
@@ -187,7 +206,11 @@ export default function CreateExercise() {
           </button>
         )}
         {step < totalSteps && (
-          <button className="next-btn" onClick={() => setStep(step + 1)}>
+          <button
+            className="next-btn"
+            onClick={() => setStep(step + 1)}
+            disabled={activeIcon === null} // Disable next until a category is selected
+          >
             Næste
           </button>
         )}
