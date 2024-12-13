@@ -8,10 +8,10 @@
     "graf graf"
     "tutorials ekstra";
 
-  grid-template-columns: 1fr 1fr; /* Sætter bredden på kolonnerne til 50% */
+  grid-template-columns: 1fr 1fr; 
   border-radius: 12px;
   margin: 0 auto;
-  gap: 20px; /* Gap mellem elementer */
+  gap: 20px; 
 }
 
 .forside_box {
@@ -26,7 +26,7 @@
   display: flex;
   position: relative;
   width: 100%;
-  overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+  overflow: hidden; 
   aspect-ratio: 1 / 1;
 }
 
@@ -34,7 +34,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 16px; /* Juster tekststørrelse efter behov */
+  font-size: 16px; 
   font-weight: bold;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .forside_logbog .center img {
-  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
+  max-width: 100%; 
   max-height: 100%;
   margin: 6px;
 }
@@ -53,7 +53,7 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
-  font-size: 12px; /* Juster tekststørrelse efter behov */
+  font-size: 12px; 
 }
 
 .forside_skridt {
@@ -66,7 +66,7 @@
   align-items: center;
   color: #000;
   width: 100%;
-  margin: 0 auto; /* Centerer boksen */
+  margin: 0 auto; 
 }
 
 .CircularProgressbar {
@@ -81,7 +81,7 @@
   display: flex;
   position: relative;
   width: 100%;
-  overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+  overflow: hidden; 
   aspect-ratio: 1 / 1;
 }
 
@@ -89,7 +89,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 16px; /* Juster tekststørrelse efter behov */
+  font-size: 16px; 
   font-weight: bold;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .forside_praestationer .center img {
-  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
+  max-width: 100%; 
   max-height: 100%;
   margin: 6px;
 }
@@ -108,7 +108,7 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
-  font-size: 12px; /* Juster tekststørrelse efter behov */
+  font-size: 12px; 
 }
 
 .forside_graf {
@@ -177,8 +177,8 @@ select {
   color: black;
   display: flex;
   position: relative;
-  width: 100%; /* Juster efter behov */
-  overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+  width: 100%; 
+  overflow: hidden; 
   aspect-ratio: 1 / 1;
 }
 
@@ -186,7 +186,7 @@ select {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 16px; /* Juster tekststørrelse efter behov */
+  font-size: 16px; 
   font-weight: bold;
 }
 
@@ -196,7 +196,7 @@ select {
 }
 
 .forside_tutorials .center img {
-  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
+  max-width: 100%;
   max-height: 100%;
   margin: 6px;
 }
@@ -217,8 +217,8 @@ select {
   color: black;
   display: flex;
   position: relative;
-  width: 100%; /* Juster efter behov */
-  overflow: hidden; /* Sikrer, at indhold holder sig inden for boksen */
+  width: 100%; 
+  overflow: hidden; 
   aspect-ratio: 1 / 1;
 }
 
@@ -226,7 +226,7 @@ select {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 16px; /* Juster tekststørrelse efter behov */
+  font-size: 16px; 
   font-weight: bold;
 }
 
@@ -236,7 +236,7 @@ select {
 }
 
 .forside_ekstra .center img {
-  max-width: 100%; /* Sikrer, at billedet ikke overfylder boksen */
+  max-width: 100%; 
   max-height: 100%;
   margin: 6px;
   width: 50px;
@@ -249,13 +249,13 @@ select {
 .benpress {
   width: 90%;
   height: 190px;
-  background-color: #000;  /* Sort baggrund */
+  background-color: #000; 
   margin: 20px;
   border-radius: 25px;
 }
 
 .benpress img {
-  width: 100%; /* Billedet fylder hele containerens bredde */
+  width: 100%; 
 }
 
 .benpress p {
@@ -265,22 +265,22 @@ select {
 }
 
 .bp {
-  background-color: var(--main-color);  /* Grøn farve */
+  background-color: var(--main-color); 
   width: 100%;
   height: 30px;
 }
 
-/* Styling for squat container */
+
 .squat {
   width: 90%;
   height: 190px;
-  background-color: #000;  /* Sort baggrund */
+  background-color: #000;  
   margin: 20px;
   border-radius: 25px;
 }
 
 .squat img {
-  width: 100%; /* Billedet fylder hele containerens bredde */
+  width: 100%;
 }
 
 .squat p {
@@ -290,22 +290,22 @@ select {
 }
 
 .sq {
-  background-color: var(--main-color);  /* Grøn farve */
+  background-color: var(--main-color); 
   width: 100%;
   height: 30px;
 }
 
-/* Styling for pullup container */
+
 .pullup {
   width: 90%;
   height: 190px;
-  background-color: #000;  /* Sort baggrund */
+  background-color: #000;  
   margin: 20px;
   border-radius: 25px;
 }
 
 .pullup img {
-  width: 100%; /* Billedet fylder hele containerens bredde */
+  width: 100%; 
 }
 
 .pullup p {
@@ -315,22 +315,22 @@ select {
 }
 
 .pu {
-  background-color: var(--main-color);  /* Grøn farve */
+  background-color: var(--main-color);  
   width: 100%;
   height: 30px;
 }
 
-/* Styling for bænkpress container */
+
 .benchpress {
   width: 90%;
   height: 190px;
-  background-color: #000;  /* Sort baggrund */
+  background-color: #000;  
   margin: 20px;
   border-radius: 25px;
 }
 
 .benchpress img {
-  width: 100%; /* Billedet fylder hele containerens bredde */
+  width: 100%;
 }
 
 .benchpress p {
@@ -340,7 +340,7 @@ select {
 }
 
 .bp {
-  background-color: var(--main-color);  /* Grøn farve */
+  background-color: var(--main-color);  
   width: 100%;
   height: 30px;
 }
@@ -354,7 +354,7 @@ select {
 .imageSection {
   position: relative;
   width: 100%;
-  height: 70vh; /* Justér højden som ønsket */
+  height: 70vh;
   overflow: hidden;
 }
 
@@ -370,7 +370,7 @@ select {
 
 .coloredDiv {
   background-color:var(--main-color);
-  height: 30vh; /* Justér højden som ønsket */
+  height: 30vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -382,17 +382,17 @@ select {
 
 .ilu {
   position: absolute;
-  top: 50%; /* Placeres i midten vertikalt */
-  left: 50%; /* Placeres i midten horisontalt */
-  transform: translate(-50%, -50%); /* Juster for perfekt centering */
-  background-color: rgba(69, 73, 69, 0.5); /* Grøn med gennemsigtighed */
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  background-color: rgba(69, 73, 69, 0.5); 
   padding: 10px;
   border-radius: 5px;
-  color: white; /* Tekstfarve */
+  color: white; 
   text-align: center;
 }
 
-/* Grøn kontrolpanel div */
+
 .control-panel {
   background-color: var(--main-color);
   padding: 20px;
@@ -450,14 +450,14 @@ select {
 }
 
 .tutorialpage {
-  position: relative; /* Nødvendig for at placere overlay */
+  position: relative; 
 }
 
 .tutorialpage img {
-  height: auto; /* Bevarer billedets proportioner */
-  width: auto; /* Bevarer billedets proportioner */
-  display: block; /* For at undgå utilsigtet margin */
-  margin-left: auto; /* Automatisk margin til venstre */
-  margin-right: auto; /* Automatisk margin til højre */
+  height: auto; 
+  width: auto; 
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto; 
   margin-top: 20px;
 }
