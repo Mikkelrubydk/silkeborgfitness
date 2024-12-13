@@ -92,7 +92,7 @@ export default function Home() {
 
         <div className="forside_box forside_graf">
           <h2>Oversigt over travlhed</h2>
-          <p>
+          <p classname="pas">
             <select onChange={handleDayChange} value={selectedDay}>
               {Object.keys(data).map((day) => (
                 <option key={day} value={day}>
