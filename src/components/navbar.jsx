@@ -105,12 +105,22 @@ const Navbar = () => {
       navbarHeading = "Opret Øvelse";
       break;
     case "/illustration":
-      navbarHeading = "Illustration";
+      navbarHeading = "Benpress";
       break;
     case "/machines":
       navbarHeading = "Maskiner";
       break;
+    case "/illustration2":
+    navbarHeading = "Squat";
+      break;
+    case "/illustration3":
+    navbarHeading = "Pull up";
+      break;
+    case "/illustration4":
+    navbarHeading = "Bænkpress";
+      break;
   }
+
 
   if (!isClient) {
     return null;
