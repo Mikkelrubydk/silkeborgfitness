@@ -369,7 +369,7 @@ select {
 }
 
 .coloredDiv {
-  background-color: #C5FF47; /* Udskift med din ønskede farve */
+  background-color:var(--main-color);
   height: 30vh; /* Justér højden som ønsket */
   display: flex;
   align-items: center;
@@ -377,4 +377,87 @@ select {
   font-size: 1.5rem;
   font-weight: bold;
   color: black;
+}
+
+
+.ilu {
+  position: absolute;
+  top: 50%; /* Placeres i midten vertikalt */
+  left: 50%; /* Placeres i midten horisontalt */
+  transform: translate(-50%, -50%); /* Juster for perfekt centering */
+  background-color: rgba(69, 73, 69, 0.5); /* Grøn med gennemsigtighed */
+  padding: 10px;
+  border-radius: 5px;
+  color: white; /* Tekstfarve */
+  text-align: center;
+}
+
+/* Grøn kontrolpanel div */
+.control-panel {
+  background-color: var(--main-color);
+  padding: 20px;
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.slider input[type="range"] {
+  width: 70%;
+  margin-right: 10px;
+}
+
+.slider span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-btn {
+  background-color: black;
+  color: var(--main-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.control-btn:hover {
+  background-color: #333;
+}
+
+.play-btn {
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  border-radius: 50%;
+}
+
+.tutorialpage {
+  position: relative; /* Nødvendig for at placere overlay */
+}
+
+.tutorialpage img {
+  height: auto; /* Bevarer billedets proportioner */
+  width: auto; /* Bevarer billedets proportioner */
+  display: block; /* For at undgå utilsigtet margin */
+  margin-left: auto; /* Automatisk margin til venstre */
+  margin-right: auto; /* Automatisk margin til højre */
+  margin-top: 20px;
 }
