@@ -7,7 +7,7 @@ export default function About() {
     <div>
     {/* Benpress div */}
     <div className="tutorialpage">
-      <img src="lpp.png" />
+      <img src="sqp.png" />
       <div className="ilu">Hvis du virkelig vil have noget ud af det skal..</div> {/* Grøn overlay div */}
     </div>
 

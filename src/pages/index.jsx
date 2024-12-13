@@ -131,7 +131,7 @@ export default function Home() {
 
         <Link href="/machines">
           <div className="forside_box forside_tutorials">
-            <div className="top-left">Tutorials</div>
+            <div className="top-left">Illustrationer</div>
             <div className="center">
               <img src="video.svg" alt="Tutorials Billede" />
             </div>
