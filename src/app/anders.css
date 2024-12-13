@@ -200,3 +200,21 @@ input:focus {
   text-align: center;
   margin: 5px;
 }
+
+.input-container {
+  position: relative;
+}
+
+.personlige-mål-kg {
+  padding-right: 30px; /* Giv plads til kg */
+}
+
+.kg-text {
+  position: absolute;
+  right: 10px; /* Juster placeringen af "kg" */
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+  pointer-events: none; /* Sørg for, at brugeren kan klikke på inputfeltet */
+  font-size: 22px;
+}
