@@ -158,30 +158,39 @@ const ProfilePage = () => {
       <div className="boks-container">
         <div className="box">
           <p className="personlige-mål-overskrift">Start</p>
-          <input
-            type="number"
-            value={startWeight}
-            onChange={(e) => handleWeightEdit("Start", e)}
-            className="personlige-mål-kg"
-          />
+          <div className="input-container">
+            <input
+              type="number"
+              value={startWeight}
+              onChange={(e) => handleWeightEdit("Start", e)}
+              className="personlige-mål-kg"
+            />
+            <span className="kg-text">kg</span>
+          </div>
         </div>
         <div className="box">
           <p className="personlige-mål-overskrift">Nuværende</p>
-          <input
-            type="number"
-            value={currentWeight}
-            onChange={(e) => handleWeightEdit("Nuværende", e)}
-            className="personlige-mål-kg"
-          />
+          <div className="input-container">
+            <input
+              type="number"
+              value={currentWeight}
+              onChange={(e) => handleWeightEdit("Nuværende", e)}
+              className="personlige-mål-kg"
+            />
+            <span className="kg-text">kg</span>
+          </div>
         </div>
         <div className="box">
           <p className="personlige-mål-overskrift">Mål</p>
-          <input
-            type="number"
-            value={goalWeight}
-            onChange={(e) => handleWeightEdit("Mål", e)}
-            className="personlige-mål-kg"
-          />
+          <div className="input-container">
+            <input
+              type="number"
+              value={goalWeight}
+              onChange={(e) => handleWeightEdit("Mål", e)}
+              className="personlige-mål-kg"
+            />
+            <span className="kg-text">kg</span>
+          </div>
         </div>
       </div>
 
