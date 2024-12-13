@@ -1,15 +1,18 @@
-import { db, auth } from "../lib/firebase";  // Husk at importere db og auth
-import { doc, getDoc } from "firebase/firestore";  // Importer Firestore funktioner
-import Link from "next/link";
+
 import "/src/app/Julie.css";
 import "/src/app/globals.css";
+import Link from "next/link";
 
 export default function About() {
     return (
+
+
       <div>
         {/* Benpress div */}
         <div className="benpress">
+        <Link href="/illustration">
           <img src="benpress.png" alt="Benpress image" />
+          </Link>
           <div className="bp"></div> {/* Grøn div nedenunder */}
           <p>Benpress</p>
         </div>
