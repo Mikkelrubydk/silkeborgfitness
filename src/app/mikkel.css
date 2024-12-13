@@ -158,65 +158,36 @@
   margin-bottom: 0.5rem;
 }
 
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.modal {
-  background-color: #fff;
-  z-index: 999;
-  padding: 1.5rem;
+.exercise-card {
+  margin: 0 auto;
+  width: 90%;
+  background-color: red;
   border-radius: 20px;
-  width: 80%;
-  height: 60%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.modal-title {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.modal-label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.modal-input {
-  display: block;
+.exercise-image {
   width: 100%;
-  padding: 0.25rem;
-  margin-top: 0.25rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.25rem;
+  height: 120px;
+  object-fit: cover;
 }
 
-.modal-actions {
-  margin-top: 1rem;
+.exercise-body {
   display: flex;
   justify-content: space-between;
+  background-color: var(--main-color);
 }
 
-.modal-button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
+.exercise-body p {
+  color: black;
+  padding: 0 10px;
+  font-size: 16px;
 }
 
-.modal-button-add {
-  background-color: #10b981;
-  color: #fff;
-}
-
-.modal-button-close {
-  background-color: #6b7280;
-  color: #fff;
+.exercise-footer {
+  text-align: center;
+  background-color: #191919;
+  padding: 5px 0;
 }
 
 /* Styling af addworkout */

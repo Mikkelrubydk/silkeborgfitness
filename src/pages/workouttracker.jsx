@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Link from "next/link";
 import { auth } from "@/lib/firebase";
+import Image from "next/image"; // Sørg for at importere Image-komponenten
 
 export default function WorkoutTracker() {
   const [selectedDate, setSelectedDate] = useState(
@@ -114,20 +115,52 @@ function WorkoutList({ selectedDate, exercises }) {
         <p>Ingen øvelser oprettet endnu.</p>
       ) : (
         <div className="exercise-container">
-          {exercises.map((exercise, idx) => (
-            <div key={idx} className="exercise-card">
-              <div className="exercise-header">
-                <strong>{exercise.category || "Ukategoriseret"}</strong>
-                <span className="exercise-name">
-                  {exercise.name || "Ukendt øvelse"}
-                </span>
+          {exercises.map((exercise, idx) => {
+            // Dynamically choose the image based on the exercise category
+            let categoryImage;
+            switch (exercise.category) {
+              case "Arme":
+                categoryImage = "/armworkout.webp";
+                break;
+              case "Bryst":
+                categoryImage = "/chestworkout.webp";
+                break;
+              case "Ryg":
+                categoryImage = "/backworkout.webp";
+                break;
+              case "Skuldre":
+                categoryImage = "/shoulderworkout.webp";
+                break;
+              case "Ben":
+                categoryImage = "/legworkout.webp";
+                break;
+              case "Mave":
+                categoryImage = "/absworkout.webp";
+                break;
+            }
+
+            return (
+              <div key={idx} className="exercise-card">
+                <div className="exercise-header">
+                  <Image
+                    className="exercise-image"
+                    src={categoryImage}
+                    alt={`${exercise.category} exercise`}
+                    width={100}
+                    height={100}
+                  />
+                </div>
+                <div className="exercise-body">
+                  <p>{exercise.reps} Reps</p>
+                  <p>{exercise.weight}kg</p>
+                </div>
+
+                <div className="exercise-footer">
+                  <h2>{exercise.name || "Ukendt øvelse"} </h2>
+                </div>
               </div>
-              <div className="exercise-details">
-                <p>{exercise.reps} Reps</p>
-                <p>{exercise.weight}Kg</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
