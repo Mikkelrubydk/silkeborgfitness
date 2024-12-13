@@ -101,6 +101,15 @@ const Navbar = () => {
     case "/teamtraining":
       navbarHeading = "Holdtræning";
       break;
+    case "/addworkout":
+      navbarHeading = "Opret Øvelse";
+      break;
+    case "/illustration":
+      navbarHeading = "Illustration";
+      break;
+    case "maschines":
+      navbarHeading = "Maskiner";
+      break;
   }
 
   if (!isClient) {

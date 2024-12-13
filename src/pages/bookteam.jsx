@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import "/src/app/lejla.css"; 
+import "/src/app/lejla.css";
 
 export default function BookTeam() {
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State til popup
@@ -56,8 +56,8 @@ export default function BookTeam() {
       <div className="bookteam-description-box">
         <span className="bookteam-description-label">Beskrivelse:</span>
         <p className="bookteam-description-content">
-          Yoga er for dig, der ønsker at forbedre din balance, styrke og smidighed. Passer både til
-          begyndere og øvede.
+          Yoga er for dig, der ønsker at forbedre din balance, styrke og
+          smidighed. Passer både til begyndere og øvede.
         </p>
       </div>
 
