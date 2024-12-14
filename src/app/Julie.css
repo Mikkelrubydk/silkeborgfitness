@@ -8,10 +8,10 @@
     "graf graf"
     "tutorials ekstra";
 
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns: 1fr 1fr;
   border-radius: 12px;
   margin: 0 auto;
-  gap: 20px; 
+  gap: 20px;
 }
 
 .forside_box {
@@ -26,7 +26,7 @@
   display: flex;
   position: relative;
   width: 100%;
-  overflow: hidden; 
+  overflow: hidden;
   aspect-ratio: 1 / 1;
 }
 
@@ -34,7 +34,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 16px; 
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .forside_logbog .center img {
-  max-width: 100%; 
+  max-width: 100%;
   max-height: 100%;
   margin: 6px;
 }
@@ -53,7 +53,7 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
-  font-size: 12px; 
+  font-size: 12px;
 }
 
 .forside_skridt {
@@ -66,7 +66,7 @@
   align-items: center;
   color: #000;
   width: 100%;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .CircularProgressbar {
@@ -81,7 +81,7 @@
   display: flex;
   position: relative;
   width: 100%;
-  overflow: hidden; 
+  overflow: hidden;
   aspect-ratio: 1 / 1;
 }
 
@@ -89,7 +89,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 16px; 
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .forside_praestationer .center img {
-  max-width: 100%; 
+  max-width: 100%;
   max-height: 100%;
   margin: 6px;
 }
@@ -108,7 +108,7 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
-  font-size: 12px; 
+  font-size: 12px;
 }
 
 .forside_graf {
@@ -139,6 +139,7 @@ select {
   border: 1px solid #ffa500;
   border-radius: 5px;
   padding: 0.2rem;
+  margin: 10px 0 0 0;
 }
 
 .chart {
@@ -147,7 +148,6 @@ select {
   justify-content: space-around;
   height: 60%;
   width: 100%;
-  margin-top: 1rem;
 }
 
 .bar {
@@ -177,8 +177,8 @@ select {
   color: black;
   display: flex;
   position: relative;
-  width: 100%; 
-  overflow: hidden; 
+  width: 100%;
+  overflow: hidden;
   aspect-ratio: 1 / 1;
 }
 
@@ -186,7 +186,7 @@ select {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 16px; 
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -217,8 +217,8 @@ select {
   color: black;
   display: flex;
   position: relative;
-  width: 100%; 
-  overflow: hidden; 
+  width: 100%;
+  overflow: hidden;
   aspect-ratio: 1 / 1;
 }
 
@@ -226,7 +226,7 @@ select {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 16px; 
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -236,26 +236,23 @@ select {
 }
 
 .forside_ekstra .center img {
-  max-width: 100%; 
+  max-width: 100%;
   max-height: 100%;
   margin: 6px;
   width: 50px;
 }
 
-
-
-
 /* Styling for benpress container */
 .benpress {
   width: 90%;
   height: 190px;
-  background-color: #000; 
+  background-color: #000;
   margin: 20px;
   border-radius: 25px;
 }
 
 .benpress img {
-  width: 100%; 
+  width: 100%;
 }
 
 .benpress p {
@@ -265,16 +262,15 @@ select {
 }
 
 .bp {
-  background-color: var(--main-color); 
+  background-color: var(--main-color);
   width: 100%;
   height: 30px;
 }
 
-
 .squat {
   width: 90%;
   height: 190px;
-  background-color: #000;  
+  background-color: #000;
   margin: 20px;
   border-radius: 25px;
 }
@@ -290,22 +286,21 @@ select {
 }
 
 .sq {
-  background-color: var(--main-color); 
+  background-color: var(--main-color);
   width: 100%;
   height: 30px;
 }
 
-
 .pullup {
   width: 90%;
   height: 190px;
-  background-color: #000;  
+  background-color: #000;
   margin: 20px;
   border-radius: 25px;
 }
 
 .pullup img {
-  width: 100%; 
+  width: 100%;
 }
 
 .pullup p {
@@ -315,16 +310,15 @@ select {
 }
 
 .pu {
-  background-color: var(--main-color);  
+  background-color: var(--main-color);
   width: 100%;
   height: 30px;
 }
 
-
 .benchpress {
   width: 90%;
   height: 190px;
-  background-color: #000;  
+  background-color: #000;
   margin: 20px;
   border-radius: 25px;
 }
@@ -340,11 +334,10 @@ select {
 }
 
 .bp {
-  background-color: var(--main-color);  
+  background-color: var(--main-color);
   width: 100%;
   height: 30px;
 }
-
 
 .container {
   width: 100%;
@@ -369,7 +362,7 @@ select {
 }
 
 .coloredDiv {
-  background-color:var(--main-color);
+  background-color: var(--main-color);
   height: 30vh;
   display: flex;
   align-items: center;
@@ -379,19 +372,17 @@ select {
   color: black;
 }
 
-
 .ilu {
   position: absolute;
-  top: 50%; 
-  left: 50%; 
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(69, 73, 69, 0.5); 
+  background-color: rgba(69, 73, 69, 0.5);
   padding: 10px;
   border-radius: 5px;
-  color: white; 
+  color: white;
   text-align: center;
 }
-
 
 .control-panel {
   background-color: var(--main-color);
@@ -450,14 +441,14 @@ select {
 }
 
 .tutorialpage {
-  position: relative; 
+  position: relative;
 }
 
 .tutorialpage img {
-  height: auto; 
-  width: auto; 
-  display: block; 
-  margin-left: auto; 
-  margin-right: auto; 
+  height: auto;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 20px;
 }

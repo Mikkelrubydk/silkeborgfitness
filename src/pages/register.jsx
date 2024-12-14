@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
+import { db } from "../lib/firebase"; // Importer Firestore
+import { doc, setDoc } from "firebase/firestore"; // Funktioner til at oprette og opdatere dokumenter
 import Link from "next/link";
 import Image from "next/image";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: "", // Tilføjet navn i state
+    name: "",
     email: "",
     password: "",
   });
@@ -16,12 +18,23 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(
+      // Opret bruger med email og password
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
       );
+      const user = userCredential.user;
+
+      // Gem brugerens navn og email i Firestore under UID
+      await setDoc(doc(db, "users", user.uid), {
+        name: formData.name, // Gem navn
+        email: formData.email, // Gem email
+      });
+
       alert("Bruger oprettet!");
+
+      // Navigation sker efter succesfuld oprettelse og gemning i Firestore
       router.push("/"); // Omdiriger til forsiden
     } catch (error) {
       alert(`Fejl: ${error.message}`);

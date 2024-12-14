@@ -149,10 +149,6 @@ const ProfilePage = () => {
 
   return (
     <main className="profilepage">
-      <div className="profil-overskrift">
-        <h1 className="profil-person">Mikkel Høj Ruby</h1>
-      </div>
-
       {/* Personlige mål */}
       <h2 className="overskrift1">Personlige Mål</h2>
       <div className="boks-container">

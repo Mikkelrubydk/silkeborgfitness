@@ -159,11 +159,10 @@
 }
 
 .exercise-card {
-  margin: 0 auto;
+  margin: 30px auto;
   width: 90%;
-  background-color: red;
-  border-radius: 20px;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .exercise-image {

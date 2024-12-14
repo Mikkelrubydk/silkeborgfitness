@@ -6,11 +6,13 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const { email, password, name } = req.body;
 
+    // Tjek for at sikre, at alle felter er udfyldt
     if (!email || !password || !name) {
-      return res.status(400).json({ error: "Udfyld alle felter" });
+      return res.status(400).json({ error: "Alle felter skal udfyldes" });
     }
 
     try {
+      // Opret bruger med email og adgangskode
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -18,16 +20,25 @@ export default async function handler(req, res) {
       );
       const user = userCredential.user;
 
+      // Gem brugerens data i Realtime Database under UID
       await set(ref(database, `users/${user.uid}`), {
         name,
         email,
       });
 
-      res.status(200).json({ user });
+      // Returner successtatus med brugerdata
+      res
+        .status(200)
+        .json({
+          message: "Bruger oprettet!",
+          user: { uid: user.uid, name, email },
+        });
     } catch (error) {
+      // Håndter fejl og returner fejlmeddelelse
       res.status(400).json({ error: error.message });
     }
   } else {
-    res.status(405).json({ message: "POST-metode påkrævet" });
+    // Hvis ikke en POST-anmodning, returner 405-method not allowed
+    res.status(405).json({ message: "Kun POST-metode understøttes" });
   }
 }
