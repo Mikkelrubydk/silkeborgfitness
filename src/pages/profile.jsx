@@ -12,16 +12,15 @@ import {
   Legend,
 } from "chart.js";
 import Image from "next/image";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import {
+  getDatabase,
+  ref as dbRef,
+  set,
+  remove,
+  get,
+  update,
+} from "firebase/database";
+import { getAuth, onAuthStateChanged } from "firebase/auth"; // Importér getAuth
 
 const ProfilePage = () => {
   const [startWeight, setStartWeight] = useState(92);
@@ -30,22 +29,67 @@ const ProfilePage = () => {
   const [images, setImages] = useState([]);
   const [uploadDates, setUploadDates] = useState([]);
   const [showAll, setShowAll] = useState(false);
-
-  // State for storing the current theme
   const [currentTheme, setCurrentTheme] = useState("standard");
 
-  // Check localStorage for saved theme on initial render
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setCurrentTheme(savedTheme);
-    }
+    const auth = getAuth();
+    const db = getDatabase();
+
+    // Tjek om brugeren er logget ind
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const userId = user.uid; // Brug brugerens uid
+        const userImagesRef = dbRef(db, `user_profiles/${userId}/user_images`);
+
+        // Hent billeder fra Firebase
+        get(userImagesRef)
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              const data = snapshot.val();
+              setImages(data.images || []); // Sæt billederne
+              setUploadDates(data.dates || []); // Sæt upload datoer
+            }
+          })
+          .catch((error) => {
+            console.error("Fejl ved hentning af billeder:", error);
+          });
+      } else {
+        // Hvis brugeren ikke er logget ind, rydder vi billederne
+        setImages([]);
+        setUploadDates([]);
+      }
+    });
   }, []);
 
-  // Update the theme and set it to localStorage
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    LineElement,
+    PointElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: false,
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+    scales: {
+      y: {
+        display: false,
+      },
+    },
+  };
+
   const updateTheme = (theme) => {
     setCurrentTheme(theme);
-    // Fjern eksisterende tema-klasser fra <html> elementet
     document.documentElement.classList.remove(
       "theme-blue",
       "theme-yellow",
@@ -53,9 +97,8 @@ const ProfilePage = () => {
       "theme-grey",
       "theme-standard"
     );
-    // Tilføj det ønskede tema
     document.documentElement.classList.add(`theme-${theme}`);
-    // Gem temaet i localStorage
+
     localStorage.setItem("theme", theme);
   };
 
@@ -64,7 +107,7 @@ const ProfilePage = () => {
     datasets: [
       {
         label: "Aktivitetsniveau",
-        data: [], // Initial tomt array
+        data: [],
         borderColor: "#ffa500",
         backgroundColor: "#ffa500",
         tension: 0.2,
@@ -73,12 +116,10 @@ const ProfilePage = () => {
     ],
   });
 
-  // Funktion til at generere tilfældige data
   const generateRandomData = () => {
     return Array.from({ length: 6 }, () => Math.floor(Math.random() * 31));
   };
 
-  // useEffect til at generere tilfældige data én gang ved indlæsning
   useEffect(() => {
     const randomData = generateRandomData();
     setData((prevData) => ({
@@ -96,57 +137,109 @@ const ProfilePage = () => {
     const files = e.target.files;
     const newImages = [];
     const newDates = [];
+    const maxSize = 2 * 1024 * 1024; // 2MB
 
     Array.from(files).forEach((file) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        newImages.push(reader.result);
-        newDates.push(new Date().toLocaleDateString());
-        if (newImages.length === files.length) {
-          setImages((prevImages) => [...prevImages, ...newImages]);
-          setUploadDates((prevDates) => [...prevDates, ...newDates]);
-        }
-      };
-      reader.readAsDataURL(file);
+      if (file.size <= maxSize) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          newImages.push(reader.result); // base64-kodet billede
+          newDates.push(new Date().toLocaleDateString());
+          if (newImages.length === files.length) {
+            uploadImagesToFirebase(newImages, newDates);
+          }
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert("Billedet er for stort. Maksimal størrelse er 2MB.");
+      }
     });
+  };
+
+  const uploadImagesToFirebase = (newImages, newDates) => {
+    const auth = getAuth();
+    const userid = auth.currentUser.uid;
+    const db = getDatabase();
+    const userImagesRef = dbRef(db, `user_profiles/${userid}/user_images`);
+
+    setImages((prevImages) => [...prevImages, ...newImages]);
+    setUploadDates((prevDates) => [...prevDates, ...newDates]);
+
+    get(userImagesRef)
+      .then((snapshot) => {
+        let existingImages = [];
+        let existingDates = [];
+
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          existingImages = data.images || [];
+          existingDates = data.dates || [];
+        }
+
+        update(userImagesRef, {
+          images: [...existingImages, ...newImages],
+          dates: [...existingDates, ...newDates],
+        });
+      })
+      .catch((error) => {
+        console.error("Error uploading images to Firebase:", error);
+      });
+  };
+
+  const handleDeleteImage = (image, index) => {
+    const auth = getAuth();
+    const userid = auth.currentUser.uid;
+    const db = getDatabase();
+    const userImagesRef = dbRef(db, `user_profiles/${userid}/user_images`);
+
+    // Opdater UI med det samme ved at fjerne elementet lokalt
+    setImages((prevImages) => {
+      const updatedImages = [...prevImages];
+      updatedImages.splice(index, 1);
+      return updatedImages;
+    });
+
+    setUploadDates((prevDates) => {
+      const updatedDates = [...prevDates];
+      updatedDates.splice(index, 1);
+      return updatedDates;
+    });
+
+    // Nu kan vi opdatere Firebase efter at billederne er fjernet visuelt
+    get(userImagesRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+
+          const updatedImages = [...data.images];
+          const updatedDates = [...data.dates];
+
+          updatedImages.splice(index, 1);
+          updatedDates.splice(index, 1);
+
+          return update(userImagesRef, {
+            images: updatedImages,
+            dates: updatedDates,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting image:", error);
+      });
   };
 
   const handleWeightEdit = (type, e) => {
     const newWeight = parseInt(e.target.value);
     if (!isNaN(newWeight)) {
       if (type === "Start") setStartWeight(newWeight);
-      if (type === "Nuværende") setCurrentWeight(newWeight);
-      if (type === "Mål") setGoalWeight(newWeight);
+      if (type === "Current") setCurrentWeight(newWeight);
+      if (type === "Goal") setGoalWeight(newWeight);
     }
-  };
-
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      x: {
-        grid: { display: false },
-        ticks: { color: "white", font: { size: 14 } },
-      },
-      y: {
-        grid: { display: false },
-        ticks: { display: false },
-      },
-    },
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        backgroundColor: "rgba(0, 0, 0, 0.7)",
-        titleColor: "white",
-        bodyColor: "white",
-      },
-    },
   };
 
   const handleShowAll = () => {
     setShowAll(!showAll);
   };
-
   return (
     <main className="profilepage">
       {/* Personlige mål */}
@@ -189,9 +282,7 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-
       <p className="ret-skrift">Ret indhold ved at ændre tallene</p>
-
       {/* Aktivitetsniveau graf */}
       <div className="aktivitetsniveau">
         <div className="overskrift-container">
@@ -202,28 +293,31 @@ const ProfilePage = () => {
           <Line data={data} options={options} />
         </div>
       </div>
-
       {/* Fremskridtsdokumentation */}
       <div className="fremskridtsdokumentation">
-        <h2 className="overskrift4">Fremskridtsdokumentation</h2>
+        <div>
+          <h2 className="overskrift4">Fremskridtsdokumentation</h2>{" "}
+          <span className="show-all-btn" onClick={handleShowAll}>
+            {showAll ? "Vis færre" : "Vis alle"}
+          </span>
+        </div>
         <div className="image-box">
           {images.slice(0, showAll ? images.length : 3).map((image, index) => (
-            <div key={index} className="image-with-date">
-              <p>{uploadDates[index]}</p>
-              <img
+            <div key={index} className="image-container">
+              <Image
+                className="image"
                 src={image}
-                alt={`Fremskridtsbillede ${index + 1}`}
-                className="image-inside-box"
+                alt={`Uploaded ${index}`}
+                width={100}
+                height={100}
               />
+              <p>{uploadDates[index]}</p>
+              <button onClick={() => handleDeleteImage(image, index)}>
+                Slet
+              </button>
             </div>
           ))}
         </div>
-        {images.length > 3 && (
-          <button className="show-all-btn" onClick={handleShowAll}>
-            {showAll ? "Skjul" : "Vis alle"}
-          </button>
-        )}
-
         {/* Billedupload */}
         <div className="upload-container">
           <input
@@ -237,9 +331,9 @@ const ProfilePage = () => {
           <label htmlFor="file-input" className="custom-file-button">
             <div className="billede-boks">
               <Image
-                className="plus.icon"
+                className="plus-icon"
                 src="/plus.svg"
-                alt="password icon"
+                alt="Tilføj billede ikon"
                 width={40}
                 height={40}
               />
@@ -289,7 +383,6 @@ const ProfilePage = () => {
           onClick={() => updateTheme("yellow")}
         ></button>
       </div>
-
       {/* Logout */}
       <LogOut />
     </main>

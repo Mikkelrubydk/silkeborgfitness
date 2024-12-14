@@ -120,17 +120,20 @@ input:focus {
   padding-left: 10px;
 }
 
-.image-box {
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 300px;
-  margin: 0 auto;
 }
 
-.image-inside-box {
-  width: 125px;
-  height: 125px;
+.image-container p {
+  color: white;
+}
+
+.image-container .image {
+  width: 100%;
+  height: 150px;
   object-fit: cover;
   border-radius: 20px;
 }
@@ -183,15 +186,13 @@ input:focus {
 }
 
 .show-all-btn {
-  margin-top: 10px;
-  padding: 5px 10px; /* Justeret padding for at gøre knappen mindre */
+  display: flex;
+  justify-content: right;
   color: white;
   border: none;
   cursor: pointer;
   font-size: 14px; /* Mindre fontstørrelse */
-  border-radius: 5px; /* Rundede hjørner, hvis du ønsker det */
-  margin-left: 280px;
-  margin-top: -5px;
+  margin-top: -21px;
 }
 
 .image-with-date p {

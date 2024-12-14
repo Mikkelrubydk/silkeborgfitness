@@ -98,14 +98,21 @@ export default function WorkoutTracker() {
 }
 
 function WorkoutList({ selectedDate, exercises }) {
-  // Format date for the header
+  // Henter datoen valgt i SwiperSlide og konverterer den til korrekt format
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const options = { weekday: "long", day: "2-digit", month: "long" };
-    const formattedDate = date
+    let formattedDate = date
       .toLocaleDateString("da-DK", options)
       .replace(/\b\w/g, (char) => char.toUpperCase());
-    return formattedDate.replace(" ", " ").replace(" ", ". ");
+
+    const dayOfWeek = formattedDate.split(" ")[0];
+    formattedDate = formattedDate.replace(
+      dayOfWeek,
+      dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1).toLowerCase()
+    );
+
+    return formattedDate;
   };
 
   return (

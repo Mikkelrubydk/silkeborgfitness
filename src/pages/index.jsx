@@ -6,19 +6,44 @@ import Link from "next/link";
 
 export default function Home() {
   const [theme, setTheme] = useState("standard");
+  const [selectedDay, setSelectedDay] = useState("");
+  const [chartData, setChartData] = useState([]);
 
-  const [selectedDay, setSelectedDay] = useState("Mandag 30/10");
-  const [chartData, setChartData] = useState([
-    20, 40, 30, 10, 15, 60, 75, 70, 80, 50, 40, 30, 30, 10, 5,
-  ]);
-
+  // Data for hver dag
   const data = {
-    Mandag: [20, 40, 30, 10, 15, 60, 75, 70, 80, 50, 40, 30, 30, 10, 5],
-    Tirsdag: [10, 20, 40, 30, 50, 60, 40, 20, 30, 40, 50, 60, 30, 10, 5],
-    Onsdag: [15, 35, 55, 25, 45, 60, 50, 40, 30, 40, 50, 65, 30, 10, 5],
-    Torsdag: [25, 50, 40, 30, 40, 45, 65, 60, 50, 30, 40, 55, 30, 10, 5],
+    Mandag: [15, 20, 30, 40, 50, 60, 70, 75, 70, 60, 50, 40, 30, 20, 10],
+    Tirsdag: [10, 15, 25, 35, 45, 55, 65, 70, 65, 55, 45, 35, 25, 15, 10],
+    Onsdag: [15, 20, 30, 45, 55, 65, 75, 80, 75, 65, 55, 45, 35, 20, 10],
+    Torsdag: [10, 15, 25, 40, 50, 60, 70, 75, 70, 60, 50, 40, 30, 15, 10],
+    Fredag: [5, 10, 20, 35, 50, 65, 75, 70, 60, 45, 30, 20, 10, 5, 5],
+    Lørdag: [5, 10, 15, 25, 40, 55, 65, 60, 50, 40, 30, 20, 10, 5, 5],
+    Søndag: [10, 15, 20, 30, 45, 55, 65, 60, 50, 40, 30, 20, 15, 10, 5],
   };
 
+  // Hent data for den aktuelle dag
+  const getCurrentDayData = () => {
+    const days = [
+      "Søndag",
+      "Mandag",
+      "Tirsdag",
+      "Onsdag",
+      "Torsdag",
+      "Fredag",
+      "Lørdag",
+    ];
+    const currentDay = new Date().getDay(); // Henter dagens nummer (0 = Søndag, 1 = Mandag osv.)
+    const currentDayName = days[currentDay]; // Får dagens navn ud fra arrayet
+    return currentDayName;
+  };
+
+  // Opdaterer chartData, når komponenten først loades
+  useEffect(() => {
+    const currentDayName = getCurrentDayData(); // Hent dagens navn
+    setSelectedDay(currentDayName); // Sæt selectedDay til dagens navn
+    setChartData(data[currentDayName] || []); // Indsætter dagens data i chartData
+  }, []); // Denne useEffect kører kun én gang, når komponenten loades
+
+  // Hent og opdater tema fra localStorage eller Firebase
   useEffect(() => {
     const fetchTheme = async () => {
       const storedTheme = localStorage.getItem("theme");
@@ -45,6 +70,7 @@ export default function Home() {
     fetchTheme();
   }, []);
 
+  // Opdaterer tema på dokumentets root element
   useEffect(() => {
     document.documentElement.classList.remove(
       "theme-blue",
@@ -57,9 +83,11 @@ export default function Home() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const handleDayChange = (event) => {
-    setSelectedDay(event.target.value);
-    setChartData(data[event.target.value]); // Opdater grafdata baseret på valgt dag
+  // Håndterer ændring af dag i dropdown
+  const handleDayChange = (e) => {
+    const selected = e.target.value;
+    setSelectedDay(selected); // Opdaterer valgt dag
+    setChartData(data[selected] || []); // Opdaterer chartData baseret på valgt dag
   };
 
   return (
@@ -92,7 +120,7 @@ export default function Home() {
 
         <div className="forside_box forside_graf">
           <h2>Oversigt over travlhed</h2>
-          <p classname="pas">
+          <p className="pas">
             <select onChange={handleDayChange} value={selectedDay}>
               {Object.keys(data).map((day) => (
                 <option key={day} value={day}>
