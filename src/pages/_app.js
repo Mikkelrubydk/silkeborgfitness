@@ -7,6 +7,7 @@ import "../app/globals.css";
 import "../app/julle.css";
 import "../app/mikkel.css";
 import "../app/anders.css";
+import "../app/lejla.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
