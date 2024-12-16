@@ -4,6 +4,9 @@ import { auth } from "../lib/firebase";
 import Image from "next/image";
 import Link from "next/link"; // Importer Link fra next/link
 import { useRouter } from "next/router"; // Importer useRouter
+import EmailIcon from "../../public/email.webp";
+import PasswordIcon from "../../public/padlock.webp";
+import Logo from "../../public/logo.svg";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +47,7 @@ const Login = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="./email.webp"
+              src={EmailIcon}
               alt="email icon"
               width={20}
               height={20}
@@ -61,7 +64,7 @@ const Login = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="./padlock.webp"
+              src={PasswordIcon}
               alt="password icon"
               width={20}
               height={20}
@@ -79,12 +82,7 @@ const Login = () => {
         </form>
       </div>
       <div className="login-logo">
-        <Image
-          src="./logo.svg"
-          alt="login page image"
-          width={200}
-          height={200}
-        />
+        <Image src={Logo} alt="login page image" width={200} height={200} />
       </div>
       <div className="login-tekst">
         <h2>SILKEBORG FITNESS CENTER</h2>

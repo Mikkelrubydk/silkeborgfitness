@@ -6,6 +6,10 @@ import { db } from "../lib/firebase"; // Importer Firestore
 import { doc, setDoc } from "firebase/firestore"; // Funktioner til at oprette og opdatere dokumenter
 import Image from "next/image";
 import Link from "next/link"; // Importer Link komponenten fra next/link
+import EmailIcon from "../../public/email.webp";
+import PasswordIcon from "../../public/padlock.webp";
+import Logo from "../../public/logo.svg";
+import UserIcon from "../../public/user.webp";
 
 // Mikkel
 
@@ -51,7 +55,7 @@ const Register = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="./user.webp"
+              src={UserIcon}
               alt="user icon"
               width={20}
               height={20}
@@ -68,7 +72,7 @@ const Register = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="./email.webp"
+              src={EmailIcon}
               alt="email icon"
               width={20}
               height={20}
@@ -86,7 +90,7 @@ const Register = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="./padlock.webp"
+              src={PasswordIcon}
               alt="password icon"
               width={20}
               height={20}
