@@ -81,10 +81,6 @@
 .login-logo {
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 /* Styling af workouttracker */
