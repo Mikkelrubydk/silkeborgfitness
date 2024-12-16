@@ -102,7 +102,8 @@ const Achievement = () => {
                 <div
                   id={`praesentation-icon-${index}`}
                   className={`praesentation-icon ${
-                    flipped === index ? "flipped" : ""
+                    (flipped === index ? "flipped" : "") +
+                    (index > 3 ? " unlocked" : "")
                   }`}
                   onClick={() => handleFlip(index)}
                 >

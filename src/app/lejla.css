@@ -129,9 +129,9 @@
 /* Base for hvert ikon */
 .praesentation-icon {
   aspect-ratio: 1 / 1;
-  background-color: var(--main-color);
   color: black;
   text-align: center;
+  background-color: var(--main-color);
   padding: 20px;
   font-size: 2rem;
   border-radius: 10px;
@@ -146,6 +146,10 @@
   position: relative;
   display: inline-block;
   width: 100%; /* Sikrer, at containeren udfylder pladsen */
+}
+
+.unlocked {
+  background-color: rgba(188, 242, 70, 0.5);
 }
 
 /* Corner circle */
@@ -169,7 +173,6 @@
 /* Flip-element */
 .praesentation-icon {
   aspect-ratio: 1 / 1;
-  background-color: var(--main-color);
   color: black;
   text-align: center;
   padding: 20px;
