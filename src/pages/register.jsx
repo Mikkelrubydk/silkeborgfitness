@@ -51,7 +51,7 @@ const Register = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="/user.webp"
+              src="./user.webp"
               alt="user icon"
               width={20}
               height={20}
@@ -68,7 +68,7 @@ const Register = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="/email.webp"
+              src="./email.webp"
               alt="email icon"
               width={20}
               height={20}
@@ -86,7 +86,7 @@ const Register = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="/padlock.webp"
+              src="./padlock.webp"
               alt="password icon"
               width={20}
               height={20}

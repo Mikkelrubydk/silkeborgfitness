@@ -337,7 +337,7 @@ const ProfilePage = () => {
             <div className="billede-boks">
               <Image
                 className="plus-icon"
-                src="/plus.svg"
+                src="./plus.svg"
                 alt="Tilføj billede ikon"
                 width={40}
                 height={40}
