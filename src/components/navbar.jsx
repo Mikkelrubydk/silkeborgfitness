@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDatabase, ref, set, get } from "firebase/database";
 import Image from "next/image";
+import Link from "next/link"; // Importer Link komponenten
 import { auth, database } from "@/lib/firebase";
 
 // Mikkel
@@ -181,23 +182,22 @@ const Navbar = () => {
             />
           </label>
         ) : (
-          <div
-            onClick={() => router.push("/profile")}
-            style={{ cursor: "pointer" }}
-          >
-            <Image
-              className="navbar-profilbillede rounded-full"
-              src={profileImage}
-              alt="Profilbillede"
-              width={70}
-              height={70}
-              style={{
-                cursor: "pointer",
-                height: "70px",
-                objectFit: "cover",
-              }}
-            />
-          </div>
+          <Link href="/profile">
+            <a style={{ cursor: "pointer" }}>
+              <Image
+                className="navbar-profilbillede rounded-full"
+                src={profileImage}
+                alt="Profilbillede"
+                width={70}
+                height={70}
+                style={{
+                  cursor: "pointer",
+                  height: "70px",
+                  objectFit: "cover",
+                }}
+              />
+            </a>
+          </Link>
         )}
       </div>
     </div>

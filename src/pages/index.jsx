@@ -4,6 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import SkridtCirkeldiagram from "../components/SkridtCirkeldiagram";
 import { useRouter } from "next/router"; // Importer useRouter
 import Image from "next/image";
+import Link from "next/link"; // Importer Link komponenten
 
 // Julie
 
@@ -11,7 +12,6 @@ export default function Home() {
   const [theme, setTheme] = useState("standard");
   const [selectedDay, setSelectedDay] = useState("");
   const [chartData, setChartData] = useState([]);
-  const router = useRouter(); // Initialiser router
 
   // Data for hver dag
   const data = {
@@ -94,39 +94,36 @@ export default function Home() {
     setChartData(data[selected] || []); // Opdaterer chartData baseret på valgt dag
   };
 
-  // Naviger til en given side
-  const handleNavigation = (path) => {
-    router.push(path); // Brug router.push til navigation
-  };
-
   return (
     <main>
       <div className="forside_container">
-        <div
-          className="forside_box forside_logbog"
-          onClick={() => handleNavigation("/workouttracker")}
-        >
-          <div className="top-left">Logbog</div>
-          <div className="center">
-            <Image src="./dumbbell.svg" alt="Logbog Billede" />
-          </div>
-          <div className="bottom-left">Sidst noteret: 29/11</div>
+        <div className="forside_box forside_logbog">
+          <Link href="/workouttracker">
+            <div>
+              <div className="top-left">Logbog</div>
+              <div className="center">
+                <Image src="./dumbbell.svg" alt="Logbog Billede" />
+              </div>
+              <div className="bottom-left">Sidst noteret: 29/11</div>
+            </div>
+          </Link>
         </div>
 
         <div className="forside_box forside_skridt">
           <SkridtCirkeldiagram />
         </div>
 
-        <div
-          className="forside_box forside_praestationer"
-          onClick={() => handleNavigation("/achievement")}
-        >
-          <div className="top-left">Præstationer</div>
-          <div className="center">
-            <Image src="./medal.svg" alt="Præstationer Billede" />
-          </div>
-          <div className="bottom-left">Ny præmie låst op!</div>
-          <div className="alert-icon"></div>
+        <div className="forside_box forside_praestationer">
+          <Link href="/achievement">
+            <div>
+              <div className="top-left">Præstationer</div>
+              <div className="center">
+                <Image src="./medal.svg" alt="Præstationer Billede" />
+              </div>
+              <div className="bottom-left">Ny præmie låst op!</div>
+              <div className="alert-icon"></div>
+            </div>
+          </Link>
         </div>
 
         <div className="forside_box forside_graf">
@@ -168,24 +165,26 @@ export default function Home() {
           </div>
         </div>
 
-        <div
-          className="forside_box forside_tutorials"
-          onClick={() => handleNavigation("/machines")}
-        >
-          <div className="top-left">Illustrationer</div>
-          <div className="center">
-            <Image src="./video.svg" alt="Tutorials Billede" />
-          </div>
+        <div className="forside_box forside_tutorials">
+          <Link href="/machines">
+            <div>
+              <div className="top-left">Illustrationer</div>
+              <div className="center">
+                <Image src="./video.svg" alt="Tutorials Billede" />
+              </div>
+            </div>
+          </Link>
         </div>
 
-        <div
-          className="forside_box forside_ekstra"
-          onClick={() => handleNavigation("/teamtraining")}
-        >
-          <div className="top-left">Holdtræning</div>
-          <div className="center">
-            <Image src="./hold.png" alt="Hold Billede" />
-          </div>
+        <div className="forside_box forside_ekstra">
+          <Link href="/teamtraining">
+            <div>
+              <div className="top-left">Holdtræning</div>
+              <div className="center">
+                <Image src="./hold.png" alt="Hold Billede" />
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </main>

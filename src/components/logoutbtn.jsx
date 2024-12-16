@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { signOut } from "firebase/auth";
 import { auth } from "../lib/firebase";
+import Link from "next/link";
 
 // Mikkel
 
@@ -23,7 +24,11 @@ const LogoutButton = () => {
     }
   };
 
-  return <button onClick={handleLogout}>Log ud</button>;
+  return (
+    <button onClick={handleLogout}>
+      <Link href="/login">Log ud</Link>
+    </button>
+  );
 };
 
 export default LogoutButton;

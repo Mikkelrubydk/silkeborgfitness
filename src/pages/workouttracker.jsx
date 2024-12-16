@@ -4,18 +4,15 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useRouter } from "next/router"; // Brug useRouter
 import { auth } from "@/lib/firebase";
 import Image from "next/image";
-
-// Mikkel
+import Link from "next/link"; // Importer Link-komponenten
 
 export default function WorkoutTracker() {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
   );
   const [workouts, setWorkouts] = useState([]);
-  const router = useRouter(); // Brug useRouter
 
   // Hent øvelser fra Firebase for den valgte dato
   useEffect(() => {
@@ -48,14 +45,6 @@ export default function WorkoutTracker() {
   };
 
   const dates = generateDates(14); // Generer et datointerval for swiper (±14 dage)
-
-  // Håndter tilføjelse af øvelse
-  const handleAddWorkout = () => {
-    router.push({
-      pathname: "/addworkout",
-      query: { selectedDate }, // Send selectedDate som en query parameter
-    });
-  };
 
   return (
     <div className="workout-tracker">
@@ -94,10 +83,10 @@ export default function WorkoutTracker() {
         exercises={workouts} // Passer de hentede øvelser til WorkoutList
       />
 
-      {/* Knap til at tilføje en ny øvelse */}
-      <button className="tracker-add-button" onClick={handleAddWorkout}>
-        Tilføj øvelse
-      </button>
+      {/* Link til at tilføje en ny øvelse */}
+      <Link href={{ pathname: "/addworkout", query: { selectedDate } }}>
+        <button className="tracker-add-button">Tilføj øvelse</button>
+      </Link>
     </div>
   );
 }

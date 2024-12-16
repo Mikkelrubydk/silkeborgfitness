@@ -1,11 +1,10 @@
 import React, { useState } from "react"; // Importer useState
-import { useRouter } from "next/router"; // Importer useRouter
+import Link from "next/link"; // Importer Link fra next/link
 
 // Leila
 
 export default function TeamTraining() {
   const [isPopupBeskedOpen, setIsPopupBeskedOpen] = useState(false); // State til at styre pop-up
-  const router = useRouter(); // Brug useRouter
   const trainingData = [
     {
       day: "Mandag 29/11",
@@ -65,10 +64,6 @@ export default function TeamTraining() {
   // Funktion til at åbne og lukke pop-up'en
   const togglePopupBesked = () => setIsPopupBeskedOpen(!isPopupBeskedOpen);
 
-  const handleSessionClick = (href) => {
-    router.push(href); // Naviger til den valgte rute
-  };
-
   return (
     <main className="teamtraining-container">
       <h1 className="teamtraining-header">
@@ -116,19 +111,19 @@ export default function TeamTraining() {
         <div key={index} className="teamtraining-day">
           <h2 className="teamtraining-day-title">{dayData.day}</h2>
           {dayData.sessions.map((session, idx) => (
-            <div
-              key={idx}
-              className="teamtraining-session"
-              onClick={() => handleSessionClick(session.href)}
-            >
-              <span className="teamtraining-session-name">{session.name}</span>
-              <span className="teamtraining-session-trainer">
-                Træner: {session.trainer}
-              </span>
-              <span className="teamtraining-session-slots">
-                {session.slots} Pladser
-              </span>
-            </div>
+            <Link key={idx} href={session.href}>
+              <div className="teamtraining-session">
+                <span className="teamtraining-session-name">
+                  {session.name}
+                </span>
+                <span className="teamtraining-session-trainer">
+                  Træner: {session.trainer}
+                </span>
+                <span className="teamtraining-session-slots">
+                  {session.slots} Pladser
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
       ))}

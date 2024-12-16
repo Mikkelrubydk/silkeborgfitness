@@ -1,6 +1,7 @@
 import { getAuth } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
 import Image from "next/image";
+import Link from "next/link"; // Importer Link
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -113,11 +114,6 @@ export default function CreateExercise() {
 
       await saveExerciseToFirebase(updatedExerciseData);
       console.log("Øvelsen er gemt:", updatedExerciseData);
-
-      router.push({
-        pathname: "/workouttracker",
-        query: { selectedDate },
-      });
     } catch (error) {
       console.error("Fejl ved oprettelse af øvelse:", error);
     }
@@ -218,9 +214,16 @@ export default function CreateExercise() {
           </button>
         )}
         {step === totalSteps && (
-          <button className="submit-btn" onClick={handleSubmit}>
-            Opret
-          </button>
+          <Link
+            href={{
+              pathname: "/workouttracker",
+              query: { selectedDate },
+            }}
+          >
+            <button className="submit-btn" onClick={handleSubmit}>
+              Opret
+            </button>
+          </Link>
         )}
       </div>
     </div>

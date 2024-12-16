@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import Image from "next/image";
+import Link from "next/link"; // Importer Link fra next/link
 
 // Mikkel
 
@@ -12,7 +12,6 @@ const Login = () => {
     password: "",
   });
   const [isClient, setIsClient] = useState(false); // Til at tjekke, om vi er på klienten
-  const router = useRouter();
 
   // Brug useEffect til at sikre, at koden kun kører på klienten
   useEffect(() => {
@@ -27,22 +26,16 @@ const Login = () => {
       localStorage.setItem("isLoggedIn", "true"); // Gem login-status i localStorage
 
       if (isClient) {
-        router.push("/"); // Omdiriger til forsiden efter login (kun på klienten)
+        window.location.href = "/"; // Omdiriger til forsiden efter login (kun på klienten)
       }
     } catch (error) {
       alert(`Fejl: ${error.message}`);
     }
   };
 
-  // Funktion til at navigere til registreringssiden
-  const handleRegisterNavigation = () => {
-    if (isClient) {
-      router.push("/register"); // Omdiriger til registreringssiden (kun på klienten)
-    }
-  };
-
+  // Sørg for at returnere null indtil vi er på klienten
   if (!isClient) {
-    return null; // Sørg for, at der ikke sker noget rendering på serveren
+    return null;
   }
 
   return (
@@ -100,9 +93,9 @@ const Login = () => {
         <hr />
         <p>
           ikke medlem endnu?{" "}
-          <button className="link" onClick={handleRegisterNavigation}>
-            Tilmeld dig
-          </button>
+          <Link href="/register">
+            <a className="link">Tilmeld dig</a>
+          </Link>
         </p>
       </div>
     </main>
