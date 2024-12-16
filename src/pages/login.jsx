@@ -25,6 +25,11 @@ const Login = () => {
     }
   };
 
+  // Funktion til at navigere til registreringssiden
+  const handleRegisterNavigation = () => {
+    router.push("/register");
+  };
+
   return (
     <main className="loginform">
       <div>
@@ -79,8 +84,8 @@ const Login = () => {
         <h2>SILKEBORG FITNESS CENTER</h2>
         <hr />
         <p>
-          ikke medlem endnu?
-          <button className="link" onClick={router.push("/register")}>
+          ikke medlem endnu?{" "}
+          <button className="link" onClick={handleRegisterNavigation}>
             Tilmeld dig
           </button>
         </p>
