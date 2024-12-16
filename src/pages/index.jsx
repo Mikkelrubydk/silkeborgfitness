@@ -104,7 +104,7 @@ export default function Home() {
             <div className="center">
               <Image
                 className="forsideikon"
-                src="/dumbbell.svg"
+                src="./dumbbell.svg"
                 alt="Logbog Billede"
                 width={100}
                 height={100}
@@ -124,7 +124,7 @@ export default function Home() {
             <div className="center">
               <Image
                 className="forsideikon"
-                src="/medal.svg"
+                src="./medal.svg"
                 alt="Præstationer Billede"
                 width={100}
                 height={100}
@@ -180,7 +180,7 @@ export default function Home() {
             <div className="center">
               <Image
                 className="forsideikon"
-                src="/video.svg"
+                src="./video.svg"
                 alt="Tutorials Billede"
                 height={100}
                 width={100}
@@ -195,7 +195,7 @@ export default function Home() {
             <div className="center">
               <Image
                 className="forsideikon"
-                src="/hold.png"
+                src="./hold.png"
                 alt="Hold Billede"
                 height={100}
                 width={100}
