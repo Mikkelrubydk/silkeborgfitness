@@ -485,3 +485,7 @@
 .session-slots {
   font-size: 1rem;
 }
+
+.bookteam-description-box {
+  background-color: var(--main-color);
+}
