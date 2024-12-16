@@ -135,7 +135,7 @@ const Navbar = () => {
       <div>
         {router.pathname === "/" ? (
           <Image
-            src="/logo.svg"
+            src="./logo.svg"
             alt="Silkeborg Fitness Logo"
             width={150}
             height={150}
@@ -167,7 +167,7 @@ const Navbar = () => {
           <label className="navbar-profil-label">
             <Image
               className="navbar-profilbillede rounded-full"
-              src={profileImage || "/profileimage.webp"}
+              src={profileImage || "./profileimage.webp"}
               alt="Profilbillede"
               width={70}
               height={70}
@@ -188,7 +188,7 @@ const Navbar = () => {
           <Link href="/profile">
             <Image
               className="navbar-profilbillede rounded-full"
-              src={profileImage || "/profileimage.webp"}
+              src={profileImage || "./profileimage.webp"}
               alt="Profilbillede"
               width={70}
               height={70}

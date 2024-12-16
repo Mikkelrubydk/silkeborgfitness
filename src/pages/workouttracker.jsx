@@ -121,22 +121,22 @@ function WorkoutList({ selectedDate, exercises }) {
             let categoryImage;
             switch (exercise.category) {
               case "Arme":
-                categoryImage = "/armworkout.webp";
+                categoryImage = "./armworkout.webp";
                 break;
               case "Bryst":
-                categoryImage = "/chestworkout.webp";
+                categoryImage = "./chestworkout.webp";
                 break;
               case "Ryg":
-                categoryImage = "/backworkout.webp";
+                categoryImage = "./backworkout.webp";
                 break;
               case "Skuldre":
-                categoryImage = "/shoulderworkout.webp";
+                categoryImage = "./shoulderworkout.webp";
                 break;
               case "Ben":
-                categoryImage = "/legworkout.webp";
+                categoryImage = "./legworkout.webp";
                 break;
               case "Mave":
-                categoryImage = "/absworkout.webp";
+                categoryImage = "./absworkout.webp";
                 break;
             }
 
