@@ -34,7 +34,7 @@ const Login = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="/email.webp"
+              src="./email.webp"
               alt="email icon"
               width={20}
               height={20}
@@ -51,7 +51,7 @@ const Login = () => {
           <div className="input-icon">
             <Image
               className="login-icon"
-              src="/padlock.webp"
+              src="./padlock.webp"
               alt="password icon"
               width={20}
               height={20}
@@ -70,7 +70,7 @@ const Login = () => {
       </div>
       <div className="login-logo">
         <Image
-          src="/logo.svg"
+          src="./logo.svg"
           alt="login page image"
           width={200}
           height={200}

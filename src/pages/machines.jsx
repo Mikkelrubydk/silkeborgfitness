@@ -9,7 +9,7 @@ export default function About() {
       {/* Benpress div */}
       <div className="benpress">
         <Link href="/illustration">
-          <Image src="/benpress.png" alt="Benpress image" />
+          <Image src="./benpress.png" alt="Benpress image" />
         </Link>
         <div className="bp"></div>
         <p>Benpress</p>
@@ -18,7 +18,7 @@ export default function About() {
       {/* Squat div */}
       <div className="squat">
         <Link href="/illustration2">
-          <Image src="/squat.png" alt="Squat image" />
+          <Image src="./squat.png" alt="Squat image" />
         </Link>
         <div className="sq"></div>
         <p>Squat</p>
@@ -27,7 +27,7 @@ export default function About() {
       {/* Pullup div */}
       <div className="pullup">
         <Link href="/illustration3">
-          <Image src="/pullup.png" alt="pullup image" />
+          <Image src="./pullup.png" alt="pullup image" />
         </Link>
         <div className="pu"></div>
         <p>Pullup</p>
@@ -36,7 +36,7 @@ export default function About() {
       {/* Bænkpress div */}
       <div className="benchpress">
         <Link href="/illustration4">
-          <Image src="/benchpress.png" alt="Bænkpress image" />
+          <Image src="./benchpress.png" alt="Bænkpress image" />
         </Link>
         <div className="bp"></div>
         <p>Bænkpress</p>

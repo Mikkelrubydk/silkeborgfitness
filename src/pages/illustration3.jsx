@@ -7,7 +7,7 @@ export default function About() {
     <div>
       {/* Benpress div */}
       <div className="tutorialpage">
-        <Image src="pup.png" alt="Pullup billede" />
+        <Image src="./pup.png" alt="Pullup billede" />
         <div className="ilu">
           Hvis du virkelig vil have noget ud af det skal..
         </div>{" "}
