@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
@@ -11,7 +11,13 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [isClient, setIsClient] = useState(false); // Til at tjekke, om vi er på klienten
   const router = useRouter();
+
+  // Brug useEffect til at sikre, at koden kun kører på klienten
+  useEffect(() => {
+    setIsClient(true); // Når komponenten er rendere på klienten, sættes isClient til true
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,7 +25,10 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
       localStorage.setItem("isLoggedIn", "true"); // Gem login-status i localStorage
-      router.push("/"); // Omdiriger til forsiden efter login
+
+      if (isClient) {
+        router.push("/"); // Omdiriger til forsiden efter login (kun på klienten)
+      }
     } catch (error) {
       alert(`Fejl: ${error.message}`);
     }
@@ -27,8 +36,14 @@ const Login = () => {
 
   // Funktion til at navigere til registreringssiden
   const handleRegisterNavigation = () => {
-    router.push("/register");
+    if (isClient) {
+      router.push("/register"); // Omdiriger til registreringssiden (kun på klienten)
+    }
   };
+
+  if (!isClient) {
+    return null; // Sørg for, at der ikke sker noget rendering på serveren
+  }
 
   return (
     <main className="loginform">
