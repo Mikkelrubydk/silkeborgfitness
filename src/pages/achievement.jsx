@@ -12,16 +12,16 @@ const Achievement = () => {
 
   // Ikoner og beskrivelser for præstationerne
   const icons = [
-    "./runninman.png",
-    "./medaljeikon.png",
-    "./flagikon.png",
-    "./benworkikon.png",
-    "./stjerneikon.png",
-    "./skubikon.png",
-    "./fitnessliftikon.png",
-    "./dumbellikon.png",
-    "./stormedaljeikon.png",
-    "./yogaikon.png",
+    "runninman.png",
+    "medaljeikon.png",
+    "flagikon.png",
+    "benworkikon.png",
+    "stjerneikon.png",
+    "skubikon.png",
+    "fitnessliftikon.png",
+    "dumbellikon.png",
+    "stormedaljeikon.png",
+    "yogaikon.png",
   ];
 
   const descriptions = [
@@ -87,7 +87,6 @@ const Achievement = () => {
           <input type="checkbox" />
           Gør mine data privat
           <span>
-            {" "}
             Du og andre brugere vil ikke kunne se dig på leaderboardet
           </span>
         </label>
