@@ -4,9 +4,9 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Link from "next/link";
+import { useRouter } from "next/router"; // Brug useRouter
 import { auth } from "@/lib/firebase";
-import Image from "next/image"; // Sørg for at importere Image-komponenten
+import Image from "next/image";
 
 // Mikkel
 
@@ -15,8 +15,9 @@ export default function WorkoutTracker() {
     new Date().toISOString().split("T")[0]
   );
   const [workouts, setWorkouts] = useState([]);
+  const router = useRouter(); // Brug useRouter
 
-  // Fetch workouts from Firebase for the selected date
+  // Hent øvelser fra Firebase for den valgte dato
   useEffect(() => {
     const database = getDatabase();
     const user = auth.currentUser;
@@ -28,10 +29,10 @@ export default function WorkoutTracker() {
         const exercisesForDate = data[selectedDate]
           ? Object.values(data[selectedDate])
           : [];
-        setWorkouts(exercisesForDate); // Update workouts with exercises for the selected date
+        setWorkouts(exercisesForDate); // Opdater workouts med øvelser for den valgte dato
       });
 
-      return () => unsubscribe(); // Clean up on component unmount
+      return () => unsubscribe(); // Ryd op ved komponentens afmontering
     }
   }, [selectedDate]);
 
@@ -46,12 +47,20 @@ export default function WorkoutTracker() {
     return dates;
   };
 
-  const dates = generateDates(14); // Generate a date range for the slider (±14 days)
+  const dates = generateDates(14); // Generer et datointerval for swiper (±14 dage)
+
+  // Håndter tilføjelse af øvelse
+  const handleAddWorkout = () => {
+    router.push({
+      pathname: "/addworkout",
+      query: { selectedDate }, // Send selectedDate som en query parameter
+    });
+  };
 
   return (
     <div className="workout-tracker">
       <header className="tracker-header">
-        {/* Swiper to select the date */}
+        {/* Swiper til at vælge dato */}
         <Swiper
           spaceBetween={10}
           slidesPerView={4}
@@ -79,21 +88,16 @@ export default function WorkoutTracker() {
         </Swiper>
       </header>
 
-      {/* Pass the workouts as props to WorkoutList component */}
+      {/* Pass workouts som props til WorkoutList komponenten */}
       <WorkoutList
         selectedDate={selectedDate}
-        exercises={workouts} // Pass fetched workouts to WorkoutList
+        exercises={workouts} // Passer de hentede øvelser til WorkoutList
       />
 
-      {/* Link to add a new workout */}
-      <Link
-        href={{
-          pathname: "/addworkout",
-          query: { selectedDate },
-        }}
-      >
-        <button className="tracker-add-button">Tilføj øvelse</button>
-      </Link>
+      {/* Knap til at tilføje en ny øvelse */}
+      <button className="tracker-add-button" onClick={handleAddWorkout}>
+        Tilføj øvelse
+      </button>
     </div>
   );
 }
@@ -124,7 +128,7 @@ function WorkoutList({ selectedDate, exercises }) {
       ) : (
         <div className="exercise-container">
           {exercises.map((exercise, idx) => {
-            // Dynamically choose the image based on the exercise category
+            // Dynamisk valg af billede baseret på øvelseskategori
             let categoryImage;
             switch (exercise.category) {
               case "Arme":
@@ -153,7 +157,7 @@ function WorkoutList({ selectedDate, exercises }) {
                   <Image
                     className="exercise-image"
                     src={categoryImage}
-                    alt={`${exercise.category} exercise`}
+                    alt={`${exercise.category} øvelse`}
                     width={100}
                     height={100}
                   />

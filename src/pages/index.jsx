@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { db, auth } from "../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import SkridtCirkeldiagram from "../components/SkridtCirkeldiagram";
-import Link from "next/link";
+import { useRouter } from "next/router"; // Importer useRouter
 import Image from "next/image";
 
 // Julie
@@ -11,6 +11,7 @@ export default function Home() {
   const [theme, setTheme] = useState("standard");
   const [selectedDay, setSelectedDay] = useState("");
   const [chartData, setChartData] = useState([]);
+  const router = useRouter(); // Initialiser router
 
   // Data for hver dag
   const data = {
@@ -93,33 +94,40 @@ export default function Home() {
     setChartData(data[selected] || []); // Opdaterer chartData baseret på valgt dag
   };
 
+  // Naviger til en given side
+  const handleNavigation = (path) => {
+    router.push(path); // Brug router.push til navigation
+  };
+
   return (
     <main>
       <div className="forside_container">
-        <Link href="/workouttracker">
-          <div className="forside_box forside_logbog">
-            <div className="top-left">Logbog</div>
-            <div className="center">
-              <Image src="./dumbbell.svg" alt="Logbog Billede" />
-            </div>
-            <div className="bottom-left">Sidst noteret: 29/11</div>
+        <div
+          className="forside_box forside_logbog"
+          onClick={() => handleNavigation("/workouttracker")}
+        >
+          <div className="top-left">Logbog</div>
+          <div className="center">
+            <Image src="./dumbbell.svg" alt="Logbog Billede" />
           </div>
-        </Link>
+          <div className="bottom-left">Sidst noteret: 29/11</div>
+        </div>
 
         <div className="forside_box forside_skridt">
           <SkridtCirkeldiagram />
         </div>
 
-        <Link href="/achievement">
-          <div className="forside_box forside_praestationer">
-            <div className="top-left">Præstationer</div>
-            <div className="center">
-              <Image src="./medal.svg" alt="Præstationer Billede" />
-            </div>
-            <div className="bottom-left">Ny præmie låst op!</div>
+        <div
+          className="forside_box forside_praestationer"
+          onClick={() => handleNavigation("/achievement")}
+        >
+          <div className="top-left">Præstationer</div>
+          <div className="center">
+            <Image src="./medal.svg" alt="Præstationer Billede" />
           </div>
+          <div className="bottom-left">Ny præmie låst op!</div>
           <div className="alert-icon"></div>
-        </Link>
+        </div>
 
         <div className="forside_box forside_graf">
           <h2>Oversigt over travlhed</h2>
@@ -160,23 +168,25 @@ export default function Home() {
           </div>
         </div>
 
-        <Link href="/machines">
-          <div className="forside_box forside_tutorials">
-            <div className="top-left">Illustrationer</div>
-            <div className="center">
-              <Image src="./video.svg" alt="Tutorials Billede" />
-            </div>
+        <div
+          className="forside_box forside_tutorials"
+          onClick={() => handleNavigation("/machines")}
+        >
+          <div className="top-left">Illustrationer</div>
+          <div className="center">
+            <Image src="./video.svg" alt="Tutorials Billede" />
           </div>
-        </Link>
+        </div>
 
-        <Link href="/teamtraining">
-          <div className="forside_box forside_ekstra">
-            <div className="top-left">Holdtræning</div>
-            <div className="center">
-              <Image src="./hold.png" alt="Hold Billede" />
-            </div>
+        <div
+          className="forside_box forside_ekstra"
+          onClick={() => handleNavigation("/teamtraining")}
+        >
+          <div className="top-left">Holdtræning</div>
+          <div className="center">
+            <Image src="./hold.png" alt="Hold Billede" />
           </div>
-        </Link>
+        </div>
       </div>
     </main>
   );

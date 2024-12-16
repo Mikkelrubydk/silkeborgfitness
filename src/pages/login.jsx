@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
-import Link from "next/link";
 import Image from "next/image";
 
 // Mikkel
@@ -81,9 +80,9 @@ const Login = () => {
         <hr />
         <p>
           ikke medlem endnu?{" "}
-          <Link className="link" href="/register">
+          <button className="link" onClick={router.push("/register")}>
             Tilmeld dig
-          </Link>
+          </button>
         </p>
       </div>
     </main>

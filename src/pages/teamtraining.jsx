@@ -1,10 +1,11 @@
 import React, { useState } from "react"; // Importer useState
-import Link from "next/link";
+import { useRouter } from "next/router"; // Importer useRouter
 
 // Leila
 
 export default function TeamTraining() {
   const [isPopupBeskedOpen, setIsPopupBeskedOpen] = useState(false); // State til at styre pop-up
+  const router = useRouter(); // Brug useRouter
   const trainingData = [
     {
       day: "Mandag 29/11",
@@ -13,7 +14,7 @@ export default function TeamTraining() {
           name: "Yoga",
           trainer: "Murat Kilic",
           slots: "2/11",
-          href: "/bookteam.jsx",
+          href: "/bookteam",
         },
         {
           name: "Pilates",
@@ -64,6 +65,10 @@ export default function TeamTraining() {
   // Funktion til at åbne og lukke pop-up'en
   const togglePopupBesked = () => setIsPopupBeskedOpen(!isPopupBeskedOpen);
 
+  const handleSessionClick = (href) => {
+    router.push(href); // Naviger til den valgte rute
+  };
+
   return (
     <main className="teamtraining-container">
       <h1 className="teamtraining-header">
@@ -111,19 +116,19 @@ export default function TeamTraining() {
         <div key={index} className="teamtraining-day">
           <h2 className="teamtraining-day-title">{dayData.day}</h2>
           {dayData.sessions.map((session, idx) => (
-            <Link key={idx} href={session.href.replace(".jsx", "")}>
-              <div className="teamtraining-session">
-                <span className="teamtraining-session-name">
-                  {session.name}
-                </span>
-                <span className="teamtraining-session-trainer">
-                  Træner: {session.trainer}
-                </span>
-                <span className="teamtraining-session-slots">
-                  {session.slots} Pladser
-                </span>
-              </div>
-            </Link>
+            <div
+              key={idx}
+              className="teamtraining-session"
+              onClick={() => handleSessionClick(session.href)}
+            >
+              <span className="teamtraining-session-name">{session.name}</span>
+              <span className="teamtraining-session-trainer">
+                Træner: {session.trainer}
+              </span>
+              <span className="teamtraining-session-slots">
+                {session.slots} Pladser
+              </span>
+            </div>
           ))}
         </div>
       ))}

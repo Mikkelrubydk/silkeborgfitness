@@ -4,7 +4,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import { db } from "../lib/firebase"; // Importer Firestore
 import { doc, setDoc } from "firebase/firestore"; // Funktioner til at oprette og opdatere dokumenter
-import Link from "next/link";
 import Image from "next/image";
 
 // Mikkel
@@ -108,9 +107,9 @@ const Register = () => {
         <hr />
         <p>
           Har du allerede en bruger?{" "}
-          <Link className="link" href="/login">
+          <button className="link" onClick={() => router.push("/login")}>
             Login
-          </Link>
+          </button>
         </p>
       </div>
     </main>

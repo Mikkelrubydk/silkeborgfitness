@@ -4,13 +4,12 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDatabase, ref, set, get } from "firebase/database";
 import Image from "next/image";
 import { auth, database } from "@/lib/firebase";
-import Link from "next/link";
 
 // Mikkel
 
 const Navbar = () => {
   const router = useRouter();
-  const [profileImage, setProfileImage] = useState("/profileimage.webp");
+  const [profileImage, setProfileImage] = useState("./profileimage.webp");
   const [isClient, setIsClient] = useState(false);
   const [theme, setTheme] = useState("standard");
 
@@ -84,7 +83,7 @@ const Navbar = () => {
     reader.readAsDataURL(file);
   };
 
-  const imageSrc = router.pathname === "/" ? "/logo.svg" : "/arrow.svg";
+  const imageSrc = router.pathname === "/" ? "./logo.svg" : "./arrow.svg";
 
   let navbarHeading;
   switch (router.pathname) {
@@ -182,7 +181,10 @@ const Navbar = () => {
             />
           </label>
         ) : (
-          <Link href="/profile">
+          <div
+            onClick={() => router.push("/profile")}
+            style={{ cursor: "pointer" }}
+          >
             <Image
               className="navbar-profilbillede rounded-full"
               src={profileImage}
@@ -195,7 +197,7 @@ const Navbar = () => {
                 objectFit: "cover",
               }}
             />
-          </Link>
+          </div>
         )}
       </div>
     </div>
