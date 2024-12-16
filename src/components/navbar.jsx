@@ -10,7 +10,7 @@ import { auth, database } from "@/lib/firebase";
 
 const Navbar = () => {
   const router = useRouter();
-  const [profileImage, setProfileImage] = useState("  ");
+  const [profileImage, setProfileImage] = useState("");
   const [isClient, setIsClient] = useState(false);
   const [theme, setTheme] = useState("standard");
 
@@ -164,7 +164,7 @@ const Navbar = () => {
           <label className="navbar-profil-label">
             <Image
               className="navbar-profilbillede rounded-full"
-              src={profileImage}
+              src={profileImage || "./profileimage.webp"}
               alt="Profilbillede"
               width={70}
               height={70}
