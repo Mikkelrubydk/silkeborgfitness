@@ -79,7 +79,7 @@ const Login = () => {
         <h2>SILKEBORG FITNESS CENTER</h2>
         <hr />
         <p>
-          ikke medlem endnu?{" "}
+          ikke medlem endnu?
           <button className="link" onClick={router.push("/register")}>
             Tilmeld dig
           </button>
