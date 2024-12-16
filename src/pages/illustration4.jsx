@@ -1,11 +1,13 @@
 // Julie
 
+import Image from "next/image";
+
 export default function About() {
   return (
     <div>
       {/* Benpress div */}
       <div className="tutorialpage">
-        <img src="bpp.png" />
+        <Image src="bpp.png" alt="Bænkpres billede" />
         <div className="ilu">
           Hvis du virkelig vil have noget ud af det skal..
         </div>{" "}

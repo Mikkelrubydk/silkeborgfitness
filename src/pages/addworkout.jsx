@@ -1,5 +1,6 @@
 import { getAuth } from "firebase/auth";
 import { get, getDatabase, ref, set } from "firebase/database";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -144,7 +145,7 @@ export default function CreateExercise() {
                     className={`boks ${activeIcon === index ? "active" : ""}`}
                     onClick={() => handleClick(index)}
                   >
-                    <img src={category.image} alt={category.name} />
+                    <Image src={category.image} alt={category.name} />
                   </div>
                   <p className="undertekst">{category.name}</p>
                 </div>

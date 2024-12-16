@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 // Julie
@@ -8,36 +9,36 @@ export default function About() {
       {/* Benpress div */}
       <div className="benpress">
         <Link href="/illustration">
-          <img src="benpress.png" alt="Benpress image" />
+          <Image src="benpress.png" alt="Benpress image" />
         </Link>
-        <div className="bp"></div> {/* Grøn div nedenunder */}
+        <div className="bp"></div>
         <p>Benpress</p>
       </div>
 
       {/* Squat div */}
       <div className="squat">
         <Link href="/illustration2">
-          <img src="squat.png" alt="Squat image" />
+          <Image src="squat.png" alt="Squat image" />
         </Link>
-        <div className="sq"></div> {/* Grøn div nedenunder */}
+        <div className="sq"></div>
         <p>Squat</p>
       </div>
 
       {/* Pullup div */}
       <div className="pullup">
         <Link href="/illustration3">
-          <img src="pullup.png" />
+          <Image src="pullup.png" alt="pullup image" />
         </Link>
-        <div className="pu"></div> {/* Grøn div nedenunder */}
+        <div className="pu"></div>
         <p>Pullup</p>
       </div>
 
       {/* Bænkpress div */}
       <div className="benchpress">
         <Link href="/illustration4">
-          <img src="benchpress.png" alt="Bænkpress image" />
+          <Image src="benchpress.png" alt="Bænkpress image" />
         </Link>
-        <div className="bp"></div> {/* Grøn div nedenunder */}
+        <div className="bp"></div>
         <p>Bænkpress</p>
       </div>
     </div>

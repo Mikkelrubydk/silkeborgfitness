@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react"; // Importer useState
 
 // Leila
@@ -109,7 +110,7 @@ const Achievement = () => {
                 >
                   <div className="flip-card">
                     <div className="front-side">
-                      <img
+                      <Image
                         src={icon}
                         alt={`icon-${index}`}
                         className="icon-image"
