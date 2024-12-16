@@ -21,6 +21,7 @@ import {
   update,
 } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Importér getAuth
+import Plus from "../../public/plus.svg";
 
 // Anders & Mikkel
 
@@ -337,7 +338,7 @@ const ProfilePage = () => {
             <div className="billede-boks">
               <Image
                 className="plus-icon"
-                src="/plus.svg"
+                src={Plus}
                 alt="Tilføj billede ikon"
                 width={40}
                 height={40}
