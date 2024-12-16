@@ -15,7 +15,7 @@ export default function BookTeam() {
       {/* Baggrundsbillede */}
       <div className="bookteam-header-image">
         <Image
-          src="/yogabook.png"
+          src="/yoga.png"
           alt="Yoga session"
           layout="fill"
           objectFit="cover"

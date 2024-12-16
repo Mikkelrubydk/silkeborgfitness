@@ -406,7 +406,7 @@
 .bookteam-details-row {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
   margin-bottom: 20px;
 }
 
@@ -485,4 +485,10 @@
 .session-trainer,
 .session-slots {
   font-size: 1rem;
+}
+
+.bookteam-description-box {
+  background-color: var(--main-color);
+  border-radius: 20px;
+  padding: 10px;
 }
