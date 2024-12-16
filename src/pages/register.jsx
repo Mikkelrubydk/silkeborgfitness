@@ -9,7 +9,7 @@ import Link from "next/link"; // Importer Link komponenten fra next/link
 import EmailIcon from "../../public/email.webp";
 import PasswordIcon from "../../public/padlock.webp";
 import UserIcon from "../../public/user.webp";
-import Logo from "../../public/logo.svg";
+import Logo from "../../public/logo.png";
 
 // Mikkel
 
