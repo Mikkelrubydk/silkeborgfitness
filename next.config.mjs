@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/sileborgfitness",
+  basePath: "/silkeborgfitness",
   reactStrictMode: true,
+  trailingSlash: true,
 };
 
 export default nextConfig;

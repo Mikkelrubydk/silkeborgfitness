@@ -9,7 +9,7 @@ import { auth, database } from "@/lib/firebase";
 
 const Navbar = () => {
   const router = useRouter();
-  const [profileImage, setProfileImage] = useState("./profileimage.webp");
+  const [profileImage, setProfileImage] = useState("  ");
   const [isClient, setIsClient] = useState(false);
   const [theme, setTheme] = useState("standard");
 
