@@ -136,6 +136,14 @@ const ProfilePage = () => {
     }));
   }, []);
 
+    // State for storing the current theme
+    const [currentTheme, setCurrentTheme] = useState("standard");
+    // Update localStorage when the theme changes
+    const updateTheme = (theme) => {
+      setCurrentTheme(theme);
+      localStorage.setItem("theme", theme);  // Save theme to localStorage
+    };
+
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImages = [];
