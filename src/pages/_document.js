@@ -8,10 +8,7 @@ class MyDocument extends Document {
           {/* Link til faviconet */}
           <link rel="icon" href="./favicon.ico" />
         </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
+        <body></body>
       </Html>
     );
   }
