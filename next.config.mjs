@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   basePath: "/sileborgfitness",
-  output: "export", // <=== enables static exports
+  output: "export",
   reactStrictMode: true,
+  images: {
+    unoptimized: true, // Deaktiver billedoptimering
+  },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
