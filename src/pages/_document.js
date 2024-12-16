@@ -1,13 +1,12 @@
-// pages/_document.js
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import Favicon from "../../public/favicon.ico";
 
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="da">
         <Head>
-          <link rel="icon" href={Favicon} />
+          {/* Link til faviconet */}
+          <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
           <Main />
