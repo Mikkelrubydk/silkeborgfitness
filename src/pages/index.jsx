@@ -4,6 +4,8 @@ import { doc, getDoc } from "firebase/firestore"; // Importer Firestore funktion
 import SkridtCirkeldiagram from "../components/SkridtCirkeldiagram"; // Import af komponenten
 import Link from "next/link";
 
+// Julie
+
 export default function Home() {
   const [theme, setTheme] = useState("standard");
   const [selectedDay, setSelectedDay] = useState("");

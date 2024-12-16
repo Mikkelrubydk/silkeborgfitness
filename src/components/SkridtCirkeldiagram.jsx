@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
+// Julie
+
 const SkridtCirkeldiagram = () => {
   const [steps, setSteps] = useState(0);
 

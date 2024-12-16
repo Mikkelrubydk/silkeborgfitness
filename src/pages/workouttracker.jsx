@@ -8,6 +8,8 @@ import Link from "next/link";
 import { auth } from "@/lib/firebase";
 import Image from "next/image"; // Sørg for at importere Image-komponenten
 
+// Mikkel
+
 export default function WorkoutTracker() {
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
