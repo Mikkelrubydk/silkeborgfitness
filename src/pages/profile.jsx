@@ -74,6 +74,9 @@ const ProfilePage = () => {
   const options = {
     responsive: true,
     plugins: {
+      legend: {
+        display: false, // Slå legend (forklaring) fra
+      },
       title: {
         display: false,
       },
@@ -106,7 +109,7 @@ const ProfilePage = () => {
     labels: ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun"],
     datasets: [
       {
-        label: "Aktivitetsniveau",
+        label: "",
         data: [],
         borderColor: "#ffa500",
         backgroundColor: "#ffa500",
