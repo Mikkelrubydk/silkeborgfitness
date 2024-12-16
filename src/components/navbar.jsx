@@ -5,7 +5,7 @@ import { getDatabase, ref, set, get } from "firebase/database";
 import Image from "next/image";
 import Link from "next/link"; // Importer Link komponenten
 import { auth, database } from "@/lib/firebase";
-import Logo from "../../public/logo.svg";
+import Logo from "../../public/logo.png";
 import Arrow from "../../public/arrow.svg";
 import ProfileFallback from "../../public/profileimage.webp";
 

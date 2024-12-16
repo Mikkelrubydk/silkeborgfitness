@@ -6,7 +6,7 @@ import Link from "next/link"; // Importer Link fra next/link
 import { useRouter } from "next/router"; // Importer useRouter
 import EmailIcon from "../../public/email.webp";
 import PasswordIcon from "../../public/padlock.webp";
-import Logo from "../../public/logo.svg";
+import Logo from "../../public/logo.png";
 
 const Login = () => {
   const [formData, setFormData] = useState({
