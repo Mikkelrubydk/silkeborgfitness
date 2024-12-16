@@ -25,12 +25,12 @@ export default function CreateExercise() {
   const progressWidth = (step / totalSteps) * 100;
 
   const categories = [
-    { name: "Bryst", image: "./chest.webp" },
-    { name: "Ryg", image: "./back.webp" },
-    { name: "Skuldre", image: "./shoulder.webp" },
-    { name: "Arme", image: "./muscle.webp" },
-    { name: "Ben", image: "./leg.webp" },
-    { name: "Mave", image: "./abs.webp" },
+    { name: "Bryst", image: "/chest.webp" },
+    { name: "Ryg", image: "/back.webp" },
+    { name: "Skuldre", image: "/shoulder.webp" },
+    { name: "Arme", image: "/muscle.webp" },
+    { name: "Ben", image: "/leg.webp" },
+    { name: "Mave", image: "/abs.webp" },
   ];
 
   useEffect(() => {
