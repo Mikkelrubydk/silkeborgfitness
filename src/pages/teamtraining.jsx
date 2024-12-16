@@ -3,6 +3,8 @@ import "/src/app/lejla.css";
 import "/src/app/globals.css";
 import Link from "next/link";
 
+// Leila
+
 export default function TeamTraining() {
   const [isPopupBeskedOpen, setIsPopupBeskedOpen] = useState(false); // State til at styre pop-up
   const trainingData = [

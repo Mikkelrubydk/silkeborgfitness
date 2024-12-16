@@ -22,6 +22,8 @@ import {
 } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Importér getAuth
 
+// Anders & Mikkel
+
 const ProfilePage = () => {
   const [startWeight, setStartWeight] = useState(92);
   const [currentWeight, setCurrentWeight] = useState(90);
@@ -75,7 +77,7 @@ const ProfilePage = () => {
     responsive: true,
     plugins: {
       legend: {
-        display: false, // Slå legend (forklaring) fra
+        display: false,
       },
       title: {
         display: false,
@@ -135,14 +137,6 @@ const ProfilePage = () => {
       ],
     }));
   }, []);
-
-    // State for storing the current theme
-    const [currentTheme, setCurrentTheme] = useState("standard");
-    // Update localStorage when the theme changes
-    const updateTheme = (theme) => {
-      setCurrentTheme(theme);
-      localStorage.setItem("theme", theme);  // Save theme to localStorage
-    };
 
   const handleImageChange = (e) => {
     const files = e.target.files;

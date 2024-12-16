@@ -5,6 +5,8 @@ import { auth } from "../lib/firebase";
 import Link from "next/link";
 import Image from "next/image";
 
+// Mikkel
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",

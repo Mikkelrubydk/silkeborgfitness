@@ -3,6 +3,8 @@ import { get, getDatabase, ref, set } from "firebase/database";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
+// Mikkel
+
 export default function CreateExercise() {
   const router = useRouter();
   const [selectedDate, setSelectedDate] = useState("");

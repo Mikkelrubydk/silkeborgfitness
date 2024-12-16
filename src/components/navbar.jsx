@@ -6,6 +6,8 @@ import Image from "next/image";
 import { auth, database } from "@/lib/firebase";
 import Link from "next/link";
 
+// Mikkel
+
 const Navbar = () => {
   const router = useRouter();
   const [profileImage, setProfileImage] = useState("/profileimage.webp");
@@ -111,16 +113,15 @@ const Navbar = () => {
       navbarHeading = "Maskiner";
       break;
     case "/illustration2":
-    navbarHeading = "Squat";
+      navbarHeading = "Squat";
       break;
     case "/illustration3":
-    navbarHeading = "Pull up";
+      navbarHeading = "Pull up";
       break;
     case "/illustration4":
-    navbarHeading = "Bænkpress";
+      navbarHeading = "Bænkpress";
       break;
   }
-
 
   if (!isClient) {
     return null;

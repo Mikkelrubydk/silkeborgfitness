@@ -7,6 +7,8 @@ import { doc, setDoc } from "firebase/firestore"; // Funktioner til at oprette o
 import Link from "next/link";
 import Image from "next/image";
 
+// Mikkel
+
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
