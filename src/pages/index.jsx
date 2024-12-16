@@ -5,6 +5,10 @@ import SkridtCirkeldiagram from "../components/SkridtCirkeldiagram";
 import { useRouter } from "next/router"; // Importer useRouter
 import Image from "next/image";
 import Link from "next/link";
+import Dumbbell from "../../public/dumbbell.svg";
+import Medal from "../../public/medal.svg";
+import Video from "../../public/video.svg";
+import Hold from "../../public/hold.png";
 
 // Julie
 
@@ -104,7 +108,7 @@ export default function Home() {
             <div className="center">
               <Image
                 className="forsideikon"
-                src="./dumbbell.svg"
+                src={Dumbbell}
                 alt="Logbog Billede"
                 width={100}
                 height={100}
@@ -124,7 +128,7 @@ export default function Home() {
             <div className="center">
               <Image
                 className="forsideikon"
-                src="./medal.svg"
+                src={Medal}
                 alt="Præstationer Billede"
                 width={100}
                 height={100}
@@ -180,7 +184,7 @@ export default function Home() {
             <div className="center">
               <Image
                 className="forsideikon"
-                src="./video.svg"
+                src={Video}
                 alt="Tutorials Billede"
                 height={100}
                 width={100}
@@ -195,7 +199,7 @@ export default function Home() {
             <div className="center">
               <Image
                 className="forsideikon"
-                src="./hold.png"
+                src={Hold}
                 alt="Hold Billede"
                 height={100}
                 width={100}
