@@ -9,6 +9,7 @@ import Link from "next/link"; // Importer Link komponenten fra next/link
 import EmailIcon from "../../public/email.webp";
 import PasswordIcon from "../../public/padlock.webp";
 import UserIcon from "../../public/user.webp";
+import Logo from "../../public/logo.svg";
 
 // Mikkel
 
@@ -107,6 +108,7 @@ const Register = () => {
         </form>
       </div>
       <div className="login-tekst">
+        <Image src={Logo} alt="Logo" width={200} height={200} />
         <h2>SILKEBORG FITNESS CENTER</h2>
         <hr />
         <p>

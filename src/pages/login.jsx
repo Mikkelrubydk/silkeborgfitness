@@ -82,7 +82,7 @@ const Login = () => {
         </form>
       </div>
       <div className="login-tekst">
-        <Image src={Logo} alt="login page image" width={200} height={200} />
+        <Image src={Logo} alt="login-page image" width={200} height={200} />
         <h2>SILKEBORG FITNESS CENTER</h2>
         <hr />
         <p>
