@@ -7,6 +7,7 @@ import Link from "next/link"; // Importer Link komponenten
 import { auth, database } from "@/lib/firebase";
 import Logo from "../../public/logo.svg";
 import Arrow from "../../public/arrow.svg";
+import ProfileFallback from "../../public/profileimage.webp";
 
 // Mikkel
 
@@ -169,7 +170,7 @@ const Navbar = () => {
           <label className="navbar-profil-label">
             <Image
               className="navbar-profilbillede rounded-full"
-              src={profileImage || "./profileimage.webp"}
+              src={profileImage || ProfileFallback}
               alt="Profilbillede"
               width={70}
               height={70}
@@ -190,7 +191,7 @@ const Navbar = () => {
           <Link href="/profile">
             <Image
               className="navbar-profilbillede rounded-full"
-              src={profileImage || "./profileimage.webp"}
+              src={profileImage || ProfileFallback}
               alt="Profilbillede"
               width={70}
               height={70}
