@@ -186,7 +186,7 @@ const Navbar = () => {
             <a style={{ cursor: "pointer" }}>
               <Image
                 className="navbar-profilbillede rounded-full"
-                src={profileImage}
+                src={profileImage || "./profileimage.webp"}
                 alt="Profilbillede"
                 width={70}
                 height={70}
