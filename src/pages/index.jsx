@@ -4,7 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import SkridtCirkeldiagram from "../components/SkridtCirkeldiagram";
 import { useRouter } from "next/router"; // Importer useRouter
 import Image from "next/image";
-import Link from "next/link"; // Importer Link komponenten
+import Link from "next/link";
 
 // Julie
 
@@ -12,6 +12,7 @@ export default function Home() {
   const [theme, setTheme] = useState("standard");
   const [selectedDay, setSelectedDay] = useState("");
   const [chartData, setChartData] = useState([]);
+  const router = useRouter(); // Initialiser router
 
   // Data for hver dag
   const data = {
@@ -97,34 +98,30 @@ export default function Home() {
   return (
     <main>
       <div className="forside_container">
-        <div className="forside_box forside_logbog">
-          <Link href="/workouttracker">
-            <div>
-              <div className="top-left">Logbog</div>
-              <div className="center">
-                <Image src="./dumbbell.svg" alt="Logbog Billede" />
-              </div>
-              <div className="bottom-left">Sidst noteret: 29/11</div>
+        <Link href="/workouttracker">
+          <div className="forside_box forside_logbog">
+            <div className="top-left">Logbog</div>
+            <div className="center">
+              <Image src="./dumbbell.svg" alt="Logbog Billede" />
             </div>
-          </Link>
-        </div>
+            <div className="bottom-left">Sidst noteret: 29/11</div>
+          </div>
+        </Link>
 
         <div className="forside_box forside_skridt">
           <SkridtCirkeldiagram />
         </div>
 
-        <div className="forside_box forside_praestationer">
-          <Link href="/achievement">
-            <div>
-              <div className="top-left">Præstationer</div>
-              <div className="center">
-                <Image src="./medal.svg" alt="Præstationer Billede" />
-              </div>
-              <div className="bottom-left">Ny præmie låst op!</div>
-              <div className="alert-icon"></div>
+        <Link href="/achievement">
+          <div className="forside_box forside_praestationer">
+            <div className="top-left">Præstationer</div>
+            <div className="center">
+              <Image src="./medal.svg" alt="Præstationer Billede" />
             </div>
-          </Link>
-        </div>
+            <div className="bottom-left">Ny præmie låst op!</div>
+            <div className="alert-icon"></div>
+          </div>
+        </Link>
 
         <div className="forside_box forside_graf">
           <h2>Oversigt over travlhed</h2>
@@ -165,27 +162,23 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="forside_box forside_tutorials">
-          <Link href="/machines">
-            <div>
-              <div className="top-left">Illustrationer</div>
-              <div className="center">
-                <Image src="./video.svg" alt="Tutorials Billede" />
-              </div>
+        <Link href="/illustration">
+          <div className="forside_box forside_tutorials">
+            <div className="top-left">Illustrationer</div>
+            <div className="center">
+              <Image src="./video.svg" alt="Tutorials Billede" />
             </div>
-          </Link>
-        </div>
+          </div>
+        </Link>
 
-        <div className="forside_box forside_ekstra">
-          <Link href="/teamtraining">
-            <div>
-              <div className="top-left">Holdtræning</div>
-              <div className="center">
-                <Image src="./hold.png" alt="Hold Billede" />
-              </div>
+        <Link href="/teamtraining">
+          <div className="forside_box forside_ekstra">
+            <div className="top-left">Holdtræning</div>
+            <div className="center">
+              <Image src="./hold.png" alt="Hold Billede" />
             </div>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     </main>
   );
