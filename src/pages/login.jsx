@@ -3,8 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import Image from "next/image";
 import Link from "next/link"; // Importer Link fra next/link
-
-// Mikkel
+import { useRouter } from "next/router"; // Importer useRouter
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -12,8 +11,8 @@ const Login = () => {
     password: "",
   });
   const [isClient, setIsClient] = useState(false); // Til at tjekke, om vi er på klienten
+  const router = useRouter(); // Brug useRouter
 
-  // Brug useEffect til at sikre, at koden kun kører på klienten
   useEffect(() => {
     setIsClient(true); // Når komponenten er rendere på klienten, sættes isClient til true
   }, []);
@@ -26,14 +25,13 @@ const Login = () => {
       localStorage.setItem("isLoggedIn", "true"); // Gem login-status i localStorage
 
       if (isClient) {
-        window.location.href = "/"; // Omdiriger til forsiden efter login (kun på klienten)
+        router.push("/"); // Brug router.push i stedet for window.location.href
       }
     } catch (error) {
       alert(`Fejl: ${error.message}`);
     }
   };
 
-  // Sørg for at returnere null indtil vi er på klienten
   if (!isClient) {
     return null;
   }
