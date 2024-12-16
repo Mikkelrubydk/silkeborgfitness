@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import "../app/globals.css";
-import "../app/julie.css";
+import "../app/julle.css";
 import "../app/mikkel.css";
 import "../app/anders.css";
 
