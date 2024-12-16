@@ -6,7 +6,7 @@ class MyDocument extends Document {
       <Html lang="da">
         <Head>
           {/* Link til faviconet */}
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="./favicon.ico" />
         </Head>
         <body>
           <Main />
