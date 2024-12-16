@@ -15,7 +15,6 @@ export default function WorkoutTracker() {
     new Date().toISOString().split("T")[0]
   );
   const [workouts, setWorkouts] = useState([]);
-  const [showModal, setShowModal] = useState(false);
 
   // Fetch workouts from Firebase for the selected date
   useEffect(() => {

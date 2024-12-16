@@ -1,7 +1,3 @@
-import "/src/app/Julie.css";
-import "/src/app/globals.css";
-import Link from "next/link";
-
 // Julie
 
 export default function About() {

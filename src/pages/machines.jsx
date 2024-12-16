@@ -1,5 +1,3 @@
-import "/src/app/julie.css";
-import "/src/app/globals.css";
 import Link from "next/link";
 
 // Julie
