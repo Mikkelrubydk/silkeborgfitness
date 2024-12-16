@@ -135,7 +135,7 @@ const Navbar = () => {
       <div>
         {router.pathname === "/" ? (
           <Image
-            src="./logo.svg"
+            src="/logo.svg"
             alt="Silkeborg Fitness Logo"
             width={150}
             height={150}

@@ -124,7 +124,7 @@ export default function Home() {
             <div className="center">
               <Image
                 className="forsideikon"
-                src="./medal.svg"
+                src="/medal.svg"
                 alt="Præstationer Billede"
                 width={100}
                 height={100}
