@@ -128,7 +128,7 @@ export default function CreateExercise() {
     const options = { weekday: "long", day: "2-digit", month: "long" };
     return date
       .toLocaleDateString("da-DK", options)
-      .replace(/\b\w/g, (char) => char.toUpperCase());
+      .replace(/(^\w|\s\w)/g, (char) => char.toUpperCase());
   };
 
   const renderStep = () => {
