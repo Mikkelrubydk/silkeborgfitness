@@ -121,6 +121,9 @@ const Navbar = () => {
     case "/illustration4":
       navbarHeading = "Bænkpress";
       break;
+    case "/bookteam":
+      navbarHeading = "Holdbooking";
+      break;
   }
 
   if (!isClient) {
@@ -164,7 +167,7 @@ const Navbar = () => {
           <label className="navbar-profil-label">
             <Image
               className="navbar-profilbillede rounded-full"
-              src={profileImage || "./profileimage.webp"}
+              src={profileImage || "/profileimage.webp"}
               alt="Profilbillede"
               width={70}
               height={70}
@@ -183,20 +186,18 @@ const Navbar = () => {
           </label>
         ) : (
           <Link href="/profile">
-            <a style={{ cursor: "pointer" }}>
-              <Image
-                className="navbar-profilbillede rounded-full"
-                src={profileImage || "./profileimage.webp"}
-                alt="Profilbillede"
-                width={70}
-                height={70}
-                style={{
-                  cursor: "pointer",
-                  height: "70px",
-                  objectFit: "cover",
-                }}
-              />
-            </a>
+            <Image
+              className="navbar-profilbillede rounded-full"
+              src={profileImage || "/profileimage.webp"}
+              alt="Profilbillede"
+              width={70}
+              height={70}
+              style={{
+                cursor: "pointer",
+                height: "70px",
+                objectFit: "cover",
+              }}
+            />
           </Link>
         )}
       </div>

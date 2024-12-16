@@ -1,3 +1,5 @@
+"use client";
+
 // Julie
 
 import Image from "next/image";
@@ -7,10 +9,10 @@ export default function About() {
     <div>
       {/* Benpress div */}
       <div className="tutorialpage">
-        <Image src="./lpp.png" alt="Benpress billede" />
+        <Image src="/lpp.png" alt="Benpress billede" width={100} height={100} />
         <div className="ilu">
           Hvis du virkelig vil have noget ud af det skal..
-        </div>{" "}
+        </div>
         {/* Grøn overlay div */}
       </div>
 

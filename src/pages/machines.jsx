@@ -7,48 +7,55 @@ export default function About() {
   return (
     <div>
       {/* Benpress div */}
-      <div className="benpress">
-        <Link href="/illustration">
-          <a>
-            <Image src="./benpress.png" alt="Benpress image" />
-            <div className="bp"></div>
-            <p>Benpress</p>
-          </a>
-        </Link>
-      </div>
+      <Link href="/illustration">
+        <div className="benpress">
+          <Image
+            src="/benpress.png"
+            alt="Benpress image"
+            width={100}
+            height={100}
+          />
+          <div className="bp"></div>
+          <p>Benpress</p>
+        </div>
+      </Link>
 
       {/* Squat div */}
-      <div className="squat">
-        <Link href="/illustration2">
-          <a>
-            <Image src="./squat.png" alt="Squat image" />
-            <div className="sq"></div>
-            <p>Squat</p>
-          </a>
-        </Link>
-      </div>
+      <Link href="/illustration2">
+        <div className="squat">
+          <Image src="/squat.png" alt="Squat image" width={100} height={100} />
+          <div className="sq"></div>
+          <p>Squat</p>
+        </div>
+      </Link>
 
       {/* Pullup div */}
-      <div className="pullup">
-        <Link href="/illustration3">
-          <a>
-            <Image src="./pullup.png" alt="Pullup image" />
-            <div className="pu"></div>
-            <p>Pullup</p>
-          </a>
-        </Link>
-      </div>
+      <Link href="/illustration3">
+        <div className="pullup">
+          <Image
+            src="/pullup.png"
+            alt="Pullup image"
+            width={100}
+            height={100}
+          />
+          <div className="pu"></div>
+          <p>Pullup</p>
+        </div>
+      </Link>
 
       {/* Bænkpress div */}
-      <div className="benchpress">
-        <Link href="/illustration4">
-          <a>
-            <Image src="./benchpress.png" alt="Bænkpress image" />
-            <div className="bp"></div>
-            <p>Bænkpress</p>
-          </a>
-        </Link>
-      </div>
+      <Link href="/illustration4">
+        <div className="benchpress">
+          <Image
+            src="/benchpress.png"
+            alt="Bænkpress image"
+            width={100}
+            height={100}
+          />
+          <div className="bp"></div>
+          <p>Bænkpress</p>
+        </div>
+      </Link>
     </div>
   );
 }

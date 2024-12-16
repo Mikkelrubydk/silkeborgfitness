@@ -12,16 +12,16 @@ const Achievement = () => {
 
   // Ikoner og beskrivelser for præstationerne
   const icons = [
-    "runninman.png",
-    "medaljeikon.png",
-    "flagikon.png",
-    "benworkikon.png",
-    "stjerneikon.png",
-    "skubikon.png",
-    "fitnessliftikon.png",
-    "dumbellikon.png",
-    "stormedaljeikon.png",
-    "yogaikon.png",
+    "/runninman.png",
+    "/medaljeikon.png",
+    "/flagikon.png",
+    "/benworkikon.png",
+    "/stjerneikon.png",
+    "/skubikon.png",
+    "/fitnessliftikon.png",
+    "/dumbellikon.png",
+    "/stormedaljeikon.png",
+    "/yogaikon.png",
   ];
 
   const descriptions = [
@@ -111,6 +111,8 @@ const Achievement = () => {
                     <div className="front-side">
                       <Image
                         src={icon}
+                        width={100}
+                        height={100}
                         alt={`icon-${index}`}
                         className="icon-image"
                       />

@@ -90,7 +90,7 @@ const Login = () => {
         <p>
           ikke medlem endnu?{" "}
           <Link href="/register">
-            <a className="link">Tilmeld dig</a>
+            <button className="link">Tilmeld dig</button>
           </Link>
         </p>
       </div>

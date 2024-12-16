@@ -141,7 +141,12 @@ export default function CreateExercise() {
                     className={`boks ${activeIcon === index ? "active" : ""}`}
                     onClick={() => handleClick(index)}
                   >
-                    <Image src={category.image} alt={category.name} />
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      width={100}
+                      height={100}
+                    />
                   </div>
                   <p className="undertekst">{category.name}</p>
                 </div>
