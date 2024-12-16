@@ -5,6 +5,8 @@ import { getDatabase, ref, set, get } from "firebase/database";
 import Image from "next/image";
 import Link from "next/link"; // Importer Link komponenten
 import { auth, database } from "@/lib/firebase";
+import Logo from "../../public/logo.svg";
+import Arrow from "../../public/arrow.svg";
 
 // Mikkel
 
@@ -84,7 +86,7 @@ const Navbar = () => {
     reader.readAsDataURL(file);
   };
 
-  const imageSrc = router.pathname === "/" ? "./logo.svg" : "./arrow.svg";
+  const imageSrc = router.pathname === "/" ? { Logo } : { Arrow };
 
   let navbarHeading;
   switch (router.pathname) {
@@ -135,7 +137,7 @@ const Navbar = () => {
       <div>
         {router.pathname === "/" ? (
           <Image
-            src="./logo.svg"
+            src={Logo}
             alt="Silkeborg Fitness Logo"
             width={150}
             height={150}
