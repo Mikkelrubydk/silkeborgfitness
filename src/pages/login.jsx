@@ -13,8 +13,8 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [isClient, setIsClient] = useState(false); // Til at tjekke, om vi er på klienten
-  const router = useRouter(); // Brug useRouter
+  const [isClient, setIsClient] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsClient(true); // Når komponenten er rendere på klienten, sættes isClient til true
@@ -28,7 +28,7 @@ const Login = () => {
       localStorage.setItem("isLoggedIn", "true"); // Gem login-status i localStorage
 
       if (isClient) {
-        router.push("/"); // Brug router.push i stedet for window.location.href
+        router.push("/");
       }
     } catch (error) {
       alert(`Fejl: ${error.message}`);

@@ -269,7 +269,7 @@ const ProfilePage = () => {
             <input
               type="number"
               value={currentWeight}
-              onChange={(e) => handleWeightEdit("Nuværende", e)}
+              onChange={(e) => handleWeightEdit("Currente", e)}
               className="personlige-mål-kg"
             />
             <span className="kg-text">kg</span>
@@ -281,7 +281,7 @@ const ProfilePage = () => {
             <input
               type="number"
               value={goalWeight}
-              onChange={(e) => handleWeightEdit("Mål", e)}
+              onChange={(e) => handleWeightEdit("Goal", e)}
               className="personlige-mål-kg"
             />
             <span className="kg-text">kg</span>
