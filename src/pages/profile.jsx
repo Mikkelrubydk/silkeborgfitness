@@ -237,9 +237,13 @@ const ProfilePage = () => {
   const handleWeightEdit = (type, e) => {
     const newWeight = parseInt(e.target.value);
     if (!isNaN(newWeight)) {
-      if (type === "Start") setStartWeight(newWeight);
-      if (type === "Current") setCurrentWeight(newWeight);
-      if (type === "Goal") setGoalWeight(newWeight);
+      if (type === "Start") {
+        setStartWeight(newWeight);
+      } else if (type === "Current") {
+        setCurrentWeight(newWeight);
+      } else if (type === "Goal") {
+        setGoalWeight(newWeight);
+      }
     }
   };
 
@@ -269,7 +273,7 @@ const ProfilePage = () => {
             <input
               type="number"
               value={currentWeight}
-              onChange={(e) => handleWeightEdit("Currente", e)}
+              onChange={(e) => handleWeightEdit("Current", e)}
               className="personlige-mål-kg"
             />
             <span className="kg-text">kg</span>
