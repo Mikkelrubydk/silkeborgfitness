@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-// Leila
+// Lejla
 
 export default function BookTeam() {
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State til popup
